@@ -1,0 +1,1207 @@
+{
+	"name": "Action_Users",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_v3t",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "actionusers//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['currentRevision']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['id']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['state']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['type']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['startTime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['completionTime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['ColumnLayout_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['Image_2']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['attemptDuration']['SingleSelectRadio_1']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 17
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 18
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['1']['attemptDuration']['SingleSelectRadio_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 19
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 20
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['attemptDuration']['MultipleSelectCheckbox_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 21
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 22
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 23
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 24
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['attemptDuration']['SingleSelectRadio_1']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 25
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 26
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['ColumnLayout_0']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 27
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 28
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['Image_2']['totaltime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 29
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 30
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['quizes'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 31
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['title']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 32
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['journeyId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 33
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['s3Path']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 34
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['breadcrumb']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 35
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['selectedGuid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 36
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['guid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 37
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['mappingId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 38
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['name']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 39
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['email']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 40
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['emailTwo']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 41
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['phoneOne']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 42
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['phoneTwo']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 43
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['timezone']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 44
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['biography']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 45
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['photo']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 46
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['primary']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 47
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['id']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 48
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coachingSessionId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 49
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['name']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 50
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['type']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 51
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['sessionType']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 52
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['duration']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 53
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coach']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 54
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coachEmail']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 55
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['status']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 56
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['position']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 57
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['rateable']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 58
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['authenticateUser']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 59
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['id']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 60
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['dateTime']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 61
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['zoomLink']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 62
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowFrom']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 63
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowTo']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 64
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowUntil']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 65
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['activityGUID']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 66
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['role'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 67
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedConsent']['value']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 68
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedConsent']['timestamp']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 69
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['value']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 70
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['timestamp']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 71
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasRegistered']['value']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 72
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasRegistered']['timestamp']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 73
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['isActive']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 74
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['userProfile']['userTag']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 75
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortTitle']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 76
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortStartDateTime']['$date']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 77
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortEndDateTime']['$date']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 78
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortBlueprint'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 79
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortDiscussions'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 80
+								}
+							},
+							{
+								"source": {
+									"path": "$['isPreviewUser']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 81
+								}
+							},
+							{
+								"source": {
+									"path": "$['isTermAndConditionChecked']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 82
+								}
+							},
+							{
+								"source": {
+									"path": "$['currentLoginFailureAttempt']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 83
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasRegistered']['value']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 84
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasRegistered']['timestamp']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 85
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedConsent']['value']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 86
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedConsent']['timestamp']"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 87
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedDataPrivacy']['value']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 88
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedDataPrivacy']['timestamp']"
+								},
+								"sink": {
+									"type": "DateTime",
+									"ordinal": 89
+								}
+							},
+							{
+								"source": {
+									"path": "$['participatesIn'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 90
+								}
+							},
+							{
+								"source": {
+									"path": "$['deviceToken'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 91
+								}
+							},
+							{
+								"source": {
+									"path": "$['recommendedContent'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 92
+								}
+							},
+							{
+								"source": {
+									"path": "$['role']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 93
+								}
+							},
+							{
+								"source": {
+									"path": "$['customerId']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 94
+								}
+							},
+							{
+								"source": {
+									"path": "$['fname']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 95
+								}
+							},
+							{
+								"source": {
+									"path": "$['lname']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 96
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 97
+								}
+							},
+							{
+								"source": {
+									"path": "$['password']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 98
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 99
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['password']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 100
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['timestamp']['$date']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 101
+								}
+							},
+							{
+								"source": {
+									"path": "$['isActive']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 102
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdAt']['$date']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 103
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedAt']['$date']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 104
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdBy']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 105
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedBy']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 106
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastFailedLoginAt']['$date']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 107
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastSuccessfulLoginAt']['$date']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 108
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 109
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['userAgent']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 110
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['ipAddress']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 111
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['timestamp']['$date']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 112
+								}
+							},
+							{
+								"source": {
+									"path": "$['__v']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 113
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['country']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 114
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['timezone']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 115
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['town']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 116
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['language']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 117
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['region']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 118
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['descriptiveAudio']"
+								},
+								"sink": {
+									"type": "Boolean",
+									"ordinal": 119
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['currentRevision']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 120
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['revisions']['1']['activities'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 121
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['revisions']['1']['resources'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 122
+								}
+							},
+							{
+								"source": {
+									"path": "$['notificationCount']"
+								},
+								"sink": {
+									"type": "Int64",
+									"ordinal": 123
+								}
+							},
+							{
+								"source": {
+									"path": "$['themes']['currentRevision']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 124
+								}
+							},
+							{
+								"source": {
+									"path": "$['themes']['revisions']['1']['themes'][0]"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 125
+								}
+							}
+						],
+						"collectionReference": "",
+						"mapComplexValuesToString": false
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_v3t",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_v3t",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

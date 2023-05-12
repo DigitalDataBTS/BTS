@@ -1,0 +1,15 @@
+{
+	"name": "SourceDataset_v3t",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Action_Users",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "users"
+		}
+	}
+}
