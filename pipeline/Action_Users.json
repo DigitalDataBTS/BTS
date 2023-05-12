@@ -63,8 +63,7 @@
 									"path": "$['_id']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 1
+									"name": "_id_$oid"
 								}
 							},
 							{
@@ -72,8 +71,7 @@
 									"path": "$['journeys'][0]['journeyId']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 2
+									"name": "journeys'][0]['journeyId"
 								}
 							},
 							{
@@ -81,8 +79,7 @@
 									"path": "$['journeys'][0]['journeyName']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 3
+									"name": "journeyName"
 								}
 							},
 							{
@@ -90,8 +87,7 @@
 									"path": "$['journeys'][0]['cohortId']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 4
+									"name": "cohortId"
 								}
 							},
 							{
@@ -99,8 +95,7 @@
 									"path": "$['journeys'][0]['currentRevision']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 5
+									"name": "journeys'][0]['currentRevision"
 								}
 							},
 							{
@@ -108,8 +103,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 6
+									"name": "journeys'][0]['revisions_1_responses']["
 								}
 							},
 							{
@@ -117,8 +111,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['states'][0]['id']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 7
+									"name": "journeys'][0]['revisions_1_states'][0]['id"
 								}
 							},
 							{
@@ -126,8 +119,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['states'][0]['state']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 8
+									"name": "state"
 								}
 							},
 							{
@@ -135,8 +127,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['states'][0]['type']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 9
+									"name": "journeys'][0]['revisions_1_states'][0]['type"
 								}
 							},
 							{
@@ -144,8 +135,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['states'][0]['startTime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 10
+									"name": "startTime"
 								}
 							},
 							{
@@ -153,8 +143,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['states'][0]['completionTime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 11
+									"name": "completionTime"
 								}
 							},
 							{
@@ -162,8 +151,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['ColumnLayout_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 12
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738097216_1669738211657_4202e8cf98aca5c03416_pages_0_attemptDuration_ColumnLayout_0_totaltime"
 								}
 							},
 							{
@@ -171,8 +159,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 13
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738097216_1669738211657_4202e8cf98aca5c03416_pages_0_attemptDuration_Text_1_totaltime"
 								}
 							},
 							{
@@ -180,8 +167,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['attemptDuration']['Image_2']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 14
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738097216_1669738211657_4202e8cf98aca5c03416_pages_0_attemptDuration_Image_2_totaltime"
 								}
 							},
 							{
@@ -189,8 +175,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738097216_1669738211657']['4202e8cf98aca5c03416']['pages']['0']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 15
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738097216_1669738211657_4202e8cf98aca5c03416_pages_0_totalPageDuration"
 								}
 							},
 							{
@@ -198,8 +183,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 16
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_0_attemptDuration_Text_0_totaltime"
 								}
 							},
 							{
@@ -207,8 +191,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['attemptDuration']['SingleSelectRadio_1']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 17
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_0_attemptDuration_SingleSelectRadio_1_totaltime"
 								}
 							},
 							{
@@ -216,8 +199,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['0']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 18
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_0_totalPageDuration"
 								}
 							},
 							{
@@ -225,8 +207,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['1']['attemptDuration']['SingleSelectRadio_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 19
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_1_attemptDuration_SingleSelectRadio_0_totaltime"
 								}
 							},
 							{
@@ -234,8 +215,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['1']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 20
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_1_totalPageDuration"
 								}
 							},
 							{
@@ -243,8 +223,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['attemptDuration']['MultipleSelectCheckbox_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 21
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_2_attemptDuration_MultipleSelectCheckbox_0_totaltime"
 								}
 							},
 							{
@@ -252,8 +231,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['attemptDuration']['Text_1']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 22
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_2_attemptDuration_Text_1_totaltime"
 								}
 							},
 							{
@@ -261,8 +239,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['0e814550107ce4e582d0']['1669738185407_1669738363106']['a963f37769c15efa1954']['pages']['2']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 23
+									"name": "journeys'][0]['revisions_1_analytics_0e814550107ce4e582d0_1669738185407_1669738363106_a963f37769c15efa1954_pages_2_totalPageDuration"
 								}
 							},
 							{
@@ -270,8 +247,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 24
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650360615085_1651160637226_88947c49d0356c98012d_pages_0_attemptDuration_Text_0_totaltime"
 								}
 							},
 							{
@@ -279,8 +255,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['attemptDuration']['SingleSelectRadio_1']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 25
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650360615085_1651160637226_88947c49d0356c98012d_pages_0_attemptDuration_SingleSelectRadio_1_totaltime"
 								}
 							},
 							{
@@ -288,8 +263,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650360615085_1651160637226']['88947c49d0356c98012d']['pages']['0']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 26
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650360615085_1651160637226_88947c49d0356c98012d_pages_0_totalPageDuration"
 								}
 							},
 							{
@@ -297,8 +271,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['ColumnLayout_0']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 27
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650359819496_1650359879754_4070b349148fa0e1b120_pages_0_attemptDuration_ColumnLayout_0_totaltime"
 								}
 							},
 							{
@@ -306,8 +279,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 28
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650359819496_1650359879754_4070b349148fa0e1b120_pages_0_attemptDuration_Text_1_totaltime"
 								}
 							},
 							{
@@ -315,8 +287,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['attemptDuration']['Image_2']['totaltime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 29
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650359819496_1650359879754_4070b349148fa0e1b120_pages_0_attemptDuration_Image_2_totaltime"
 								}
 							},
 							{
@@ -324,8 +295,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['analytics']['42ac3f6181d51d5e2a6f']['1650359819496_1650359879754']['4070b349148fa0e1b120']['pages']['0']['totalPageDuration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 30
+									"name": "journeys'][0]['revisions_1_analytics_42ac3f6181d51d5e2a6f_1650359819496_1650359879754_4070b349148fa0e1b120_pages_0_totalPageDuration"
 								}
 							},
 							{
@@ -333,8 +303,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['quizes'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 31
+									"name": "journeys'][0]['revisions_1_quizes']["
 								}
 							},
 							{
@@ -342,8 +311,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['title']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 32
+									"name": "title"
 								}
 							},
 							{
@@ -351,8 +319,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['journeyId']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 33
+									"name": "journeys'][0]['revisions_1_placeholder'][0]['journeyId"
 								}
 							},
 							{
@@ -360,8 +327,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['s3Path']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 34
+									"name": "s3Path"
 								}
 							},
 							{
@@ -369,8 +335,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['breadcrumb']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 35
+									"name": "breadcrumb"
 								}
 							},
 							{
@@ -378,8 +343,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['selectedGuid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 36
+									"name": "selectedGuid"
 								}
 							},
 							{
@@ -387,8 +351,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['guid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 37
+									"name": "guid"
 								}
 							},
 							{
@@ -396,8 +359,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]['mappingId']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 38
+									"name": "mappingId"
 								}
 							},
 							{
@@ -405,8 +367,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['name']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 39
+									"name": "journeys'][0]['revisions_1_coaches'][0]['name"
 								}
 							},
 							{
@@ -414,8 +375,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['email']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 40
+									"name": "journeys'][0]['revisions_1_coaches'][0]['email"
 								}
 							},
 							{
@@ -423,8 +383,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['emailTwo']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 41
+									"name": "emailTwo"
 								}
 							},
 							{
@@ -432,8 +391,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['phoneOne']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 42
+									"name": "phoneOne"
 								}
 							},
 							{
@@ -441,8 +399,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['phoneTwo']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 43
+									"name": "phoneTwo"
 								}
 							},
 							{
@@ -450,8 +407,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['timezone']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 44
+									"name": "journeys'][0]['revisions_1_coaches'][0]['timezone"
 								}
 							},
 							{
@@ -459,8 +415,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['biography']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 45
+									"name": "biography"
 								}
 							},
 							{
@@ -468,8 +423,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['photo']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 46
+									"name": "photo"
 								}
 							},
 							{
@@ -477,8 +431,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['coaches'][0]['primary']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 47
+									"name": "primary"
 								}
 							},
 							{
@@ -486,8 +439,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['id']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 48
+									"name": "journeys'][0]['revisions_1_sessions'][0]['id"
 								}
 							},
 							{
@@ -495,8 +447,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coachingSessionId']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 49
+									"name": "coachingSessionId"
 								}
 							},
 							{
@@ -504,8 +455,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['name']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 50
+									"name": "journeys'][0]['revisions_1_sessions'][0]['name"
 								}
 							},
 							{
@@ -513,8 +463,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['type']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 51
+									"name": "journeys'][0]['revisions_1_sessions'][0]['type"
 								}
 							},
 							{
@@ -522,8 +471,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['sessionType']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 52
+									"name": "sessionType"
 								}
 							},
 							{
@@ -531,8 +479,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['duration']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 53
+									"name": "duration"
 								}
 							},
 							{
@@ -540,8 +487,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coach']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 54
+									"name": "coach"
 								}
 							},
 							{
@@ -549,8 +495,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['coachEmail']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 55
+									"name": "coachEmail"
 								}
 							},
 							{
@@ -558,8 +503,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['status']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 56
+									"name": "status"
 								}
 							},
 							{
@@ -567,8 +511,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['position']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 57
+									"name": "position"
 								}
 							},
 							{
@@ -576,8 +519,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['rateable']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 58
+									"name": "rateable"
 								}
 							},
 							{
@@ -585,8 +527,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['authenticateUser']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 59
+									"name": "authenticateUser"
 								}
 							},
 							{
@@ -594,8 +535,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['id']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 60
+									"name": "journeys'][0]['revisions_1_sessions'][0]['booking_id"
 								}
 							},
 							{
@@ -603,8 +543,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['dateTime']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 61
+									"name": "dateTime"
 								}
 							},
 							{
@@ -612,8 +551,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['booking']['zoomLink']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 62
+									"name": "zoomLink"
 								}
 							},
 							{
@@ -621,8 +559,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowFrom']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 63
+									"name": "bookingWindowFrom"
 								}
 							},
 							{
@@ -630,8 +567,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowTo']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 64
+									"name": "bookingWindowTo"
 								}
 							},
 							{
@@ -639,8 +575,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['bookingWindowUntil']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 65
+									"name": "bookingWindowUntil"
 								}
 							},
 							{
@@ -648,8 +583,7 @@
 									"path": "$['journeys'][0]['revisions']['1']['sessions'][0]['activityGUID']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 66
+									"name": "activityGUID"
 								}
 							},
 							{
@@ -657,8 +591,7 @@
 									"path": "$['journeys'][0]['role'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 67
+									"name": "journeys'][0]['role']["
 								}
 							},
 							{
@@ -666,8 +599,7 @@
 									"path": "$['journeys'][0]['hasAcceptedConsent']['value']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 68
+									"name": "journeys'][0]['hasAcceptedConsent_value"
 								}
 							},
 							{
@@ -675,8 +607,7 @@
 									"path": "$['journeys'][0]['hasAcceptedConsent']['timestamp']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 69
+									"name": "journeys'][0]['hasAcceptedConsent_timestamp"
 								}
 							},
 							{
@@ -684,8 +615,7 @@
 									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['value']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 70
+									"name": "journeys'][0]['hasAcceptedDataPrivacy_value"
 								}
 							},
 							{
@@ -693,8 +623,7 @@
 									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['timestamp']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 71
+									"name": "journeys'][0]['hasAcceptedDataPrivacy_timestamp"
 								}
 							},
 							{
@@ -702,8 +631,7 @@
 									"path": "$['journeys'][0]['hasRegistered']['value']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 72
+									"name": "journeys'][0]['hasRegistered_value"
 								}
 							},
 							{
@@ -711,8 +639,7 @@
 									"path": "$['journeys'][0]['hasRegistered']['timestamp']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 73
+									"name": "journeys'][0]['hasRegistered_timestamp"
 								}
 							},
 							{
@@ -720,8 +647,7 @@
 									"path": "$['journeys'][0]['isActive']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 74
+									"name": "journeys'][0]['isActive"
 								}
 							},
 							{
@@ -729,8 +655,7 @@
 									"path": "$['journeys'][0]['userProfile']['userTag']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 75
+									"name": "userTag"
 								}
 							},
 							{
@@ -738,8 +663,7 @@
 									"path": "$['journeys'][0]['cohortTitle']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 76
+									"name": "cohortTitle"
 								}
 							},
 							{
@@ -747,8 +671,7 @@
 									"path": "$['journeys'][0]['cohortStartDateTime']['$date']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 77
+									"name": "journeys'][0]['cohortStartDateTime_$date"
 								}
 							},
 							{
@@ -756,8 +679,7 @@
 									"path": "$['journeys'][0]['cohortEndDateTime']['$date']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 78
+									"name": "journeys'][0]['cohortEndDateTime_$date"
 								}
 							},
 							{
@@ -765,8 +687,7 @@
 									"path": "$['journeys'][0]['cohortBlueprint'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 79
+									"name": "journeys'][0]['cohortBlueprint']["
 								}
 							},
 							{
@@ -774,8 +695,7 @@
 									"path": "$['journeys'][0]['cohortDiscussions'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 80
+									"name": "journeys'][0]['cohortDiscussions']["
 								}
 							},
 							{
@@ -783,8 +703,7 @@
 									"path": "$['isPreviewUser']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 81
+									"name": "isPreviewUser"
 								}
 							},
 							{
@@ -792,8 +711,7 @@
 									"path": "$['isTermAndConditionChecked']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 82
+									"name": "isTermAndConditionChecked"
 								}
 							},
 							{
@@ -801,8 +719,7 @@
 									"path": "$['currentLoginFailureAttempt']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 83
+									"name": "currentLoginFailureAttempt"
 								}
 							},
 							{
@@ -810,8 +727,7 @@
 									"path": "$['hasRegistered']['value']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 84
+									"name": "hasRegistered_value"
 								}
 							},
 							{
@@ -819,8 +735,7 @@
 									"path": "$['hasRegistered']['timestamp']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 85
+									"name": "hasRegistered_timestamp"
 								}
 							},
 							{
@@ -828,8 +743,7 @@
 									"path": "$['hasAcceptedConsent']['value']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 86
+									"name": "hasAcceptedConsent_value"
 								}
 							},
 							{
@@ -837,8 +751,7 @@
 									"path": "$['hasAcceptedConsent']['timestamp']"
 								},
 								"sink": {
-									"type": "DateTime",
-									"ordinal": 87
+									"name": "hasAcceptedConsent_timestamp"
 								}
 							},
 							{
@@ -846,8 +759,7 @@
 									"path": "$['hasAcceptedDataPrivacy']['value']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 88
+									"name": "hasAcceptedDataPrivacy_value"
 								}
 							},
 							{
@@ -855,8 +767,7 @@
 									"path": "$['hasAcceptedDataPrivacy']['timestamp']"
 								},
 								"sink": {
-									"type": "DateTime",
-									"ordinal": 89
+									"name": "hasAcceptedDataPrivacy_timestamp"
 								}
 							},
 							{
@@ -864,8 +775,7 @@
 									"path": "$['participatesIn'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 90
+									"name": "participatesIn']["
 								}
 							},
 							{
@@ -873,8 +783,7 @@
 									"path": "$['deviceToken'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 91
+									"name": "deviceToken']["
 								}
 							},
 							{
@@ -882,8 +791,7 @@
 									"path": "$['recommendedContent'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 92
+									"name": "recommendedContent']["
 								}
 							},
 							{
@@ -891,8 +799,7 @@
 									"path": "$['role']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 93
+									"name": "role"
 								}
 							},
 							{
@@ -900,8 +807,7 @@
 									"path": "$['customerId']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 94
+									"name": "customerId_$oid"
 								}
 							},
 							{
@@ -909,8 +815,7 @@
 									"path": "$['fname']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 95
+									"name": "fname"
 								}
 							},
 							{
@@ -918,8 +823,7 @@
 									"path": "$['lname']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 96
+									"name": "lname"
 								}
 							},
 							{
@@ -927,8 +831,7 @@
 									"path": "$['email']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 97
+									"name": "email"
 								}
 							},
 							{
@@ -936,8 +839,7 @@
 									"path": "$['password']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 98
+									"name": "password"
 								}
 							},
 							{
@@ -945,8 +847,7 @@
 									"path": "$['oldPasswords'][0]['_id']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 99
+									"name": "oldPasswords'][0]['_id_$oid"
 								}
 							},
 							{
@@ -954,8 +855,7 @@
 									"path": "$['oldPasswords'][0]['password']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 100
+									"name": "oldPasswords'][0]['password"
 								}
 							},
 							{
@@ -963,8 +863,7 @@
 									"path": "$['oldPasswords'][0]['timestamp']['$date']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 101
+									"name": "oldPasswords'][0]['timestamp_$date"
 								}
 							},
 							{
@@ -972,8 +871,7 @@
 									"path": "$['isActive']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 102
+									"name": "isActive"
 								}
 							},
 							{
@@ -981,8 +879,7 @@
 									"path": "$['createdAt']['$date']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 103
+									"name": "createdAt_$date"
 								}
 							},
 							{
@@ -990,8 +887,7 @@
 									"path": "$['updatedAt']['$date']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 104
+									"name": "updatedAt_$date"
 								}
 							},
 							{
@@ -999,8 +895,7 @@
 									"path": "$['createdBy']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 105
+									"name": "createdBy_$oid"
 								}
 							},
 							{
@@ -1008,8 +903,7 @@
 									"path": "$['updatedBy']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 106
+									"name": "updatedBy_$oid"
 								}
 							},
 							{
@@ -1017,8 +911,7 @@
 									"path": "$['lastFailedLoginAt']['$date']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 107
+									"name": "lastFailedLoginAt_$date"
 								}
 							},
 							{
@@ -1026,8 +919,7 @@
 									"path": "$['lastSuccessfulLoginAt']['$date']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 108
+									"name": "lastSuccessfulLoginAt_$date"
 								}
 							},
 							{
@@ -1035,8 +927,7 @@
 									"path": "$['userBrowserAgent'][0]['_id']['$oid']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 109
+									"name": "userBrowserAgent'][0]['_id_$oid"
 								}
 							},
 							{
@@ -1044,8 +935,7 @@
 									"path": "$['userBrowserAgent'][0]['userAgent']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 110
+									"name": "userAgent"
 								}
 							},
 							{
@@ -1053,8 +943,7 @@
 									"path": "$['userBrowserAgent'][0]['ipAddress']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 111
+									"name": "ipAddress"
 								}
 							},
 							{
@@ -1062,8 +951,7 @@
 									"path": "$['userBrowserAgent'][0]['timestamp']['$date']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 112
+									"name": "userBrowserAgent'][0]['timestamp_$date"
 								}
 							},
 							{
@@ -1071,8 +959,7 @@
 									"path": "$['__v']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 113
+									"name": "__v"
 								}
 							},
 							{
@@ -1080,8 +967,7 @@
 									"path": "$['userProfile']['country']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 114
+									"name": "country"
 								}
 							},
 							{
@@ -1089,8 +975,7 @@
 									"path": "$['userProfile']['timezone']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 115
+									"name": "userProfile_timezone"
 								}
 							},
 							{
@@ -1098,8 +983,7 @@
 									"path": "$['userProfile']['town']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 116
+									"name": "town"
 								}
 							},
 							{
@@ -1107,8 +991,7 @@
 									"path": "$['userProfile']['language']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 117
+									"name": "language"
 								}
 							},
 							{
@@ -1116,8 +999,7 @@
 									"path": "$['userProfile']['region']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 118
+									"name": "region"
 								}
 							},
 							{
@@ -1125,8 +1007,7 @@
 									"path": "$['userProfile']['descriptiveAudio']"
 								},
 								"sink": {
-									"type": "Boolean",
-									"ordinal": 119
+									"name": "descriptiveAudio"
 								}
 							},
 							{
@@ -1134,8 +1015,7 @@
 									"path": "$['bookmarks']['currentRevision']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 120
+									"name": "bookmarks_currentRevision"
 								}
 							},
 							{
@@ -1143,8 +1023,7 @@
 									"path": "$['bookmarks']['revisions']['1']['activities'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 121
+									"name": "bookmarks_revisions_1_activities']["
 								}
 							},
 							{
@@ -1152,8 +1031,7 @@
 									"path": "$['bookmarks']['revisions']['1']['resources'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 122
+									"name": "bookmarks_revisions_1_resources']["
 								}
 							},
 							{
@@ -1161,8 +1039,7 @@
 									"path": "$['notificationCount']"
 								},
 								"sink": {
-									"type": "Int64",
-									"ordinal": 123
+									"name": "notificationCount"
 								}
 							},
 							{
@@ -1170,8 +1047,7 @@
 									"path": "$['themes']['currentRevision']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 124
+									"name": "themes_currentRevision"
 								}
 							},
 							{
@@ -1179,8 +1055,7 @@
 									"path": "$['themes']['revisions']['1']['themes'][0]"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 125
+									"name": "themes_revisions_1_themes']["
 								}
 							}
 						],
