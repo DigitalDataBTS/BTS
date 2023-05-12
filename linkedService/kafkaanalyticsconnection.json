@@ -1,0 +1,17 @@
+{
+	"name": "kafkaanalyticsconnection",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MongoDbV2",
+		"typeProperties": {
+			"connectionString": "mongodb://dashboardRead:@analyticsdatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
+			"database": "momentaanalytics",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1MzkyMDRkMi02NjgxLTQxNGEtYjM0ZS04ZTUyZDJkNDcxMzMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

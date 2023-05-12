@@ -1,0 +1,13 @@
+{
+	"name": "MDLZTeamMBA",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://content.btsmomenta.com/journeys/9ee904482510303574ee/latest/journey_en-US.json",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

@@ -1,0 +1,131 @@
+{
+	"name": "abbott_sql_server",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "abbott_sql_server",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fname",
+				"type": "varchar"
+			},
+			{
+				"name": "lname",
+				"type": "varchar"
+			},
+			{
+				"name": "userId",
+				"type": "varchar"
+			},
+			{
+				"name": "cohortId",
+				"type": "varchar"
+			},
+			{
+				"name": "verticalId",
+				"type": "varchar"
+			},
+			{
+				"name": "verticalName",
+				"type": "varchar"
+			},
+			{
+				"name": "role",
+				"type": "varchar"
+			},
+			{
+				"name": "createdAt",
+				"type": "varchar"
+			},
+			{
+				"name": "createdTimestamp",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "empUpi",
+				"type": "varchar"
+			},
+			{
+				"name": "employeeStatus",
+				"type": "varchar"
+			},
+			{
+				"name": "updatedTimestamp",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "workCity",
+				"type": "varchar"
+			},
+			{
+				"name": "workLocation",
+				"type": "varchar"
+			},
+			{
+				"name": "managerId",
+				"type": "varchar"
+			},
+			{
+				"name": "jobLevel",
+				"type": "varchar"
+			},
+			{
+				"name": "gender",
+				"type": "varchar"
+			},
+			{
+				"name": "preferredLanguage",
+				"type": "varchar"
+			},
+			{
+				"name": "cfManagerEmailId",
+				"type": "varchar"
+			},
+			{
+				"name": "managerName",
+				"type": "varchar"
+			},
+			{
+				"name": "cfManagerEmailIdEval",
+				"type": "varchar"
+			},
+			{
+				"name": "division",
+				"type": "varchar"
+			},
+			{
+				"name": "lob",
+				"type": "varchar"
+			},
+			{
+				"name": "workCountry",
+				"type": "varchar"
+			},
+			{
+				"name": "workState",
+				"type": "varchar"
+			},
+			{
+				"name": "teams",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "userInfo"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

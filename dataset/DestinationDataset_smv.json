@@ -1,0 +1,20 @@
+{
+	"name": "DestinationDataset_smv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_fe69e3e9-8dcd-4a75-aa26-aa9bb9654695_f6646d59-8035-4b11-b129-76793a8a1b78.json",
+				"container": "gpdusersession"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

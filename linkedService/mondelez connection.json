@@ -1,0 +1,17 @@
+{
+	"name": "mondelez connection",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MongoDbV2",
+		"typeProperties": {
+			"connectionString": "mongodb://momentaServices:@globalregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
+			"database": "mondelezinternational",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3YTIzNzhmZS0yMzJmLTRkYjYtOTRiZC03NzcyMzFmY2NjY2QiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

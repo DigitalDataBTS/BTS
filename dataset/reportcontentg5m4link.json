@@ -1,0 +1,16 @@
+{
+	"name": "reportcontentg5m4link",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "reportcontentg5m4link",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "WebTable",
+		"schema": [],
+		"typeProperties": {
+			"index": 0
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

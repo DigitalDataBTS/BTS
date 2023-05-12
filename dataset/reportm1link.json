@@ -1,0 +1,16 @@
+{
+	"name": "reportm1link",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "reportmqlink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "WebTable",
+		"schema": [],
+		"typeProperties": {
+			"index": 0
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,124 @@
+{
+	"name": "CopyPipeline_3eq",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_3eq",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "microsoftoutputv4//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100,
+						"filter": "{\nemail: /^\\d+$/, 'userProfile.selectedjourneyId': '6e4277045af59c9e4336'\n}",
+						"cursorMethods": {
+							"project": "{_id: 1,\n            email: 1,\njourneys:1}"
+						}
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"name": "$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"name": "journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"name": "journeyName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"name": "cohortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states']"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_states'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_3eq",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_3eq",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

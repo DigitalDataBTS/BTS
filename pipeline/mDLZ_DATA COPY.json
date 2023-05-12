@@ -1,0 +1,241 @@
+{
+	"name": "mDLZ_DATA COPY",
+	"properties": {
+		"activities": [
+			{
+				"name": "Momenta_MongoDB_to_Azure_blob_storage",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "mondelezinternational-saurabh//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100,
+						"filter": "",
+						"cursorMethods": {
+							"project": " {\n            \"_id\": 1,\n            \"email\": 1,\n            \"journeys.journeyName\": 1,\n\t\t\t\"journeys.cohortId\": 1,\n\t\t\t\"journeys.revisions.1.states\": 1,\n\t\t\t\n\t\t\t          }"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"filePattern": "setOfObjects"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_5xq",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_5xq",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "journey_link_mondelez",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "journey_link_mondelez",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "mondelez_dataflow",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "mondelez_dataflow",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 16,
+						"computeType": "General"
+					},
+					"traceLevel": "None",
+					"cacheSinks": {
+						"firstRowOnly": true
+					}
+				}
+			},
+			{
+				"name": "Copyoutpursqlmdlz",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Copyoutpursqlmdlz",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "from_dataflow_blob_storage_to_mongodb",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "mondelez_dataflow",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "CosmosDbMongoDbApiSink",
+						"writeBatchTimeout": "00:30:00",
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"ordinal": 1
+								},
+								"sink": {
+									"path": "_id"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 2
+								},
+								"sink": {
+									"path": "journeyname"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 3
+								},
+								"sink": {
+									"path": "cohortid"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 4
+								},
+								"sink": {
+									"path": "id"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 5
+								},
+								"sink": {
+									"path": "status"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 6
+								},
+								"sink": {
+									"path": "type"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 7
+								},
+								"sink": {
+									"path": "value"
+								}
+							},
+							{
+								"source": {
+									"ordinal": 8
+								},
+								"sink": {
+									"path": "completionTime"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "dataflowoutput",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "CosmosDbMongoDbApiCollection23",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:55Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,572 @@
+{
+	"name": "gpdcompletion",
+	"properties": {
+		"activities": [
+			{
+				"name": "GPD_Completion",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "completion"
+					},
+					{
+						"name": "Destination",
+						"value": "gpdcompletion//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"filePattern": "setOfObjects"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']['$oid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['topic']"
+								},
+								"sink": {
+									"path": "$['topic']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['timestamp']"
+								},
+								"sink": {
+									"path": "$['value']['timestamp']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['sessionId']"
+								},
+								"sink": {
+									"path": "$['value']['sessionId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['id']"
+								},
+								"sink": {
+									"path": "$['value']['user']['id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['name']"
+								},
+								"sink": {
+									"path": "$['value']['user']['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['browserInfo']"
+								},
+								"sink": {
+									"path": "$['value']['user']['browserInfo']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['deviceType']"
+								},
+								"sink": {
+									"path": "$['value']['user']['deviceType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['location']"
+								},
+								"sink": {
+									"path": "$['value']['user']['location']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['customer']"
+								},
+								"sink": {
+									"path": "$['value']['user']['customer']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['clientIp']"
+								},
+								"sink": {
+									"path": "$['value']['user']['clientIp']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['applicationType']"
+								},
+								"sink": {
+									"path": "$['value']['applicationType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['routeVisited']"
+								},
+								"sink": {
+									"path": "$['value']['routeVisited']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptDuration']"
+								},
+								"sink": {
+									"path": "$['value']['attemptDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptCount']"
+								},
+								"sink": {
+									"path": "$['value']['attemptCount']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['clientid']"
+								},
+								"sink": {
+									"path": "$['value']['clientid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['cohortId']"
+								},
+								"sink": {
+									"path": "$['value']['cohortId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptType']"
+								},
+								"sink": {
+									"path": "$['value']['attemptType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['success']"
+								},
+								"sink": {
+									"path": "$['value']['success']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['state']"
+								},
+								"sink": {
+									"path": "$['value']['state']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['score']"
+								},
+								"sink": {
+									"path": "$['value']['score']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityId']"
+								},
+								"sink": {
+									"path": "$['value']['activityId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityName']"
+								},
+								"sink": {
+									"path": "$['value']['activityName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['moduleId']"
+								},
+								"sink": {
+									"path": "$['value']['moduleId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['moduleName']"
+								},
+								"sink": {
+									"path": "$['value']['moduleName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['stageId']"
+								},
+								"sink": {
+									"path": "$['value']['stageId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['stageName']"
+								},
+								"sink": {
+									"path": "$['value']['stageName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyId']"
+								},
+								"sink": {
+									"path": "$['value']['journeyId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyName']"
+								},
+								"sink": {
+									"path": "$['value']['journeyName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['offset']"
+								},
+								"sink": {
+									"path": "$['offset']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['partition']"
+								},
+								"sink": {
+									"path": "$['partition']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['highWaterOffset']"
+								},
+								"sink": {
+									"path": "$['highWaterOffset']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key']"
+								},
+								"sink": {
+									"path": "$['key']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_loz",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_loz",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "GPD_User_Session",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "usersession"
+					},
+					{
+						"name": "Destination",
+						"value": "gpdusersession//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"filePattern": "setOfObjects"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']['$oid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['topic']"
+								},
+								"sink": {
+									"path": "$['topic']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['offset']"
+								},
+								"sink": {
+									"path": "$['offset']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['partition']"
+								},
+								"sink": {
+									"path": "$['partition']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['highWaterOffset']"
+								},
+								"sink": {
+									"path": "$['highWaterOffset']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key']"
+								},
+								"sink": {
+									"path": "$['key']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['timestamp']"
+								},
+								"sink": {
+									"path": "$['value']['timestamp']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['sessionId']"
+								},
+								"sink": {
+									"path": "$['value']['sessionId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['id']"
+								},
+								"sink": {
+									"path": "$['value']['user']['id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['name']"
+								},
+								"sink": {
+									"path": "$['value']['user']['name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['browserInfo']"
+								},
+								"sink": {
+									"path": "$['value']['user']['browserInfo']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['deviceType']"
+								},
+								"sink": {
+									"path": "$['value']['user']['deviceType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['location']"
+								},
+								"sink": {
+									"path": "$['value']['user']['location']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['customer']"
+								},
+								"sink": {
+									"path": "$['value']['user']['customer']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['clientIp']"
+								},
+								"sink": {
+									"path": "$['value']['user']['clientIp']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['applicationType']"
+								},
+								"sink": {
+									"path": "$['value']['applicationType']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['routeVisited']"
+								},
+								"sink": {
+									"path": "$['value']['routeVisited']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptDuration']"
+								},
+								"sink": {
+									"path": "$['value']['attemptDuration']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptCount']"
+								},
+								"sink": {
+									"path": "$['value']['attemptCount']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['clientid']"
+								},
+								"sink": {
+									"path": "$['value']['clientid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['cohortId']"
+								},
+								"sink": {
+									"path": "$['value']['cohortId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['success']"
+								},
+								"sink": {
+									"path": "$['value']['success']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptType']"
+								},
+								"sink": {
+									"path": "$['value']['attemptType']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_smv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_smv",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-02-22T05:57:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

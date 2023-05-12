@@ -1,0 +1,749 @@
+{
+	"name": "demo_user",
+	"properties": {
+		"activities": [
+			{
+				"name": "demo_user",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "demouser//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							},
+							"path": "demouser"
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"name": "_id_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"name": "journeys'][0]['journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"name": "journeyName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"name": "cohortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['isomers'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['isomers'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['currentRevision']"
+								},
+								"sink": {
+									"name": "journeys'][0]['currentRevision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_responses'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_states'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']"
+								},
+								"sink": {
+									"name": "analytics",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['quizes'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_quizes'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['placeholder'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_placeholder'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['role'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['role'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedConsent']['value']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasAcceptedConsent_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedConsent']['timestamp']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasAcceptedConsent_timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['value']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasAcceptedDataPrivacy_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasAcceptedDataPrivacy']['timestamp']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasAcceptedDataPrivacy_timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasRegistered']['value']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasRegistered_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['hasRegistered']['timestamp']"
+								},
+								"sink": {
+									"name": "journeys'][0]['hasRegistered_timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['isActive']"
+								},
+								"sink": {
+									"name": "journeys'][0]['isActive",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isTermAndConditionChecked']"
+								},
+								"sink": {
+									"name": "isTermAndConditionChecked",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['customerId']['$oid']"
+								},
+								"sink": {
+									"name": "customerId_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['fname']"
+								},
+								"sink": {
+									"name": "fname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lname']"
+								},
+								"sink": {
+									"name": "lname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['password']"
+								},
+								"sink": {
+									"name": "password",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['role']"
+								},
+								"sink": {
+									"name": "role",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['profilePic']"
+								},
+								"sink": {
+									"name": "profilePic",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['fname']"
+								},
+								"sink": {
+									"name": "userProfile_fname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['lname']"
+								},
+								"sink": {
+									"name": "userProfile_lname",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['language']"
+								},
+								"sink": {
+									"name": "userProfile_language",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['descriptiveAudio']"
+								},
+								"sink": {
+									"name": "descriptiveAudio",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['country']"
+								},
+								"sink": {
+									"name": "country",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['timezone']"
+								},
+								"sink": {
+									"name": "timezone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['town']"
+								},
+								"sink": {
+									"name": "town",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"name": "oldPasswords'][0]['_id_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['password']"
+								},
+								"sink": {
+									"name": "oldPasswords'][0]['password",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['timestamp']['$date']"
+								},
+								"sink": {
+									"name": "oldPasswords'][0]['timestamp_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isActive']"
+								},
+								"sink": {
+									"name": "isActive",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdAt']['$date']"
+								},
+								"sink": {
+									"name": "createdAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedAt']['$date']"
+								},
+								"sink": {
+									"name": "updatedAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdBy']['$oid']"
+								},
+								"sink": {
+									"name": "createdBy_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedBy']['$oid']"
+								},
+								"sink": {
+									"name": "updatedBy_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['__v']"
+								},
+								"sink": {
+									"name": "__v",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasRegistered']"
+								},
+								"sink": {
+									"name": "hasRegistered",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['currentLoginFailureAttempt']"
+								},
+								"sink": {
+									"name": "currentLoginFailureAttempt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastFailedLoginAt']['$date']"
+								},
+								"sink": {
+									"name": "lastFailedLoginAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastSuccessfulLoginAt']['$date']"
+								},
+								"sink": {
+									"name": "lastSuccessfulLoginAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"name": "userBrowserAgent'][0]['_id_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['userAgent']"
+								},
+								"sink": {
+									"name": "userAgent",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['ipAddress']"
+								},
+								"sink": {
+									"name": "ipAddress",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['timestamp']['$date']"
+								},
+								"sink": {
+									"name": "userBrowserAgent'][0]['timestamp_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['currentRevision']"
+								},
+								"sink": {
+									"name": "bookmarks_currentRevision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['revisions']['1']['activities'][0]"
+								},
+								"sink": {
+									"name": "bookmarks_revisions_1_activities'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['bookmarks']['revisions']['1']['resources'][0]"
+								},
+								"sink": {
+									"name": "bookmarks_revisions_1_resources'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedConsent']['value']"
+								},
+								"sink": {
+									"name": "hasAcceptedConsent_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedConsent']['timestamp']"
+								},
+								"sink": {
+									"name": "hasAcceptedConsent_timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedDataPrivacy']['value']"
+								},
+								"sink": {
+									"name": "hasAcceptedDataPrivacy_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedDataPrivacy']['timestamp']"
+								},
+								"sink": {
+									"name": "hasAcceptedDataPrivacy_timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['themes']['currentRevision']"
+								},
+								"sink": {
+									"name": "themes_currentRevision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['themes']['revisions']['1']['themes'][0]"
+								},
+								"sink": {
+									"name": "themes_revisions_1_themes'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['notificationCount']"
+								},
+								"sink": {
+									"name": "notificationCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['currentRevision']"
+								},
+								"sink": {
+									"name": "resources_currentRevision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses'][0]['currentTime'][0]['text']"
+								},
+								"sink": {
+									"name": "text",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses'][0]['currentTime'][0]['value']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_responses'][0]['currentTime'][0]['value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses'][0]['currentTime'][0]['journeyId']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_responses'][0]['currentTime'][0]['journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses'][0]['currentTime'][0]['contentId']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_responses'][0]['currentTime'][0]['contentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses'][0]['currentTime'][0]['timeStamp']['$date']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_responses'][0]['currentTime'][0]['timeStamp_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['state']"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['completionTime']"
+								},
+								"sink": {
+									"name": "completionTime",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['type']"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['contentId']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_states'][0]['contentId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['journeyId']"
+								},
+								"sink": {
+									"name": "resources_revisions_1_states'][0]['journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['language']"
+								},
+								"sink": {
+									"name": "language",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "demo_user",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "demo_users",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:34:20Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

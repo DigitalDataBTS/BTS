@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_ws8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "completion_20_kafka",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "completion"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "mondelez_Leaders of the Future",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://content.btsmomenta.com/journeys/bd900a1514cc9a9ad18e/latest/journey_en-US.json",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

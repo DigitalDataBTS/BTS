@@ -1,0 +1,6 @@
+{
+	"name": "dashboardserverconnection",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

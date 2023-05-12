@@ -1,0 +1,16 @@
+{
+	"name": "reportcontentg2m2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m2.php",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "Abbottjourneystructure",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://content.btsmomenta.com/journeys/2ad0596e0f0e3c44a837/latest/journey_en-US.json",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

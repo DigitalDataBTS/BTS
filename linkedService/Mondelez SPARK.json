@@ -1,0 +1,18 @@
+{
+	"name": "Mondelez SPARK",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Mondelez SPARK",
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://content.btsmomenta.com/journeys/96eed0717fcac78156b3/latest/journey_en-US.json",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

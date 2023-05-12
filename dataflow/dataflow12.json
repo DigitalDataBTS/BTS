@@ -1,0 +1,45 @@
+{
+	"name": "dataflow12",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Excel1",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				},
+				{
+					"dataset": {
+						"referenceName": "Excel2",
+						"type": "DatasetReference"
+					},
+					"name": "source2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Union1"
+				},
+				{
+					"name": "hashingandsalt"
+				},
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tId as short,\n\t\tName as string,\n\t\tEmail as string,\n\t\tPassword as string,\n\t\tUserToken as string,\n\t\tMailSent as boolean,\n\t\tPasswordHash as string,\n\t\tUniversalId as string,\n\t\tUpdatedOn as string,\n\t\tDisabled as boolean,\n\t\tPasswordExpiry as string,\n\t\tFailedLoginAttemps as short,\n\t\tLastFailedLoginAttempt as string,\n\t\tRememberMeToken as string,\n\t\tPasswordChanged as string,\n\t\tVerifiedPassword as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource(output(\n\t\tId as short,\n\t\tName as string,\n\t\tEmail as string,\n\t\tPassword as string,\n\t\tUserToken as string,\n\t\tMailSent as boolean,\n\t\tPasswordHash as string,\n\t\tUniversalId as string,\n\t\tUpdatedOn as string,\n\t\tDisabled as boolean,\n\t\tPasswordExpiry as string,\n\t\tFailedLoginAttemps as short,\n\t\tLastFailedLoginAttempt as string,\n\t\tRememberMeToken as string,\n\t\tPasswordChanged as string,\n\t\tVerifiedPassword as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source2\nsource1, source2 union(byName: false)~> Union1\nDerivedColumn1 derive(Name = md5(left(toString(nextSequence()),3),Name),\n\t\tEmail = md5(left(toString(nextSequence()),3),Email),\n\tpartitionBy('roundRobin', 3)) ~> hashingandsalt\nUnion1 derive(nextseq = left(toString(nextSequence()),3),\n\t\tpartID = partitionId(),\n\t\trand = random(123),\n\t\tstatic = 1) ~> DerivedColumn1\nhashingandsalt sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

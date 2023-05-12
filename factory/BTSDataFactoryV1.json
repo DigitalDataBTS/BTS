@@ -1,0 +1,9 @@
+{
+	"name": "BTSDataFactoryV1",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0ecb60a2-5679-4d9b-8c43-e272a8e643c9",
+		"tenantId": "7f602e3c-0f60-42ed-a9cd-df9907a0b0c0"
+	}
+}

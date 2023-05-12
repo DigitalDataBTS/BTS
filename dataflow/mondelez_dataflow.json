@@ -1,0 +1,75 @@
+{
+	"name": "mondelez_dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_7nn",
+						"type": "DatasetReference"
+					},
+					"name": "journeystructure"
+				},
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_5xq",
+						"type": "DatasetReference"
+					},
+					"name": "mondelezmongodbusers"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dataflow_mdlz",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Flatten1"
+				},
+				{
+					"name": "Flatten2"
+				},
+				{
+					"name": "Flatten3"
+				},
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Filter1"
+				},
+				{
+					"name": "Filter2"
+				},
+				{
+					"name": "alterRow1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "Constantvalue"
+				},
+				{
+					"name": "AddRownumber"
+				},
+				{
+					"name": "TempFilterTest"
+				}
+			],
+			"script": "source(output(\n\t\ttitle as string,\n\t\tjourney as (key as string, value as string)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> journeystructure\nsource(output(\n\t\t{_id} as ({$oid} as string),\n\t\tjourneys as (journeyName as string, cohortId as string, revisions as ({1} as (states as (id as string, state as string, type as string, completionTime as string)[])))[],\n\t\temail as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> mondelezmongodbusers\njourneystructure foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nmondelezmongodbusers foldDown(unroll(journeys, journeys),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname = journeys.journeyName,\n\t\tcohortid = journeys.cohortId,\n\t\tstates = journeys.revisions.{1}.states\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten2\nFlatten2 foldDown(unroll(states, states),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\tcohortid,\n\t\t{states.id} = states.id,\n\t\t{state.status} = states.state,\n\t\t{state.type} = states.type,\n\t\tcompletionTime = states.completionTime\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten3\nFlatten3, Filter1 join({states.id} == Custom,\n\tjoinType:'left',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> Join1\nFlatten1 derive(Custom = regexReplace(key, '[^0-9]','')) ~> DerivedColumn1\nDerivedColumn1 filter(Custom != \"\") ~> Filter1\nJoin1 filter(value!=\"\" && length(value) <50) ~> Filter2\nselect1 alterRow(upsertIf(true())) ~> alterRow1\nalterRow1 aggregate(groupBy(journeyname,\n\t\t{_id},\n\t\tcohortid,\n\t\t{states.id},\n\t\t{state.status},\n\t\t{state.type},\n\t\tvalue,\n\t\tCustom,\n\t\tcompletionTime),\n\tcount = count('1')) ~> aggregate1\nFilter2 select(mapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\tcohortid,\n\t\t{states.id},\n\t\t{state.status},\n\t\t{state.type},\n\t\tvalue,\n\t\tCustom,\n\t\tcompletionTime\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> select1\naggregate1 derive(Constant_value = 1) ~> Constantvalue\nConstantvalue window(asc(Constant_value, true),\n\tRowNumber = rowNumber()) ~> AddRownumber\nAddRownumber filter(RowNumber<500) ~> TempFilterTest\nTempFilterTest sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{_id} = RowNumber,\n\t\tjourneyname,\n\t\tcohortid,\n\t\tid = {states.id},\n\t\tstatus = {state.status},\n\t\ttype = {state.type},\n\t\tvalue,\n\t\tcompletionTime\n\t)) ~> sink1"
+		}
+	}
+}

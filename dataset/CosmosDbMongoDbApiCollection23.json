@@ -1,0 +1,16 @@
+{
+	"name": "CosmosDbMongoDbApiCollection23",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blobstoragetoapi",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "CosmosDbMongoDbApiCollection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "demoapi15march"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

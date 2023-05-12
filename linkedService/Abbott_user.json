@@ -1,0 +1,17 @@
+{
+	"name": "Abbott_user",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "MongoDbV2",
+		"typeProperties": {
+			"connectionString": "mongodb://dashboardRead:@awscaliforniaregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass Community;readPreference=primary",
+			"database": "abbott",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmODI3MmM1NC0yMjU5LTRmYWQtYTFlYi0zOGYzMzNkMWZhY2MiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

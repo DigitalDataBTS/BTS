@@ -1,0 +1,17 @@
+{
+	"name": "reportmqlink",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "report m1 ",
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

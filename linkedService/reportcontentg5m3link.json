@@ -1,0 +1,16 @@
+{
+	"name": "reportcontentg5m3link",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m3.php",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,340 @@
+{
+	"name": "DelimitedText5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "reportcontentg1m1"
+			},
+			"columnDelimiter": "\u0001",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Role",
+				"type": "String"
+			},
+			{
+				"name": "First Name",
+				"type": "String"
+			},
+			{
+				"name": "Last Name",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			},
+			{
+				"name": "Overview. Overview - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Overview. Overview",
+				"type": "String"
+			},
+			{
+				"name": "Overview. Schedule",
+				"type": "String"
+			},
+			{
+				"name": "Introduction. Module One guide",
+				"type": "String"
+			},
+			{
+				"name": "FLL Tryout. Leader roles or core capabilities",
+				"type": "String"
+			},
+			{
+				"name": "FLL Tryout. Biggest strengths",
+				"type": "String"
+			},
+			{
+				"name": "FLL Tryout. Most surprising - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Salesforce Values card sort PDF",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Value One",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Value Two",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Value Three",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Importance",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. My behaviors",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. My brand",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. My best",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Not my best",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Your Leadership Brand. Statement",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Catch Up. Email",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Catch Up. Takeaways",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Catch Up. Learning areas",
+				"type": "String"
+			},
+			{
+				"name": "Pod 1. Video Summary",
+				"type": "String"
+			},
+			{
+				"name": "Virtual Workshop 1. Catch Up. Email",
+				"type": "String"
+			},
+			{
+				"name": "Virtual Workshop 1. Catch Up. Takeaways",
+				"type": "String"
+			},
+			{
+				"name": "Virtual Workshop 1. Catch Up. Learning areas",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. Instructional PDF",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Pitfalls - CHANGED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Pitfalls",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Actions",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Accountable",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Impact knowing pitfalls",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Do differently - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L1. Email worked with - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L2. Pitfalls (G1) / Insight (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L2. Recover (G1) / Advice (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L2. Learn - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L2. Email worked with",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L3. Learn",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L3. Feedback - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L3. Teaching improve",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 1. L3. Email worked with",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Committed listening. What did you notice",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Committed listening. Whats in the way",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Leadership shift",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Leadership shift. Change",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Mindset. From",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Mindset. To",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Mindset. Change",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Behavior. From",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Behavior. To",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Behavior. Change",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Impact. From",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Impact. To",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Impact. Change",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Result",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Result. Change",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. MBIR. Other Comments",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Catch Up. Email",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Catch Up. Takeaways",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Catch Up. Learning areas",
+				"type": "String"
+			},
+			{
+				"name": "Pod 2. Video Summary",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. Instructional PDF",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L1. MBIR change (G1) / Insights (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L1. Insights (G1) / Learn (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L1. Help - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L1. Email worked with",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L2. MBIR change",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L2. Shifts (G1) / Do differently (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L2. Do differently - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L2. Email worked with",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. Difficult (G1) / Connecting to IDP (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. V2MOM Mindset shift (G1) / Do differently (G2...)",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. V2MOM Assumptions - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. V2MOM Do differently - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. Actions Assumptions - REMOVED",
+				"type": "String"
+			},
+			{
+				"name": "Stretch Assignment 2. L3. Email worked with",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

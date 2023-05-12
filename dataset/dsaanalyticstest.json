@@ -1,0 +1,19 @@
+{
+	"name": "dsaanalyticstest",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS31",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "content.btsmomenta.com"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

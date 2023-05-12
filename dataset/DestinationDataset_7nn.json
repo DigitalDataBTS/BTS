@@ -1,0 +1,40 @@
+{
+	"name": "DestinationDataset_7nn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mondelezinternational-saurabh"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"title": {
+					"type": "string"
+				},
+				"journey": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"key": {
+								"type": "string"
+							},
+							"value": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

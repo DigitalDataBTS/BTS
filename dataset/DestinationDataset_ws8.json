@@ -1,0 +1,93 @@
+{
+	"name": "DestinationDataset_ws8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_25447a8c-9847-493d-aff6-067d7136c4fb_6fe286cc-9667-4f48-8056-221be744faee.txt",
+				"container": "completion20kafkacopy"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "$oid",
+				"type": "String"
+			},
+			{
+				"name": "sessionId",
+				"type": "String"
+			},
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "customer",
+				"type": "String"
+			},
+			{
+				"name": "clientid",
+				"type": "String"
+			},
+			{
+				"name": "cohortId",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "score",
+				"type": "String"
+			},
+			{
+				"name": "activityId",
+				"type": "String"
+			},
+			{
+				"name": "activityName",
+				"type": "String"
+			},
+			{
+				"name": "moduleId",
+				"type": "String"
+			},
+			{
+				"name": "moduleName",
+				"type": "String"
+			},
+			{
+				"name": "stageId",
+				"type": "String"
+			},
+			{
+				"name": "stageName",
+				"type": "String"
+			},
+			{
+				"name": "journeyId",
+				"type": "String"
+			},
+			{
+				"name": "journeyName",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

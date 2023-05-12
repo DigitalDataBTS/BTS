@@ -1,0 +1,24 @@
+{
+	"name": "Kafkadata_ContentDB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_25447a8c-9847-493d-aff6-067d7136c4fb_6fe286cc-9667-4f48-8056-221be744faee.txt",
+				"container": "completion20kafkacopy"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

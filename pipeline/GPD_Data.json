@@ -1,0 +1,5374 @@
+{
+	"name": "GPD_Data",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach_ynq",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.cw_items",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy_ynq",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "Source",
+									"value": "@{item().source.collection}"
+								},
+								{
+									"name": "Destination",
+									"value": "gpddata//@{item().destination.fileName}"
+								}
+							],
+							"typeProperties": {
+								"source": {
+									"type": "MongoDbV2Source",
+									"batchSize": 100
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"enableSkipIncompatibleRow": true,
+								"validateDataConsistency": false,
+								"logSettings": {
+									"enableCopyActivityLog": true,
+									"copyActivityLogSettings": {
+										"logLevel": "Warning",
+										"enableReliableLogging": false
+									},
+									"logLocationSettings": {
+										"linkedServiceName": {
+											"referenceName": "AzureBlobStorage1",
+											"type": "LinkedServiceReference"
+										},
+										"path": "gpddata"
+									}
+								},
+								"translator": {
+									"value": "@item().copyActivity.translator",
+									"type": "Expression"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "SourceDataset_ynq",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_collection": "@item().source.collection"
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DestinationDataset_ynq",
+									"type": "DatasetReference",
+									"parameters": {
+										"cw_fileName": "@item().destination.fileName"
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"cw_items": {
+				"type": "Array",
+				"defaultValue": [
+					{
+						"source": {
+							"collection": "actiongodo"
+						},
+						"destination": {
+							"fileName": "actiongodo.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptEfficiency']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['objectType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['dueDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['status']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['selectedTheme']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['theme']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['dueDateChangeable']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['createdDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['__v']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['blockers']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['description']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['completedDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['blockId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['activityGuid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['pointsFlag']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['points']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['durationFlag']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['duration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentTitle']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 42
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 43
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentBelongsToCollectionType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 44
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['publishDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 45
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['keys']['docId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 46
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['keys']['node']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 47
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['keys']['html']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 48
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['status']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 49
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['instructionsCO']['contentS3']['currentVersion']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 50
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['action']['resultsCO']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 51
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 52
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 53
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 54
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 55
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 56
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 57
+										}
+									},
+									{
+										"source": {
+											"path": "$['timestamp']['$date']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 58
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "admintooladoption"
+						},
+						"destination": {
+							"fileName": "admintooladoption.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['userId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timezone']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customerId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['role']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timeStart']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timeEnd']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['duration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['reason'][0]['category']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['reason'][0]['code']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['reason'][0]['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['reason'][0]['message']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['reason'][0]['stackTrace']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['timestamp']['$date']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "assessment"
+						},
+						"destination": {
+							"fileName": "assessment.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "completion"
+						},
+						"destination": {
+							"fileName": "completion.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['state']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['score']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['activityId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['activityName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['moduleId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['moduleName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['stageId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['stageName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journeyName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "content"
+						},
+						"destination": {
+							"fileName": "content.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "customer"
+						},
+						"destination": {
+							"fileName": "customer.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['message']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['domain']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['authRedirectUrl']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['sessionTimeOut']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['tokenTimeOut']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['loginFailureCoolDownTimeInMinutes']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['maxLoginFailureAttempt']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['industry']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['shareLinkExpiresIn']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['maxRetriesToSyncFailedRequests']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['languages']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['normal']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['register']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['forgotPassword']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['src']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['cmsImageUrl']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['meta']['fileName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['meta']['fileType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['alt']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['imageName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['login']['backgroundImage']['s3FilePath']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['positiveLogo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['negativeLogo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['font']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 42
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['colorPalette']['primary']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 43
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['colorPalette']['secondary']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 44
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent1']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 45
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent2']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 46
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent3']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 47
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent4']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 48
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent5']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 49
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent6']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 50
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent7']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 51
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['extendedAccents']['accent8']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 52
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['generic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 53
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['information']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 54
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 55
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['warning']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 56
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['error']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 57
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['statusIndicators']['notification']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 58
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['feedbackIndicators']['feedback-positive']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 59
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['feedbackIndicators']['feedback-negative']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 60
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['responseGraphIndicators']['my-vote']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 61
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['responseGraphIndicators']['other-votes']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 62
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['grayscale']['neutrals_dark']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 63
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['grayscale']['neutrals_white']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 64
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['textColor']['textLight']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 65
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['textColor']['textDark']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 66
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fontFile']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 67
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fontName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 68
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fileName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 69
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fontFamily']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 70
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fontWeight']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 71
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['myCustomFonts'][0]['fontStyle']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 72
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['enabledCustomFont']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 73
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeyBranding']['customFontFamily']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 74
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['length']['min']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 75
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['length']['max']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 76
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['lowercase']['min']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 77
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['lowercase']['max']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 78
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['uppercase']['min']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 79
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['uppercase']['max']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 80
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['numeric']['min']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 81
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['numeric']['max']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 82
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['minSpecialCharacter']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 83
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['allowedSpecialCharacters']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 84
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['checkPreviousPassword']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 85
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['passwordSecurity']['forcePasswordChange']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 86
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['isAllowLms']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 87
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['markCompletionsAcrossJourneys']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 88
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['anonymiseNamesOnNotification']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 89
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['showMomentaLogoInsteadOfClient']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 90
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['issuer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 91
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['entryPoint']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 92
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['callbackUrl']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 93
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['signatureAlgorithm']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 94
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['certificate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 95
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['journeyCodes']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 96
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['clientCustomParameters']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 97
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['ssoEnabled']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 98
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['ssoConfig']['isDemo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 99
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['insights']['enabled']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 100
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['insights']['template']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 101
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['insights']['templateName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 102
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['insights']['defaultTemplate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 103
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['insights']['templateTranslations']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 104
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['dashboardAppSetting']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 105
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['etl']['enabled']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 106
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['etl']['config']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 107
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['thirdPartyConfigs']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 108
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['autoSaveResponsesTime']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 109
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['journeySsoConfig']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 110
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 111
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 112
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['localeCode']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 113
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['localName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 114
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['cdnUrl']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 115
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['__v']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 116
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['enabled']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 117
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['variables']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 118
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['languages'][0]['isDefault']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 119
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']['collectionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 120
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 121
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 122
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 123
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 124
+										}
+									},
+									{
+										"source": {
+											"path": "$['timestamp']['$date']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 125
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "insightsandbookmarks"
+						},
+						"destination": {
+							"fileName": "insightsandbookmarks.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['userId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timezone']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['customerId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['contentId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['isResource']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['insights'][0]['createdDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['insights'][0]['updatedDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['insight'][0]['insights'][0]['insight']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journeyName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['isDeleted']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['bookmark']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['bookmark']['contentId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['bookmark']['activityId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['bookmark']['isResource']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['timestamp']['$date']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "isomer"
+						},
+						"destination": {
+							"fileName": "isomer.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "journey"
+						},
+						"destination": {
+							"fileName": "journey.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['description']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['belongsToCollection']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['belongsToCollection']['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['belongsToCollection']['qname']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['livesInFolder']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['livesInFolder']['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['livesInFolder']['qname']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['guid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['guid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['structure']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['index']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['colorPalette']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentTitle']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['publishDate']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['keys']['docId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['keys']['node']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['keys']['html']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 42
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['status']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 43
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['contentS3']['currentVersion']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 44
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['levels'][0]['guid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 45
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['levels'][0]['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 46
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['structure'][0]['levels'][0]['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 47
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['index']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 48
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['expanded']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 49
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['description']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 50
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['colorPalette']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 51
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['levels'][0]['guid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 52
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['levels'][0]['title']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 53
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['structure'][0]['levels'][0]['type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 54
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['levels']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 55
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['configuration'][0]['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 56
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['configuration'][0]['value']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 57
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['configuration'][0]['icon']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 58
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['journey']['expanded']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 59
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['journey']['_doc']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 60
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 61
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 62
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 63
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 64
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "test"
+						},
+						"destination": {
+							"fileName": "test.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['controller']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['method']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['utf8']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['authenticity_token']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['username']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['password']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['remember_me']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['failed_logins']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['first_name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['last_name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['email2']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['phone1']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['phone2']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['country']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['town']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['timezone']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['user']['profile_attributes']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['commit']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['controller']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['action']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['_tab']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['parameters']['_method']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['ip_address']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['time']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['browser_name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['browser_version']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['alias_user_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['settings']['list_type']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['settings']['pinned_cohorts']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['settings']['enable_messaging']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['settings']['show_email_notes']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['settings']['favourite_reports']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['virtual_assistant_active']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['username']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['created_at']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['updated_at']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 42
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['archive']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 43
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['legacy_db_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 44
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['legacy_db_column']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 45
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['legacy_db_table']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 46
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 47
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['team_leader_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 48
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['roles_mask']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 49
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['last_attempted_login']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 50
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['virtual_assistant_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 51
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['password_changed_at']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 52
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['unique_session_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 53
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['failed_logins']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 54
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['custom_field']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 55
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['token']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 56
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['ccc_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 57
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['last_successful_login']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 58
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['changr_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 59
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['authentication_token']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 60
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['custom_data']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 61
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['timeline_domain_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 62
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['language']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 63
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['sso_domain']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 64
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['programme_preview']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 65
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 66
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['first_name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 67
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['email2']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 68
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['phone1']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 69
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['phone2']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 70
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['job_description']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 71
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['timezone']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 72
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['languages_spoken']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 73
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['user_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 74
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['created_at']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 75
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['updated_at']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 76
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['qualifications']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 77
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['invoicing_region']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 78
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['biography']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 79
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['team_leader_notes']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 80
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['photo_uid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 81
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['legacy_coachee_status']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 82
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['profit_and_loss_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 83
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['country']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 84
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['town']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 85
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['status']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 86
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['ciab_coach_stage']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 87
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['native_languages']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 88
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['other_languages']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 89
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['trainings']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 90
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['last_name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 91
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['latitude']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 92
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['longitude']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 93
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['attended_global_induction']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 94
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['date_of_global_induction']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 95
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['attended_system_induction']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 96
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['date_of_system_induction']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 97
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['currency_id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 98
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['profile']['country_code']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 99
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 100
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 101
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 102
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 103
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 104
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "users"
+						},
+						"destination": {
+							"fileName": "users.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['journeys'][0]['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['journeys'][0]['cohortName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['journeys'][0]['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['journeys'][0]['journeyName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['message']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['email']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 25
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 26
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['region']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 27
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['age']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 28
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['gender']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 29
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['designation']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 30
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 31
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['journeyName']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 32
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['assessments']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 33
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['isomers']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 34
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['currentRevision']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 35
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['revisions']['1']['responses']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 36
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeys'][0]['revisions']['1']['states']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 37
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 38
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['role']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 39
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['customerId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 40
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 41
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['journeyId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 42
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['fname']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 43
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['lname']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 44
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['participant']['password']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 45
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 46
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 47
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 48
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 49
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"source": {
+							"collection": "usersession"
+						},
+						"destination": {
+							"fileName": "usersession.txt"
+						},
+						"copyActivity": {
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 1
+										}
+									},
+									{
+										"source": {
+											"path": "$['topic']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 2
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['timestamp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 3
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['sessionId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 4
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['id']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 5
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['name']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 6
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['browserInfo']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 7
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['deviceType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 8
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['location']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 9
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['customer']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 10
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['user']['clientIp']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 11
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['applicationType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 12
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['routeVisited']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 13
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptDuration']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 14
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptCount']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 15
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['clientid']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 16
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['cohortId']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 17
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['success']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 18
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['message']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 19
+										}
+									},
+									{
+										"source": {
+											"path": "$['value']['attemptType']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 20
+										}
+									},
+									{
+										"source": {
+											"path": "$['offset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 21
+										}
+									},
+									{
+										"source": {
+											"path": "$['partition']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 22
+										}
+									},
+									{
+										"source": {
+											"path": "$['highWaterOffset']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 23
+										}
+									},
+									{
+										"source": {
+											"path": "$['key']"
+										},
+										"sink": {
+											"type": "String",
+											"ordinal": 24
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

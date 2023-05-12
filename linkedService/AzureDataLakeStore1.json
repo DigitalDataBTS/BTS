@@ -1,0 +1,14 @@
+{
+	"name": "AzureDataLakeStore1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDataLakeStore",
+		"typeProperties": {
+			"dataLakeStoreUri": "https://dataextractor.azuredatalakestore.net/webhdfs/v1",
+			"tenant": "7f602e3c-0f60-42ed-a9cd-df9907a0b0c0",
+			"subscriptionId": "80fae94b-6d38-41e1-8e5b-11c868b759ed",
+			"resourceGroupName": "GDDataExtractor"
+		}
+	}
+}

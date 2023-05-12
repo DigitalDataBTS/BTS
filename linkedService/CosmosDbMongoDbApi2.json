@@ -1,0 +1,18 @@
+{
+	"name": "CosmosDbMongoDbApi2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "CosmosDbMongoDbApi",
+		"typeProperties": {
+			"connectionString": "mongodb://btsdemoapi:@btsdemoapi.mongo.cosmos.azure.com:10255/?appname=@btsdemoapi@;tls=true;replicaSet=globaldb;maxIdleTime=2m;retryWrites=false",
+			"database": "testdemoapi",
+			"isServerVersionAbove32": true,
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMGQxYTQxZi1jNGU3LTRmNDItODlkZi05YTYwY2I0YjgwODYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

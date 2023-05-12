@@ -1,0 +1,200 @@
+{
+	"name": "Copyoutpursqlmdlz",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_d7i",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "mondelezinternationa-output//"
+					},
+					{
+						"name": "Destination",
+						"value": ".Azure Blob Storage file"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"name": "id",
+								"value": "12"
+							}
+						],
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "part-merged.csv",
+							"enablePartitionDiscovery": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 0
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "id",
+									"type": "Int32",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
+									"name": "journeyname",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "journeyname",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "email",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "cohortid",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "cohortId",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Content_id",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Content_id",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "status",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "status",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "type",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "title",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "title",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "Content_id_Custom",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "Content_id_Custom",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_d7i",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_d7i",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,29 @@
+{
+	"name": "DelimitedText6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage3",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ING_Hybrid_MBS_AssessmentReport_24-08-2021.csv",
+				"container": "mbsdata"
+			},
+			"columnDelimiter": "\u0001",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "sep=;",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,16 @@
+{
+	"name": "abbott_participant_list",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Web",
+		"typeProperties": {
+			"url": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA",
+			"authenticationType": "Anonymous"
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "SourceDataset_j24",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "kafkaanalyticsconnection",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"cw_collection": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": {
+				"value": "@dataset().cw_collection",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "ING_MBS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\Pulse\\ING\\ING_MBS",
+			"userId": "digital.data@bts.com",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0OGM4ZDVhNi05NjRjLTRhNjAtOWQ4MS0yZjU0OGMzNDgzNWYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

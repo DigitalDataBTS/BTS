@@ -1,0 +1,16 @@
+{
+	"name": "CosmosDb1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "CosmosDb",
+		"typeProperties": {
+			"connectionString": "AccountEndpoint=https://bts-ss-bot.documents.azure.com:443/;Database=MomentaTestAPI;",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3MmRiNDI0MS0xZTczLTQ0OTctOWY2MC1mMDBkM2Q0NWEwNDciLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

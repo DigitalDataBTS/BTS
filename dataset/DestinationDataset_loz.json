@@ -1,0 +1,20 @@
+{
+	"name": "DestinationDataset_loz",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "data_ceb8d9ba-56ee-4a4b-a93a-0b7f94b5fae4_abe78e54-0ea4-4b03-95b1-6bd296022de3.json",
+				"container": "gpdcompletion"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

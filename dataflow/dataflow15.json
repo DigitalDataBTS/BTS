@@ -1,0 +1,28 @@
+{
+	"name": "dataflow15",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Orc2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tRole as string,\n\t\t{First Name} as string,\n\t\t{Last Name} as string,\n\t\tEmail as string,\n\t\t{Overview. Overview - REMOVED} as string,\n\t\t{Overview. Overview} as string,\n\t\t{Overview. Schedule} as string,\n\t\t{Introduction. Module One guide} as string,\n\t\t{FLL Tryout. Leader roles or core capabilities} as string,\n\t\t{FLL Tryout. Biggest strengths} as string,\n\t\t{FLL Tryout. Most surprising - REMOVED} as string,\n\t\t{Pod 1. Salesforce Values card sort PDF} as string,\n\t\t{Pod 1. Your Leadership Brand. Value One} as string,\n\t\t{Pod 1. Your Leadership Brand. Value Two} as string,\n\t\t{Pod 1. Your Leadership Brand. Value Three} as string,\n\t\t{Pod 1. Your Leadership Brand. Importance} as string,\n\t\t{Pod 1. Your Leadership Brand. My behaviors} as string,\n\t\t{Pod 1. Your Leadership Brand. My brand} as string,\n\t\t{Pod 1. Your Leadership Brand. My best} as string,\n\t\t{Pod 1. Your Leadership Brand. Not my best} as string,\n\t\t{Pod 1. Your Leadership Brand. Statement} as string,\n\t\t{Pod 1. Catch Up. Email} as string,\n\t\t{Pod 1. Catch Up. Takeaways} as string,\n\t\t{Pod 1. Catch Up. Learning areas} as string,\n\t\t{Pod 1. Video Summary} as string,\n\t\t{Virtual Workshop 1. Catch Up. Email} as string,\n\t\t{Virtual Workshop 1. Catch Up. Takeaways} as string,\n\t\t{Virtual Workshop 1. Catch Up. Learning areas} as string,\n\t\t{Stretch Assignment 1. Instructional PDF} as string,\n\t\t{Stretch Assignment 1. L1. Pitfalls - CHANGED} as string,\n\t\t{Stretch Assignment 1. L1. Pitfalls} as string,\n\t\t{Stretch Assignment 1. L1. Actions} as string,\n\t\t{Stretch Assignment 1. L1. Accountable} as string,\n\t\t{Stretch Assignment 1. L1. Impact knowing pitfalls} as string,\n\t\t{Stretch Assignment 1. L1. Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 1. L1. Email worked with - REMOVED} as string,\n\t\t{Stretch Assignment 1. L2. Pitfalls (G1) / Insight (G2...)} as string,\n\t\t{Stretch Assignment 1. L2. Recover (G1) / Advice (G2...)} as string,\n\t\t{Stretch Assignment 1. L2. Learn - REMOVED} as string,\n\t\t{Stretch Assignment 1. L2. Email worked with} as string,\n\t\t{Stretch Assignment 1. L3. Learn} as string,\n\t\t{Stretch Assignment 1. L3. Feedback - REMOVED} as string,\n\t\t{Stretch Assignment 1. L3. Teaching improve} as string,\n\t\t{Stretch Assignment 1. L3. Email worked with} as string,\n\t\t{Pod 2. Committed listening. What did you notice} as string,\n\t\t{Pod 2. Committed listening. Whats in the way} as string,\n\t\t{Pod 2. MBIR. Leadership shift} as string,\n\t\t{Pod 2. MBIR. Leadership shift. Change} as string,\n\t\t{Pod 2. MBIR. Mindset. From} as string,\n\t\t{Pod 2. MBIR. Mindset. To} as string,\n\t\t{Pod 2. MBIR. Mindset. Change} as string,\n\t\t{Pod 2. MBIR. Behavior. From} as string,\n\t\t{Pod 2. MBIR. Behavior. To} as string,\n\t\t{Pod 2. MBIR. Behavior. Change} as string,\n\t\t{Pod 2. MBIR. Impact. From} as string,\n\t\t{Pod 2. MBIR. Impact. To} as string,\n\t\t{Pod 2. MBIR. Impact. Change} as string,\n\t\t{Pod 2. MBIR. Result} as string,\n\t\t{Pod 2. MBIR. Result. Change} as string,\n\t\t{Pod 2. MBIR. Other Comments} as string,\n\t\t{Pod 2. Catch Up. Email} as string,\n\t\t{Pod 2. Catch Up. Takeaways} as string,\n\t\t{Pod 2. Catch Up. Learning areas} as string,\n\t\t{Pod 2. Video Summary} as string,\n\t\t{Stretch Assignment 2. Instructional PDF} as string,\n\t\t{Stretch Assignment 2. L1. MBIR change (G1) / Insights (G2...)} as string,\n\t\t{Stretch Assignment 2. L1. Insights (G1) / Learn (G2...)} as string,\n\t\t{Stretch Assignment 2. L1. Help - REMOVED} as string,\n\t\t{Stretch Assignment 2. L1. Email worked with} as string,\n\t\t{Stretch Assignment 2. L2. MBIR change} as string,\n\t\t{Stretch Assignment 2. L2. Shifts (G1) / Do differently (G2...)} as string,\n\t\t{Stretch Assignment 2. L2. Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 2. L2. Email worked with} as string,\n\t\t{Stretch Assignment 2. L3. Difficult (G1) / Connecting to IDP (G2...)} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Mindset shift (G1) / Do differently (G2...)} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Assumptions - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. Actions Assumptions - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. Email worked with} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

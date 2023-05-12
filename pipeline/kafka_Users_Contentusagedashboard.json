@@ -1,0 +1,222 @@
+{
+	"name": "kafka_Users_Contentusagedashboard",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_ws8",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "completion"
+					},
+					{
+						"name": "Destination",
+						"value": "completion20kafka//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"name": "$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['sessionId']"
+								},
+								"sink": {
+									"name": "sessionId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['id']"
+								},
+								"sink": {
+									"name": "id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['name']"
+								},
+								"sink": {
+									"name": "name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['customer']"
+								},
+								"sink": {
+									"name": "customer",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['clientid']"
+								},
+								"sink": {
+									"name": "clientid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['cohortId']"
+								},
+								"sink": {
+									"name": "cohortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['state']"
+								},
+								"sink": {
+									"name": "state",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['score']"
+								},
+								"sink": {
+									"name": "score",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityId']"
+								},
+								"sink": {
+									"name": "activityId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityName']"
+								},
+								"sink": {
+									"name": "activityName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['moduleId']"
+								},
+								"sink": {
+									"name": "moduleId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['moduleName']"
+								},
+								"sink": {
+									"name": "moduleName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['stageId']"
+								},
+								"sink": {
+									"name": "stageId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['stageName']"
+								},
+								"sink": {
+									"name": "stageName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyId']"
+								},
+								"sink": {
+									"name": "journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyName']"
+								},
+								"sink": {
+									"name": "journeyName",
+									"type": "String"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_ws8",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_ws8",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2023-02-22T05:57:48Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

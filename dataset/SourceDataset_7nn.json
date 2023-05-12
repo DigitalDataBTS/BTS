@@ -1,0 +1,15 @@
+{
+	"name": "SourceDataset_7nn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mondelez_Leaders of the Future",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"requestMethod": "GET"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

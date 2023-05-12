@@ -1,0 +1,16 @@
+{
+	"name": "mongo_chevron",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MongoDb2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "cohorts"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

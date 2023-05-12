@@ -1,0 +1,108 @@
+{
+	"name": "completion20kafka",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_ws8",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "completion"
+					},
+					{
+						"name": "Destination",
+						"value": "completion20kafka//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['value']['user']['id']"
+								},
+								"sink": {
+									"name": "id"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['customer']"
+								},
+								"sink": {
+									"name": "customer"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityId']"
+								},
+								"sink": {
+									"name": "activityid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyId']"
+								},
+								"sink": {
+									"name": "journeyid"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['journeyName']"
+								},
+								"sink": {
+									"name": "journeyname"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_ws8",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_ws8",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-06-07T09:33:14Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

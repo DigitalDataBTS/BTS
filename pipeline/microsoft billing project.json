@@ -1,0 +1,152 @@
+{
+	"name": "microsoft billing project",
+	"properties": {
+		"description": "thi sis to copy all microsoft dat ato json",
+		"activities": [
+			{
+				"name": "Copy_skg",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "microsoftoutputv3//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100,
+						"filter": "{email: /^\\d+$/}\n",
+						"cursorMethods": {
+							"project": "{ _id: 1,\n            email: 1,\n            fname:1,\n            lname:1,\n            createdAt:1,\n            journeys: 1,}"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings",
+							"filePattern": "arrayOfObjects"
+						}
+					},
+					"enableStaging": false,
+					"validateDataConsistency": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"path": "$['journye_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"path": "$['journye_name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"path": "$['cohort_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states']"
+								},
+								"sink": {
+									"path": "$['activity_state']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['fname']"
+								},
+								"sink": {
+									"path": "$['fname']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lname']"
+								},
+								"sink": {
+									"path": "$['lname']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"path": "$['email']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdAt']['$date']"
+								},
+								"sink": {
+									"path": "$['createdAt']['$date']"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_skg",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_skg",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"parameters": {
+			"windowStart": {
+				"type": "String"
+			},
+			"windowEnd": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

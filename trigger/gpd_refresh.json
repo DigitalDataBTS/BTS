@@ -1,0 +1,36 @@
+{
+	"name": "gpd_refresh",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "gpdcompletion",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2022-05-24T09:50:00",
+				"timeZone": "India Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					],
+					"weekDays": [
+						"Sunday",
+						"Thursday"
+					]
+				}
+			}
+		}
+	}
+}

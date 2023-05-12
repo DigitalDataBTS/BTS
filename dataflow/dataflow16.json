@@ -1,0 +1,74 @@
+{
+	"name": "dataflow16",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_ws8",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DestinationDataset_ws8",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {_col0_} as string,",
+				"          {_col1_} as string,",
+				"          {_col2_} as string,",
+				"          {_col3_} as string,",
+				"          {_col4_} as string,",
+				"          {_col5_} as string,",
+				"          {_col6_} as string,",
+				"          {_col7_} as string,",
+				"          {_col8_} as string,",
+				"          {_col9_} as string,",
+				"          {_col10_} as string,",
+				"          {_col11_} as string,",
+				"          {_col12_} as string,",
+				"          {_col13_} as string,",
+				"          {_col14_} as string,",
+				"          {_col15_} as string,",
+				"          {_col16_} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {$oid} as string,",
+				"          sessionId as string,",
+				"          id as string,",
+				"          name as string,",
+				"          customer as string,",
+				"          clientid as string,",
+				"          cohortId as string,",
+				"          state as string,",
+				"          score as string,",
+				"          activityId as string,",
+				"          activityName as string,",
+				"          moduleId as string,",
+				"          moduleName as string,",
+				"          stageId as string,",
+				"          stageName as string,",
+				"          journeyId as string,",
+				"          journeyName as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

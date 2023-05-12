@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_l80",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Abbott_user",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "users"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

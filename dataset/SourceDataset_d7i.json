@@ -1,0 +1,60 @@
+{
+	"name": "SourceDataset_d7i",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mondelezinternationa-output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "journeyname",
+				"type": "String"
+			},
+			{
+				"name": "email",
+				"type": "String"
+			},
+			{
+				"name": "cohortid",
+				"type": "String"
+			},
+			{
+				"name": "Content_id",
+				"type": "String"
+			},
+			{
+				"name": "status",
+				"type": "String"
+			},
+			{
+				"name": "type",
+				"type": "String"
+			},
+			{
+				"name": "title",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Content_id_Custom",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

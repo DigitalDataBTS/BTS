@@ -1,0 +1,13 @@
+{
+	"name": "journey",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MDLZTeamMBA",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

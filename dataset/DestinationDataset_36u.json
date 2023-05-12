@@ -1,0 +1,19 @@
+{
+	"name": "DestinationDataset_36u",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "completion20kafka"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

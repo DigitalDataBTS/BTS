@@ -1,0 +1,78 @@
+{
+	"name": "DestinationDataset_5xq",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "mondelezinternational-mongodb"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"_id": {
+					"type": "object",
+					"properties": {
+						"$oid": {
+							"type": "string"
+						}
+					}
+				},
+				"journeys": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"journeyName": {
+								"type": "string"
+							},
+							"cohortId": {
+								"type": "string"
+							},
+							"revisions": {
+								"type": "object",
+								"properties": {
+									"1": {
+										"type": "object",
+										"properties": {
+											"states": {
+												"type": "array",
+												"items": {
+													"type": "object",
+													"properties": {
+														"id": {
+															"type": "string"
+														},
+														"state": {
+															"type": "string"
+														},
+														"type": {
+															"type": "string"
+														},
+														"completionTime": {
+															"type": "string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"email": {
+					"type": "string"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

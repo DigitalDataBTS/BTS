@@ -1,0 +1,32 @@
+{
+	"name": "salesforceschedule",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "salesforce_project_pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2021-09-02T00:00:00Z",
+				"timeZone": "UTC",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						12
+					]
+				}
+			}
+		}
+	}
+}

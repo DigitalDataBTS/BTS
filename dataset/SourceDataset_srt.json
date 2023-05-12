@@ -1,0 +1,16 @@
+{
+	"name": "SourceDataset_srt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Abbott user",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "users"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,1169 @@
+{
+	"name": "chevron_users_data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_lyv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "chevrondata//users"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 4
+								}
+							},
+							{
+								"source": {
+									"path": "['currentTime'][0]['text']"
+								},
+								"sink": {
+									"ordinal": 5
+								}
+							},
+							{
+								"source": {
+									"path": "['currentTime'][0]['value']"
+								},
+								"sink": {
+									"ordinal": 6
+								}
+							},
+							{
+								"source": {
+									"path": "['currentTime'][0]['guid']"
+								},
+								"sink": {
+									"ordinal": 7
+								}
+							},
+							{
+								"source": {
+									"path": "['currentTime'][0]['contentId']"
+								},
+								"sink": {
+									"ordinal": 8
+								}
+							},
+							{
+								"source": {
+									"path": "['currentTime'][0]['timeStamp']"
+								},
+								"sink": {
+									"ordinal": 9
+								}
+							},
+							{
+								"source": {
+									"path": "['six-pitfalls-handout'][0]['src']"
+								},
+								"sink": {
+									"ordinal": 10
+								}
+							},
+							{
+								"source": {
+									"path": "['six-pitfalls-handout'][0]['downloaded']"
+								},
+								"sink": {
+									"ordinal": 11
+								}
+							},
+							{
+								"source": {
+									"path": "['six-pitfalls-handout'][0]['guid']"
+								},
+								"sink": {
+									"ordinal": 12
+								}
+							},
+							{
+								"source": {
+									"path": "['six-pitfalls-handout'][0]['contentId']"
+								},
+								"sink": {
+									"ordinal": 13
+								}
+							},
+							{
+								"source": {
+									"path": "['six-pitfalls-handout'][0]['timeStamp']['$date']"
+								},
+								"sink": {
+									"ordinal": 14
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['id']"
+								},
+								"sink": {
+									"ordinal": 15
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['state']"
+								},
+								"sink": {
+									"ordinal": 16
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['type']"
+								},
+								"sink": {
+									"ordinal": 17
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['completionTime']"
+								},
+								"sink": {
+									"ordinal": 18
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['attemptDuration']['image_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 19
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['attemptDuration']['text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 20
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 21
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 22
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['10f733bdf8ce1c1b824b']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 23
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['modulecompletionTime']"
+								},
+								"sink": {
+									"ordinal": 24
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['image_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 25
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 26
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['accordion_2']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 27
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['text_3']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 28
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 29
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 30
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 31
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['attemptDuration']['text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 32
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 33
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 34
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['a6a0e7b322c1132c7e99']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 35
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['0']['attemptDuration']['video_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 36
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 37
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 38
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['1']['attemptDuration']['cohort-response_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 39
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['1']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 40
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 41
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584482909977']['5f1e1e17f77857a76789']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 42
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['3d36678e58081651e684']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 43
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['3d36678e58081651e684']['pages']['0']['attemptDuration']['cards_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 44
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['3d36678e58081651e684']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 45
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['3d36678e58081651e684']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 46
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['3d36678e58081651e684']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 47
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 48
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['accordion_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 49
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['download_2']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 50
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 51
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 52
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['4f567f8acd3b2737e942']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 53
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['modulecompletionTime']"
+								},
+								"sink": {
+									"ordinal": 54
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['8b392d62d51428a81b33']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 55
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['8b392d62d51428a81b33']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 56
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['8b392d62d51428a81b33']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 57
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['8b392d62d51428a81b33']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 58
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['bd7952a868263fb2f32a']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 59
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['bd7952a868263fb2f32a']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 60
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['bd7952a868263fb2f32a']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 61
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390875020']['bd7952a868263fb2f32a']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 62
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c5ddda743b95f2e704da']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 63
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c5ddda743b95f2e704da']['pages']['0']['attemptDuration']['accordion_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 64
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c5ddda743b95f2e704da']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 65
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c5ddda743b95f2e704da']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 66
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c5ddda743b95f2e704da']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 67
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c0fcfb56870f8792e9fb']['pages']['0']['attemptDuration']['text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 68
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c0fcfb56870f8792e9fb']['pages']['0']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 69
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c0fcfb56870f8792e9fb']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 70
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['c0fcfb56870f8792e9fb']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 71
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390773588']['modulecompletionTime']"
+								},
+								"sink": {
+									"ordinal": 72
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['attemptDuration']['Image_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 73
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 74
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['10f733bdf8ce1c1b824b']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 75
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['10f733bdf8ce1c1b824b']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 76
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['10f733bdf8ce1c1b824b']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 77
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['moduleCompletionTime']"
+								},
+								"sink": {
+									"ordinal": 78
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['Image_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 79
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 80
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['NestedContent_2']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 81
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['attemptDuration']['Text_3']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 82
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 83
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 84
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 85
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 86
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 87
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['a6a0e7b322c1132c7e99']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 88
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['0']['attemptDuration']['Video_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 89
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['0']['attemptDuration']['NestedContent_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 90
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 91
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['1']['attemptDuration']['Response_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 92
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 93
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 94
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['5f1e1e17f77857a76789']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 95
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 96
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['0']['attemptDuration']['Cards_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 97
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 98
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['1']['attemptDuration']['Response_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 99
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['1']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 100
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 101
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['3d36678e58081651e684']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 102
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 103
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['NestedContent_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 104
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['0']['attemptDuration']['Download_2']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 105
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 106
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 107
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['4f567f8acd3b2737e942']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 108
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['8b392d62d51428a81b33']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 109
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['8b392d62d51428a81b33']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 110
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['8b392d62d51428a81b33']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 111
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['8b392d62d51428a81b33']['pages']['attemptCount']"
+								},
+								"sink": {
+									"ordinal": 112
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['bd7952a868263fb2f32a']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 113
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['bd7952a868263fb2f32a']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 114
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['bd7952a868263fb2f32a']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 115
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390530959_1584482909977']['bd7952a868263fb2f32a']['pages']['activityPageDuration']"
+								},
+								"sink": {
+									"ordinal": 116
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390640252_1584390773588']['c0fcfb56870f8792e9fb']['pages']['0']['attemptDuration']['Text_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 117
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['1584390640252_1584390773588']['c0fcfb56870f8792e9fb']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 118
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['Registration']['42c8664cf3f51b04a372']['pages']['0']['attemptDuration']['Image_0']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 119
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['Registration']['42c8664cf3f51b04a372']['pages']['0']['attemptDuration']['Text_1']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 120
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['Registration']['42c8664cf3f51b04a372']['pages']['0']['attemptDuration']['Text_2']['totaltime']"
+								},
+								"sink": {
+									"ordinal": 121
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['analytics']['8646900a1318910eb288']['Registration']['42c8664cf3f51b04a372']['pages']['0']['totalPageDuration']"
+								},
+								"sink": {
+									"ordinal": 122
+								}
+							},
+							{
+								"source": {
+									"path": "$['customerId']['$oid']"
+								},
+								"sink": {
+									"ordinal": 123
+								}
+							},
+							{
+								"source": {
+									"path": "$['oldPasswords'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"ordinal": 124
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastSuccessfulLoginAt']['$date']"
+								},
+								"sink": {
+									"ordinal": 125
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['_id']['$oid']"
+								},
+								"sink": {
+									"ordinal": 126
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['userAgent']"
+								},
+								"sink": {
+									"ordinal": 127
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['ipAddress']"
+								},
+								"sink": {
+									"ordinal": 128
+								}
+							},
+							{
+								"source": {
+									"path": "$['userBrowserAgent'][0]['timestamp']['$date']"
+								},
+								"sink": {
+									"ordinal": 129
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['currentRevision']"
+								},
+								"sink": {
+									"ordinal": 130
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['responses']"
+								},
+								"sink": {
+									"ordinal": 131
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['id']"
+								},
+								"sink": {
+									"ordinal": 132
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['state']"
+								},
+								"sink": {
+									"ordinal": 133
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['completionTime']"
+								},
+								"sink": {
+									"ordinal": 134
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['type']"
+								},
+								"sink": {
+									"ordinal": 135
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['contentId']"
+								},
+								"sink": {
+									"ordinal": 136
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['journeyId']"
+								},
+								"sink": {
+									"ordinal": 137
+								}
+							}
+						],
+						"collectionReference": "$['journeys'][0]['revisions']['1']['responses']",
+						"mapComplexValuesToString": false
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_lyv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_lyv",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2022-05-24T08:33:44Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
