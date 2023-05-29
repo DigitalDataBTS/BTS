@@ -7,10 +7,7 @@
 		},
 		"annotations": [],
 		"type": "MongoDbV2Collection",
-		"schema": [],
-		"typeProperties": {
-			"collection": "users"
-		}
+		"schema": []
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
