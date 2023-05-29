@@ -7,7 +7,7 @@
 		"typeProperties": {
 			"connectionString": "mongodb://dashboardRead:@germanyregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
 			"database": "sidel",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkZTEyMGU0My1jYzBiLTQ2OGYtYTgxMy1lN2EzNDYxZTE3ZmIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2ZTM2YjZlMC1jOTg1LTQyYmMtOWE0Mi03YjY5ZjJmY2Y1ZDkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
