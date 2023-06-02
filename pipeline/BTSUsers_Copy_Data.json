@@ -1,0 +1,224 @@
+{
+	"name": "BTSUsers_Copy_Data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_ddy",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "users"
+					},
+					{
+						"name": "Destination",
+						"value": "btsuser//"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "AzureBlobStorage1",
+								"type": "LinkedServiceReference"
+							}
+						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"name": "_id_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"name": "journeys'][0]['journeyId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"name": "journeys'][0]['journeyName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"name": "journeys'][0]['cohortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_responses'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]"
+								},
+								"sink": {
+									"name": "journeys'][0]['revisions_1_states'][",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"name": "email",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['timezone']"
+								},
+								"sink": {
+									"name": "timezone",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['userProfile']['id']"
+								},
+								"sink": {
+									"name": "userProfile_id",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdAt']['$date']"
+								},
+								"sink": {
+									"name": "createdAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['updatedAt']['$date']"
+								},
+								"sink": {
+									"name": "updatedAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['createdBy']['$oid']"
+								},
+								"sink": {
+									"name": "createdBy_$oid",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastFailedLoginAt']"
+								},
+								"sink": {
+									"name": "lastFailedLoginAt",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['lastSuccessfulLoginAt']['$date']"
+								},
+								"sink": {
+									"name": "lastSuccessfulLoginAt_$date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['recentItems']['cohorts'][0]['cohortName']"
+								},
+								"sink": {
+									"name": "cohortName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['hasAcceptedConsent']['timestamp']"
+								},
+								"sink": {
+									"name": "timestamp",
+									"type": "String"
+								}
+							}
+						]
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SourceDataset_ddy",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DestinationDataset_ddy",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
