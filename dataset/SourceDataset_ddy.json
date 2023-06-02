@@ -1,0 +1,15 @@
+{
+	"name": "SourceDataset_ddy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BTSUsers",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "users"
+		}
+	}
+}
