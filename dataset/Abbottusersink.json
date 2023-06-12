@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "data_81440f45-e55b-4bf8-9ee6-1bef5a35cd36_4135b821-9885-43b6-902d-dbbe4eed3ea3.json",
 				"container": "abbottuser"
 			}
 		},
