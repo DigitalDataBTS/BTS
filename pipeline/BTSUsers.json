@@ -29,14 +29,12 @@
 						"batchSize": 100
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
+						"type": "JsonSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"type": "JsonWriteSettings"
 						}
 					},
 					"enableStaging": false,
@@ -213,13 +211,13 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_ddy",
+						"referenceName": "usermongosink",
 						"type": "DatasetReference"
 					}
 				]
 			},
 			{
-				"name": "BTS Coach Journey Structure",
+				"name": "S3 Journey Structure_copy1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -277,79 +275,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "BTSLeadersDebrief",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "sinkjsonjourneystructure1",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
-				"name": "S3 Journey Structure_copy1",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [
-					{
-						"name": "Source",
-						"value": "users"
-					},
-					{
-						"name": "Destination",
-						"value": "btsuser//"
-					}
-				],
-				"typeProperties": {
-					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
-					},
-					"enableStaging": false,
-					"enableSkipIncompatibleRow": true,
-					"validateDataConsistency": false,
-					"logSettings": {
-						"enableCopyActivityLog": true,
-						"copyActivityLogSettings": {
-							"logLevel": "Warning",
-							"enableReliableLogging": false
-						},
-						"logLocationSettings": {
-							"linkedServiceName": {
-								"referenceName": "AzureBlobStorage1",
-								"type": "LinkedServiceReference"
-							}
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "BTSCoachPMO",
+						"referenceName": "Json3",
 						"type": "DatasetReference"
 					}
 				],
@@ -359,30 +285,6 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "BTS_User_DataFlow",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "BTS_User_Dataflow",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
 			}
 		],
 		"annotations": []
