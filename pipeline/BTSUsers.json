@@ -149,16 +149,25 @@
 							{
 								"source": {
 									"path": "$['title']"
+								},
+								"sink": {
+									"path": "$['title']"
 								}
 							},
 							{
 								"source": {
 									"path": "['key']"
+								},
+								"sink": {
+									"path": "$['journey'][0]['key']"
 								}
 							},
 							{
 								"source": {
 									"path": "['value']"
+								},
+								"sink": {
+									"path": "$['journey'][0]['value']"
 								}
 							}
 						],
