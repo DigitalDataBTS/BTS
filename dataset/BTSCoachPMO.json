@@ -1,0 +1,18 @@
+{
+	"name": "BTSCoachPMO",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "282fdf3d90476348b2c5/latest/journey_en-US.json"
+			}
+		},
+		"schema": {}
+	}
+}
