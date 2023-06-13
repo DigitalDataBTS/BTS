@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "journey_en-US.txt",
-				"folderPath": "3c359d8128a495514095/latest",
+				"fileName": "journey_en-US.json",
+				"folderPath": "9c0330f3365a9456e3ae/latest",
 				"container": "btsuserjourneystructure"
 			}
 		},
