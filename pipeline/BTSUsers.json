@@ -60,15 +60,31 @@
 									"path": "$['_id']['$oid']"
 								},
 								"sink": {
-									"path": "$['_id']['$oid']"
+									"path": "$['$oid']"
 								}
 							},
 							{
 								"source": {
-									"path": "$['journeys']"
+									"path": "$['journeys'][0]['journeyId']"
 								},
 								"sink": {
-									"path": "$['journeys']"
+									"path": "$['journeyId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"path": "$['journeyName']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]"
+								},
+								"sink": {
+									"path": "$['states']"
 								}
 							},
 							{
