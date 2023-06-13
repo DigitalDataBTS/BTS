@@ -1,14 +1,14 @@
 {
 	"name": "HttpServer1",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "salesforce data",
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m1.php",
+			"url": "https://content.btsmomenta.com/journeys/282fdf3d90476348b2c5/latest/journey_en-US.json",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
