@@ -26,11 +26,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "MongoDbV2Source",
-						"additionalColumns": [
-							{
-								"value": "$$COLUMN:"
-							}
-						],
 						"batchSize": 100
 					},
 					"sink": {
@@ -57,6 +52,66 @@
 								"type": "LinkedServiceReference"
 							}
 						}
+					},
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']['$oid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"path": "$['journeys'][0]['journeyId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"path": "$['journeys'][0]['cohortId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['assessments'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['isomers'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['currentRevision']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]"
+								}
+							}
+						],
+						"collectionReference": ""
 					}
 				},
 				"inputs": [
