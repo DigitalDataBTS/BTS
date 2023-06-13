@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "282fdf3d90476348b2c5/latest/journey_en-US.json"
+				"relativeUrl": "9c0330f3365a9456e3ae/latest/journey_en-US.json"
 			}
 		},
 		"schema": {}
