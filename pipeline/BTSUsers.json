@@ -153,16 +153,16 @@
 							},
 							{
 								"source": {
-									"path": "$['journey'][0]['key']"
+									"path": "['key']"
 								}
 							},
 							{
 								"source": {
-									"path": "$['journey'][0]['value']"
+									"path": "['value']"
 								}
 							}
 						],
-						"collectionReference": ""
+						"collectionReference": "$['journey']"
 					}
 				},
 				"inputs": [
