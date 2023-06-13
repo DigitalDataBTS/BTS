@@ -26,6 +26,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "MongoDbV2Source",
+						"additionalColumns": [
+							{
+								"value": "$$COLUMN:"
+							}
+						],
 						"batchSize": 100
 					},
 					"sink": {
@@ -39,6 +44,7 @@
 					},
 					"enableStaging": false,
 					"enableSkipIncompatibleRow": true,
+					"validateDataConsistency": false,
 					"logSettings": {
 						"enableCopyActivityLog": true,
 						"copyActivityLogSettings": {
