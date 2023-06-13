@@ -58,15 +58,24 @@
 							{
 								"source": {
 									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']['$oid']"
 								}
 							},
 							{
 								"source": {
 									"path": "$['journeys']"
+								},
+								"sink": {
+									"path": "$['journeys']"
 								}
 							},
 							{
 								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
 									"path": "$['email']"
 								}
 							}
