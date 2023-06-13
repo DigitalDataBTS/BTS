@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "data_f2920f0b-fa0f-4bdb-9fe2-773614ecbf88_6ad74f5d-8d11-43c0-92ad-01feba330b07.json",
 				"container": "btsuser"
 			},
 			"columnDelimiter": ",",
@@ -17,6 +18,411 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "{\"_id\":{\"$oid\":\"5e0090a414e11c00f4abf561\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"journeys\":[{\"journeyId\":\"139a7f3b752c9b4e8688\"",
+				"type": "String"
+			},
+			{
+				"name": "\"journeyName\":\"Momenta How-To\"",
+				"type": "String"
+			},
+			{
+				"name": "\"cohortId\":\"5ea6ba789df7dd00517a2038\"",
+				"type": "String"
+			},
+			{
+				"name": "\"assessments\":[]",
+				"type": "String"
+			},
+			{
+				"name": "\"isomers\":[]",
+				"type": "String"
+			},
+			{
+				"name": "\"currentRevision\":\"1\"",
+				"type": "String"
+			},
+			{
+				"name": "\"revisions\":{\"1\":{\"responses\":[]",
+				"type": "String"
+			},
+			{
+				"name": "\"states\":[]}}",
+				"type": "String"
+			},
+			{
+				"name": "\"role\":[\"participant\"]",
+				"type": "String"
+			},
+			{
+				"name": "\"isActive\":true}]",
+				"type": "String"
+			},
+			{
+				"name": "\"isTermAndConditionChecked\":false",
+				"type": "String"
+			},
+			{
+				"name": "\"customerId\":{\"$oid\":\"5e0079db99b709156cf0e99e\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"fname\":\"Ajay\"",
+				"type": "String"
+			},
+			{
+				"name": "\"lname\":\"Chhaya\"",
+				"type": "String"
+			},
+			{
+				"name": "\"email\":\"ajay.chhaya@bts.com\"",
+				"type": "String"
+			},
+			{
+				"name": "\"password\":\"$2a$10$Evzq4mpS2ZeaY.GmWXAwquN641HFOKPIrJWxL78rwEoDrq0Kvz0Eq\"16",
+				"type": "String"
+			},
+			{
+				"name": "\"role\":\"Admin\"",
+				"type": "String"
+			},
+			{
+				"name": "\"userProfile\":{\"fname\":\"ajay\"",
+				"type": "String"
+			},
+			{
+				"name": "\"lname\":\"chhaya\"",
+				"type": "String"
+			},
+			{
+				"name": "\"descriptiveAudio\":false}",
+				"type": "String"
+			},
+			{
+				"name": "\"oldPasswords\":[{\"_id\":{\"$oid\":\"5e0090a414e11c00f4abf562\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"password\":\"$2a$10$EqKClm1ihTDmV7WRpAVAruo6BWqJSMaT62irmvSc9AvW6Bw2RoCYu\"",
+				"type": "String"
+			},
+			{
+				"name": "\"timestamp\":{\"$date\":1577095332958}}",
+				"type": "String"
+			},
+			{
+				"name": "{\"_id\":{\"$oid\":\"619b7c30e1ff570011994395\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"password\":\"$2a$10$Evzq4mpS2ZeaY.GmWXAwquN641HFOKPIrJWxL78rwEoDrq0Kvz0Eq\"25",
+				"type": "String"
+			},
+			{
+				"name": "\"timestamp\":{\"$date\":1637579824622}}]",
+				"type": "String"
+			},
+			{
+				"name": "\"isActive\":true",
+				"type": "String"
+			},
+			{
+				"name": "\"createdAt\":{\"$date\":1577095332958}",
+				"type": "String"
+			},
+			{
+				"name": "\"updatedAt\":{\"$date\":1637579824623}",
+				"type": "String"
+			},
+			{
+				"name": "\"createdBy\":{\"$oid\":\"5dc3f80d386de20b6761ea27\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"updatedBy\":{\"$oid\":\"5e0090a414e11c00f4abf561\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"__v\":0",
+				"type": "String"
+			},
+			{
+				"name": "\"currentLoginFailureAttempt\":0",
+				"type": "String"
+			},
+			{
+				"name": "\"lastFailedLoginAt\":null",
+				"type": "String"
+			},
+			{
+				"name": "\"lastSuccessfulLoginAt\":{\"$date\":1672834602969}",
+				"type": "String"
+			},
+			{
+				"name": "\"userBrowserAgent\":[{\"_id\":{\"$oid\":\"63b56e2aa6c96e00189a77de\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML",
+				"type": "String"
+			},
+			{
+				"name": " like Gecko) Chrome/108.0.0.0 Safari/537.36\"",
+				"type": "String"
+			},
+			{
+				"name": "\"ipAddress\":\"10.0.111.102\"",
+				"type": "String"
+			},
+			{
+				"name": "\"timestamp\":{\"$date\":1672834602969}}]",
+				"type": "String"
+			},
+			{
+				"name": "\"recentItems\":{\"journeys\":[{\"title\":\"BTS Sample Journey\"",
+				"type": "String"
+			},
+			{
+				"name": "\"_doc\":\"8c168cbb661642a8445d\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionId\":\"828e799d7a42035ccc75\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionTitle\":\"Demo\"",
+				"type": "String"
+			},
+			{
+				"name": "\"languages\":[{\"isDefault\":false",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"Chinese (China)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"zh-CN\"}",
+				"type": "String"
+			},
+			{
+				"name": "{\"isDefault\":true",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"English\"49",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"en-US\"}50",
+				"type": "String"
+			},
+			{
+				"name": "{\"localName\":\"French\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"fr-FR\"}52",
+				"type": "String"
+			},
+			{
+				"name": "{\"isDefault\":false53",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"Italian (Traditional)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"it-IT\"}",
+				"type": "String"
+			},
+			{
+				"name": "{\"isDefault\":false56",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"Portuguese (Brazil)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"pt-BR\"}",
+				"type": "String"
+			},
+			{
+				"name": "{\"localName\":\"Spain (Traditional)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"es-ES\"}",
+				"type": "String"
+			},
+			{
+				"name": "{\"localName\":\"Spanish (Latin American)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"es-LT\"}]",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionType\":\"Client\"63",
+				"type": "String"
+			},
+			{
+				"name": "\"livesInFolder\":{\"id\":\"828e799d7a42035ccc75\"",
+				"type": "String"
+			},
+			{
+				"name": "\"title\":\"Demo\"",
+				"type": "String"
+			},
+			{
+				"name": "\"qname\":\"o:828e799d7a42035ccc75\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"belongsToCollection\":{\"id\":\"828e799d7a42035ccc75\"",
+				"type": "String"
+			},
+			{
+				"name": "\"title\":\"Demo\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"visitTime\":\"2023-01-04T12:22:08Z\"}",
+				"type": "String"
+			},
+			{
+				"name": "{\"title\":\"Isomer KTB testing\"",
+				"type": "String"
+			},
+			{
+				"name": "\"_doc\":\"3265c7274bbd559aad57\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionId\":\"e2d0945ed0ea861f80eb\"72",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionTitle\":\"BTS\"",
+				"type": "String"
+			},
+			{
+				"name": "\"languages\":[{\"isDefault\":true",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"English\"75",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"en-US\"}76",
+				"type": "String"
+			},
+			{
+				"name": "{\"isDefault\":false77",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"French\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"fr-FR\"}79",
+				"type": "String"
+			},
+			{
+				"name": "{\"isDefault\":false80",
+				"type": "String"
+			},
+			{
+				"name": "\"localName\":\"German (Traditional)\"",
+				"type": "String"
+			},
+			{
+				"name": "\"localeCode\":\"de-DE\"}]",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionType\":\"Client\"83",
+				"type": "String"
+			},
+			{
+				"name": "\"livesInFolder\":{\"id\":\"288203fbb05d8f9b0fd0\"",
+				"type": "String"
+			},
+			{
+				"name": "\"title\":\"Sandbox\"",
+				"type": "String"
+			},
+			{
+				"name": "\"qname\":\"o:288203fbb05d8f9b0fd0\"}",
+				"type": "String"
+			},
+			{
+				"name": "\"belongsToCollection\":{\"id\":\"e2d0945ed0ea861f80eb\"",
+				"type": "String"
+			},
+			{
+				"name": "\"title\":\"BTS\"",
+				"type": "String"
+			},
+			{
+				"name": "\"qname\":\"o:e2d0945ed0ea861f80eb\"}}]",
+				"type": "String"
+			},
+			{
+				"name": "\"cohorts\":[{\"cohortId\":\"62290c979ca25b0018cca281\"",
+				"type": "String"
+			},
+			{
+				"name": "\"journeyId\":\"3265c7274bbd559aad57\"",
+				"type": "String"
+			},
+			{
+				"name": "\"journeyName\":\"Isomer KTB testing\"",
+				"type": "String"
+			},
+			{
+				"name": "\"cohortName\":\"KTB isomer testing\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionTitle\":\"bts\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionId\":\"e2d0945ed0ea861f80eb\"95",
+				"type": "String"
+			},
+			{
+				"name": "\"customerId\":\"5e0079db99b709156cf0e99e\"",
+				"type": "String"
+			},
+			{
+				"name": "\"visitTime\":\"2022-03-25T16:17:56Z\"}]",
+				"type": "String"
+			},
+			{
+				"name": "\"collections\":[{\"collectionTitle\":\"StateFarm\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionId\":\"caf6a567a5b54dd76aa1\"",
+				"type": "String"
+			},
+			{
+				"name": "\"collectionType\":\"Client\"}]}}",
+				"type": "String"
+			}
+		]
 	}
 }
