@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "data_f2920f0b-fa0f-4bdb-9fe2-773614ecbf88_6ad74f5d-8d11-43c0-92ad-01feba330b07.json",
+				"fileName": "data_93c89159-fa6f-4457-9e42-85e2af6678de_ee5e35b3-fe4b-4587-88cb-fa182359a012.json",
 				"container": "btsuser"
 			},
 			"columnDelimiter": ",",
