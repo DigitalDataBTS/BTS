@@ -159,7 +159,7 @@
 									"path": "['key']"
 								},
 								"sink": {
-									"path": "$['journey'][0]['key']"
+									"path": "$['key']"
 								}
 							},
 							{
@@ -167,7 +167,7 @@
 									"path": "['value']"
 								},
 								"sink": {
-									"path": "$['journey'][0]['value']"
+									"path": "$['value']"
 								}
 							}
 						],
