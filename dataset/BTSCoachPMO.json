@@ -2,15 +2,17 @@
 	"name": "BTSCoachPMO",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HttpServer1",
+			"referenceName": "AzureBlobStorage5",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation",
-				"relativeUrl": "9c0330f3365a9456e3ae/latest/journey_en-US.json"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "journey_en-US.txt",
+				"folderPath": "3c359d8128a495514095/latest",
+				"container": "btsuserjourneystructure"
 			}
 		},
 		"schema": {}
