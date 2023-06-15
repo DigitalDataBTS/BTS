@@ -1,0 +1,35 @@
+{
+	"name": "Copy_Zebra_Mongo",
+	"properties": {
+		"description": "\n",
+		"activities": [
+			{
+				"name": "Copy Zebradata from Mongo to blob",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Zebra_mongo_DB_source_connection",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
