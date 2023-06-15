@@ -10,21 +10,22 @@
 						"type": "DatasetReference"
 					},
 					"name": "Journeystructurezebra"
+				},
+				{
+					"dataset": {
+						"referenceName": "Zebra_sink",
+						"type": "DatasetReference"
+					},
+					"name": "BlobStoreZebra"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
-				},
-				{
-					"name": "derivedColumn2"
-				},
-				{
 					"name": "derivedColumn3"
 				}
 			],
-			"script": "source(output(\n\t\tKey as string,\n\t\ttitle as string,\n\t\tvalue as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> Journeystructurezebra\nderivedColumn2 derive() ~> derivedColumn1\nderivedColumn3 derive() ~> derivedColumn2\nJourneystructurezebra derive() ~> derivedColumn3"
+			"script": "source(output(\n\t\tKey as string,\n\t\ttitle as string,\n\t\tvalue as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> Journeystructurezebra\nsource(output(\n\t\t{_id} as string,\n\t\tcohort_id as string,\n\t\tcompletion_time as timestamp,\n\t\temail as string,\n\t\tguid as long,\n\t\tjourneys_id as string,\n\t\tjourneys_name as string,\n\t\tstatus as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> BlobStoreZebra\nJourneystructurezebra derive() ~> derivedColumn3"
 		}
 	}
 }
