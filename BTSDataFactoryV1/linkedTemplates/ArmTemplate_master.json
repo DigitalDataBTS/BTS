@@ -1,0 +1,1057 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "BTSDataFactoryV1"
+		},
+		"Abbott user_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Abbott user'"
+		},
+		"Abbott_user_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Abbott_user'"
+		},
+		"Action_Users_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Action_Users'"
+		},
+		"AmazonS31_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'AmazonS31'"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureBlobStorage2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage2'"
+		},
+		"AzureBlobStorage3_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage3'"
+		},
+		"AzureBlobStorage4_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage4'"
+		},
+		"AzureBlobStorage5_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage5'"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureTableStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureTableStorage1'"
+		},
+		"BTSUsers_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'BTSUsers'"
+		},
+		"Chevron_data_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Chevron_data'"
+		},
+		"CosmosDb1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CosmosDb1'"
+		},
+		"CosmosDb2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CosmosDb2'"
+		},
+		"CosmosDbMongoDbApi2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CosmosDbMongoDbApi2'"
+		},
+		"ING_MBS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ING_MBS'"
+		},
+		"JourenystructurebtsuserJ1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'JourenystructurebtsuserJ1'"
+		},
+		"MongoDb kafka collection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'MongoDb kafka collection'"
+		},
+		"MongoDb2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'MongoDb2'"
+		},
+		"MongoDb3_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'MongoDb3'"
+		},
+		"SqlServer1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
+		},
+		"abbott_sql_server_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'abbott_sql_server'"
+		},
+		"blobstoragetoapi_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'blobstoragetoapi'"
+		},
+		"completion_20_kafka_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'completion_20_kafka'"
+		},
+		"demo_user_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'demo_user'"
+		},
+		"gpd_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'gpd'"
+		},
+		"gpddata_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'gpddata'"
+		},
+		"kafkaanalyticsconnection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'kafkaanalyticsconnection'"
+		},
+		"microsoft_mongo_user_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'microsoft_mongo_user'"
+		},
+		"microsoftmongodb_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'microsoftmongodb'"
+		},
+		"mondelez connection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'mondelez connection'"
+		},
+		"mondelezinternational_saurabh_connection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'mondelezinternational_saurabh_connection'"
+		},
+		"zebra_mongo_db_connection_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'zebra_mongo_db_connection'"
+		},
+		"Abbott user_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "abbott"
+		},
+		"Abbott_journey_structure_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/2ad0596e0f0e3c44a837/latest/journey_en-US.json"
+		},
+		"Abbott_user_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "abbott"
+		},
+		"Abbottjourneystructure_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/2ad0596e0f0e3c44a837/latest/journey_en-US.json"
+		},
+		"Action_Users_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "action"
+		},
+		"AmazonS31_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIA2TCCXGFVNDU6O2NS"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://csg100320005c456b9f.dfs.core.windows.net"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri": {
+			"type": "string",
+			"defaultValue": "https://dataextractor.azuredatalakestore.net/webhdfs/v1"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "7f602e3c-0f60-42ed-a9cd-df9907a0b0c0"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "80fae94b-6d38-41e1-8e5b-11c868b759ed"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "GDDataExtractor"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "test1"
+		},
+		"BTSUsers_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "bts"
+		},
+		"Chevron_data_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sidel"
+		},
+		"CosmosDbMongoDbApi2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testdemoapi"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/"
+		},
+		"ING_MBS_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\Pulse\\ING\\ING_MBS"
+		},
+		"ING_MBS_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "digital.data@bts.com"
+		},
+		"MDLZTeamMBA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/9ee904482510303574ee/latest/journey_en-US.json"
+		},
+		"Mondelez SPARK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/96eed0717fcac78156b3/latest/journey_en-US.json"
+		},
+		"MongoDb kafka collection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "momentaanalytics"
+		},
+		"MongoDb2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "chevroncorporation"
+		},
+		"MongoDb3_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "action"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "www.localtest.com"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://apitestanalytics.developer.azure-api.net"
+		},
+		"Web1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m1.php"
+		},
+		"Web2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m1.php"
+		},
+		"Web3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
+		},
+		"abbott_participant_list_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA"
+		},
+		"blobstoragetoapi_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "testdemoapi"
+		},
+		"completion_20_kafka_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "momentaanalytics"
+		},
+		"demo_user_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "demo"
+		},
+		"gpd_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": " momentaanalytics"
+		},
+		"gpddata_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "momentaanalytics"
+		},
+		"kafkaanalyticsconnection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "momentaanalytics"
+		},
+		"mbsdatalink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://bts.app.box.com/file/862619331823"
+		},
+		"microsoft_mongo_user_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "microsoft"
+		},
+		"microsoftmongodb_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "microsoft"
+		},
+		"mondelez connection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "mondelezinternational"
+		},
+		"mondelez_Leaders of the Future_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://content.btsmomenta.com/journeys/bd900a1514cc9a9ad18e/latest/journey_en-US.json"
+		},
+		"mondelezinternational_saurabh_connection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "mondelezinternational"
+		},
+		"reportcontentg1m2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m2.php"
+		},
+		"reportcontentg1m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m3.php"
+		},
+		"reportcontentg1m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m4.php"
+		},
+		"reportcontentg2m1link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m1.php"
+		},
+		"reportcontentg2m2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m2.php"
+		},
+		"reportcontentg2m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m3.php"
+		},
+		"reportcontentg2m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m4.php"
+		},
+		"reportcontentg3m1link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m1.php"
+		},
+		"reportcontentg3m2link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m2.php"
+		},
+		"reportcontentg3m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m3.php"
+		},
+		"reportcontentg3m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m4.php"
+		},
+		"reportcontentg4m1link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m1.php"
+		},
+		"reportcontentg4m2link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m2.php"
+		},
+		"reportcontentg4m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m3.php"
+		},
+		"reportcontentg4m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m4.php"
+		},
+		"reportcontentg5m1link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m1.php"
+		},
+		"reportcontentg5m2link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m2.php"
+		},
+		"reportcontentg5m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m3.php"
+		},
+		"reportcontentg5m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m4.php"
+		},
+		"reportm1scoringlink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1scoring.php"
+		},
+		"reportm2link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m2.php"
+		},
+		"reportm2scoringlink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m2scoring.php"
+		},
+		"reportm3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m3.php"
+		},
+		"reportm3scoringlink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m3scoring.php"
+		},
+		"reportm4_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4.php"
+		},
+		"reportm4scoringlink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4scoring.php"
+		},
+		"reportmqlink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
+		},
+		"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
+			"type": "string",
+			"defaultValue": "@{addhours(trigger().scheduledTime, -24)}"
+		},
+		"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
+			"type": "string",
+			"defaultValue": "@trigger().scheduledTime"
+		},
+		"zebra_mongo_db_connection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "zebratechnologies"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AmazonS31_secretAccessKey": {
+						"value": "[parameters('AmazonS31_secretAccessKey')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureBlobStorage2_connectionString": {
+						"value": "[parameters('AzureBlobStorage2_connectionString')]"
+					},
+					"AzureBlobStorage3_connectionString": {
+						"value": "[parameters('AzureBlobStorage3_connectionString')]"
+					},
+					"AzureBlobStorage4_connectionString": {
+						"value": "[parameters('AzureBlobStorage4_connectionString')]"
+					},
+					"AzureBlobStorage5_connectionString": {
+						"value": "[parameters('AzureBlobStorage5_connectionString')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureTableStorage1_connectionString": {
+						"value": "[parameters('AzureTableStorage1_connectionString')]"
+					},
+					"JourenystructurebtsuserJ1_connectionString": {
+						"value": "[parameters('JourenystructurebtsuserJ1_connectionString')]"
+					},
+					"MongoDb3_connectionString": {
+						"value": "[parameters('MongoDb3_connectionString')]"
+					},
+					"blobstoragetoapi_connectionString": {
+						"value": "[parameters('blobstoragetoapi_connectionString')]"
+					},
+					"microsoft_mongo_user_connectionString": {
+						"value": "[parameters('microsoft_mongo_user_connectionString')]"
+					},
+					"microsoftmongodb_connectionString": {
+						"value": "[parameters('microsoftmongodb_connectionString')]"
+					},
+					"AmazonS31_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('AmazonS31_properties_typeProperties_accessKeyId')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri": {
+						"value": "[parameters('AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri')]"
+					},
+					"AzureDataLakeStore1_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureDataLakeStore1_properties_typeProperties_tenant')]"
+					},
+					"AzureDataLakeStore1_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureDataLakeStore1_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureDataLakeStore1_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureDataLakeStore1_properties_typeProperties_resourceGroupName')]"
+					},
+					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
+					},
+					"MDLZTeamMBA_properties_typeProperties_url": {
+						"value": "[parameters('MDLZTeamMBA_properties_typeProperties_url')]"
+					},
+					"MongoDb3_properties_typeProperties_database": {
+						"value": "[parameters('MongoDb3_properties_typeProperties_database')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"RestService2_properties_typeProperties_url": {
+						"value": "[parameters('RestService2_properties_typeProperties_url')]"
+					},
+					"blobstoragetoapi_properties_typeProperties_database": {
+						"value": "[parameters('blobstoragetoapi_properties_typeProperties_database')]"
+					},
+					"microsoft_mongo_user_properties_typeProperties_database": {
+						"value": "[parameters('microsoft_mongo_user_properties_typeProperties_database')]"
+					},
+					"microsoftmongodb_properties_typeProperties_database": {
+						"value": "[parameters('microsoftmongodb_properties_typeProperties_database')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_3')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_5",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_5.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_4')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_6",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_6.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Abbott user_connectionString": {
+						"value": "[parameters('Abbott user_connectionString')]"
+					},
+					"Abbott user_properties_typeProperties_database": {
+						"value": "[parameters('Abbott user_properties_typeProperties_database')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_5')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_7",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_7.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Abbott_user_connectionString": {
+						"value": "[parameters('Abbott_user_connectionString')]"
+					},
+					"Action_Users_connectionString": {
+						"value": "[parameters('Action_Users_connectionString')]"
+					},
+					"BTSUsers_connectionString": {
+						"value": "[parameters('BTSUsers_connectionString')]"
+					},
+					"Chevron_data_connectionString": {
+						"value": "[parameters('Chevron_data_connectionString')]"
+					},
+					"CosmosDb1_connectionString": {
+						"value": "[parameters('CosmosDb1_connectionString')]"
+					},
+					"CosmosDb2_connectionString": {
+						"value": "[parameters('CosmosDb2_connectionString')]"
+					},
+					"CosmosDbMongoDbApi2_connectionString": {
+						"value": "[parameters('CosmosDbMongoDbApi2_connectionString')]"
+					},
+					"ING_MBS_password": {
+						"value": "[parameters('ING_MBS_password')]"
+					},
+					"MongoDb kafka collection_connectionString": {
+						"value": "[parameters('MongoDb kafka collection_connectionString')]"
+					},
+					"MongoDb2_connectionString": {
+						"value": "[parameters('MongoDb2_connectionString')]"
+					},
+					"SqlServer1_connectionString": {
+						"value": "[parameters('SqlServer1_connectionString')]"
+					},
+					"abbott_sql_server_connectionString": {
+						"value": "[parameters('abbott_sql_server_connectionString')]"
+					},
+					"completion_20_kafka_connectionString": {
+						"value": "[parameters('completion_20_kafka_connectionString')]"
+					},
+					"Abbott_journey_structure_properties_typeProperties_url": {
+						"value": "[parameters('Abbott_journey_structure_properties_typeProperties_url')]"
+					},
+					"Abbott_user_properties_typeProperties_database": {
+						"value": "[parameters('Abbott_user_properties_typeProperties_database')]"
+					},
+					"Abbottjourneystructure_properties_typeProperties_url": {
+						"value": "[parameters('Abbottjourneystructure_properties_typeProperties_url')]"
+					},
+					"Action_Users_properties_typeProperties_database": {
+						"value": "[parameters('Action_Users_properties_typeProperties_database')]"
+					},
+					"BTSUsers_properties_typeProperties_database": {
+						"value": "[parameters('BTSUsers_properties_typeProperties_database')]"
+					},
+					"Chevron_data_properties_typeProperties_database": {
+						"value": "[parameters('Chevron_data_properties_typeProperties_database')]"
+					},
+					"CosmosDbMongoDbApi2_properties_typeProperties_database": {
+						"value": "[parameters('CosmosDbMongoDbApi2_properties_typeProperties_database')]"
+					},
+					"ING_MBS_properties_typeProperties_host": {
+						"value": "[parameters('ING_MBS_properties_typeProperties_host')]"
+					},
+					"ING_MBS_properties_typeProperties_userId": {
+						"value": "[parameters('ING_MBS_properties_typeProperties_userId')]"
+					},
+					"Mondelez SPARK_properties_typeProperties_url": {
+						"value": "[parameters('Mondelez SPARK_properties_typeProperties_url')]"
+					},
+					"MongoDb kafka collection_properties_typeProperties_database": {
+						"value": "[parameters('MongoDb kafka collection_properties_typeProperties_database')]"
+					},
+					"MongoDb2_properties_typeProperties_database": {
+						"value": "[parameters('MongoDb2_properties_typeProperties_database')]"
+					},
+					"Web1_properties_typeProperties_url": {
+						"value": "[parameters('Web1_properties_typeProperties_url')]"
+					},
+					"Web2_properties_typeProperties_url": {
+						"value": "[parameters('Web2_properties_typeProperties_url')]"
+					},
+					"Web3_properties_typeProperties_url": {
+						"value": "[parameters('Web3_properties_typeProperties_url')]"
+					},
+					"abbott_participant_list_properties_typeProperties_url": {
+						"value": "[parameters('abbott_participant_list_properties_typeProperties_url')]"
+					},
+					"completion_20_kafka_properties_typeProperties_database": {
+						"value": "[parameters('completion_20_kafka_properties_typeProperties_database')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_6')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_8",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_8.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"demo_user_connectionString": {
+						"value": "[parameters('demo_user_connectionString')]"
+					},
+					"gpd_connectionString": {
+						"value": "[parameters('gpd_connectionString')]"
+					},
+					"gpddata_connectionString": {
+						"value": "[parameters('gpddata_connectionString')]"
+					},
+					"kafkaanalyticsconnection_connectionString": {
+						"value": "[parameters('kafkaanalyticsconnection_connectionString')]"
+					},
+					"mondelez connection_connectionString": {
+						"value": "[parameters('mondelez connection_connectionString')]"
+					},
+					"mondelezinternational_saurabh_connection_connectionString": {
+						"value": "[parameters('mondelezinternational_saurabh_connection_connectionString')]"
+					},
+					"demo_user_properties_typeProperties_database": {
+						"value": "[parameters('demo_user_properties_typeProperties_database')]"
+					},
+					"gpd_properties_typeProperties_database": {
+						"value": "[parameters('gpd_properties_typeProperties_database')]"
+					},
+					"gpddata_properties_typeProperties_database": {
+						"value": "[parameters('gpddata_properties_typeProperties_database')]"
+					},
+					"kafkaanalyticsconnection_properties_typeProperties_database": {
+						"value": "[parameters('kafkaanalyticsconnection_properties_typeProperties_database')]"
+					},
+					"mbsdatalink_properties_typeProperties_url": {
+						"value": "[parameters('mbsdatalink_properties_typeProperties_url')]"
+					},
+					"mondelez connection_properties_typeProperties_database": {
+						"value": "[parameters('mondelez connection_properties_typeProperties_database')]"
+					},
+					"mondelez_Leaders of the Future_properties_typeProperties_url": {
+						"value": "[parameters('mondelez_Leaders of the Future_properties_typeProperties_url')]"
+					},
+					"mondelezinternational_saurabh_connection_properties_typeProperties_database": {
+						"value": "[parameters('mondelezinternational_saurabh_connection_properties_typeProperties_database')]"
+					},
+					"reportcontentg1m2_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg1m2_properties_typeProperties_url')]"
+					},
+					"reportcontentg1m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg1m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg1m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg1m4link_properties_typeProperties_url')]"
+					},
+					"reportcontentg2m1link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m1link_properties_typeProperties_url')]"
+					},
+					"reportcontentg2m2_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m2_properties_typeProperties_url')]"
+					},
+					"reportcontentg2m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg2m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m4link_properties_typeProperties_url')]"
+					},
+					"reportcontentg3m1link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]"
+					},
+					"reportcontentg3m2link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]"
+					},
+					"reportcontentg3m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg3m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m4link_properties_typeProperties_url')]"
+					},
+					"reportcontentg4m1link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg4m1link_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_7')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_9",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_9.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"zebra_mongo_db_connection_connectionString": {
+						"value": "[parameters('zebra_mongo_db_connection_connectionString')]"
+					},
+					"reportcontentg4m2link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg4m2link_properties_typeProperties_url')]"
+					},
+					"reportcontentg4m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg4m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg4m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg4m4link_properties_typeProperties_url')]"
+					},
+					"reportcontentg5m1link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg5m1link_properties_typeProperties_url')]"
+					},
+					"reportcontentg5m2link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg5m2link_properties_typeProperties_url')]"
+					},
+					"reportcontentg5m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg5m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg5m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg5m4link_properties_typeProperties_url')]"
+					},
+					"reportm1scoringlink_properties_typeProperties_url": {
+						"value": "[parameters('reportm1scoringlink_properties_typeProperties_url')]"
+					},
+					"reportm2link_properties_typeProperties_url": {
+						"value": "[parameters('reportm2link_properties_typeProperties_url')]"
+					},
+					"reportm2scoringlink_properties_typeProperties_url": {
+						"value": "[parameters('reportm2scoringlink_properties_typeProperties_url')]"
+					},
+					"reportm3link_properties_typeProperties_url": {
+						"value": "[parameters('reportm3link_properties_typeProperties_url')]"
+					},
+					"reportm3scoringlink_properties_typeProperties_url": {
+						"value": "[parameters('reportm3scoringlink_properties_typeProperties_url')]"
+					},
+					"reportm4_properties_typeProperties_url": {
+						"value": "[parameters('reportm4_properties_typeProperties_url')]"
+					},
+					"reportm4scoringlink_properties_typeProperties_url": {
+						"value": "[parameters('reportm4scoringlink_properties_typeProperties_url')]"
+					},
+					"reportmqlink_properties_typeProperties_url": {
+						"value": "[parameters('reportmqlink_properties_typeProperties_url')]"
+					},
+					"zebra_mongo_db_connection_properties_typeProperties_database": {
+						"value": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_8')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_10",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_10.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_9')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_11",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_11.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_10')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_12",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_12.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_11')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_13",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_13.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_12')]"
+			]
+		},
+		{
+			"name": "BTSDataFactoryV1_ArmTemplate_14",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_14.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
+						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowStart')]"
+					},
+					"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
+						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowEnd')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'BTSDataFactoryV1_ArmTemplate_13')]"
+			]
+		}
+	]
+}

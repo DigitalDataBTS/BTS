@@ -1,0 +1,1308 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "BTSDataFactoryV1"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "salesforcedata"
+					},
+					"columnDelimiter": "\u0001",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText4')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "reportcontentg1m1"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "reportcontentg1m1"
+					},
+					"columnDelimiter": "\u0001",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Role",
+						"type": "String"
+					},
+					{
+						"name": "First Name",
+						"type": "String"
+					},
+					{
+						"name": "Last Name",
+						"type": "String"
+					},
+					{
+						"name": "Email",
+						"type": "String"
+					},
+					{
+						"name": "Overview. Overview - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Overview. Overview",
+						"type": "String"
+					},
+					{
+						"name": "Overview. Schedule",
+						"type": "String"
+					},
+					{
+						"name": "Introduction. Module One guide",
+						"type": "String"
+					},
+					{
+						"name": "FLL Tryout. Leader roles or core capabilities",
+						"type": "String"
+					},
+					{
+						"name": "FLL Tryout. Biggest strengths",
+						"type": "String"
+					},
+					{
+						"name": "FLL Tryout. Most surprising - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Salesforce Values card sort PDF",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Value One",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Value Two",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Value Three",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Importance",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. My behaviors",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. My brand",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. My best",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Not my best",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Your Leadership Brand. Statement",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Catch Up. Email",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Catch Up. Takeaways",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Catch Up. Learning areas",
+						"type": "String"
+					},
+					{
+						"name": "Pod 1. Video Summary",
+						"type": "String"
+					},
+					{
+						"name": "Virtual Workshop 1. Catch Up. Email",
+						"type": "String"
+					},
+					{
+						"name": "Virtual Workshop 1. Catch Up. Takeaways",
+						"type": "String"
+					},
+					{
+						"name": "Virtual Workshop 1. Catch Up. Learning areas",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. Instructional PDF",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Pitfalls - CHANGED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Pitfalls",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Actions",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Accountable",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Impact knowing pitfalls",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Do differently - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L1. Email worked with - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L2. Pitfalls (G1) / Insight (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L2. Recover (G1) / Advice (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L2. Learn - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L2. Email worked with",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L3. Learn",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L3. Feedback - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L3. Teaching improve",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 1. L3. Email worked with",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Committed listening. What did you notice",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Committed listening. Whats in the way",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Leadership shift",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Leadership shift. Change",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Mindset. From",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Mindset. To",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Mindset. Change",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Behavior. From",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Behavior. To",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Behavior. Change",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Impact. From",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Impact. To",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Impact. Change",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Result",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Result. Change",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. MBIR. Other Comments",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Catch Up. Email",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Catch Up. Takeaways",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Catch Up. Learning areas",
+						"type": "String"
+					},
+					{
+						"name": "Pod 2. Video Summary",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. Instructional PDF",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L1. MBIR change (G1) / Insights (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L1. Insights (G1) / Learn (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L1. Help - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L1. Email worked with",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L2. MBIR change",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L2. Shifts (G1) / Do differently (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L2. Do differently - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L2. Email worked with",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. Difficult (G1) / Connecting to IDP (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. V2MOM Mindset shift (G1) / Do differently (G2...)",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. V2MOM Assumptions - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. V2MOM Do differently - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. Actions Assumptions - REMOVED",
+						"type": "String"
+					},
+					{
+						"name": "Stretch Assignment 2. L3. Email worked with",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText6')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage3",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "ING_Hybrid_MBS_AssessmentReport_24-08-2021.csv",
+						"container": "mbsdata"
+					},
+					"columnDelimiter": "\u0001",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "sep=;",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_2g5')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "gpdfinal"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_2m3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"container": "abbottuser"
+					},
+					"columnDelimiter": "\u0001",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_36u')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage4",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "completion20kafka"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_3eq')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "microsoftoutputv4"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_3jq')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "microsoftoutputv3"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_5xq')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "mondelezinternational-mongodb"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"_id": {
+							"type": "object",
+							"properties": {
+								"$oid": {
+									"type": "string"
+								}
+							}
+						},
+						"journeys": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"journeyName": {
+										"type": "string"
+									},
+									"cohortId": {
+										"type": "string"
+									},
+									"revisions": {
+										"type": "object",
+										"properties": {
+											"1": {
+												"type": "object",
+												"properties": {
+													"states": {
+														"type": "array",
+														"items": {
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string"
+																},
+																"state": {
+																	"type": "string"
+																},
+																"type": {
+																	"type": "string"
+																},
+																"completionTime": {
+																	"type": "string"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						},
+						"email": {
+							"type": "string"
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_5xw')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "gpdusers"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_7el')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "salesforcedata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_7kt')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "chevrondata"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_7nn')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "mondelezinternational-saurabh"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string"
+						},
+						"journey": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_c3j')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Microsoft_outputv1",
+						"container": "microsoftoutputv1"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_ddy')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "data_93c89159-fa6f-4457-9e42-85e2af6678de_ee5e35b3-fe4b-4587-88cb-fa182359a012.json",
+						"container": "btsuser"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "{\"_id\":{\"$oid\":\"5e0090a414e11c00f4abf561\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"journeys\":[{\"journeyId\":\"139a7f3b752c9b4e8688\"",
+						"type": "String"
+					},
+					{
+						"name": "\"journeyName\":\"Momenta How-To\"",
+						"type": "String"
+					},
+					{
+						"name": "\"cohortId\":\"5ea6ba789df7dd00517a2038\"",
+						"type": "String"
+					},
+					{
+						"name": "\"assessments\":[]",
+						"type": "String"
+					},
+					{
+						"name": "\"isomers\":[]",
+						"type": "String"
+					},
+					{
+						"name": "\"currentRevision\":\"1\"",
+						"type": "String"
+					},
+					{
+						"name": "\"revisions\":{\"1\":{\"responses\":[]",
+						"type": "String"
+					},
+					{
+						"name": "\"states\":[]}}",
+						"type": "String"
+					},
+					{
+						"name": "\"role\":[\"participant\"]",
+						"type": "String"
+					},
+					{
+						"name": "\"isActive\":true}]",
+						"type": "String"
+					},
+					{
+						"name": "\"isTermAndConditionChecked\":false",
+						"type": "String"
+					},
+					{
+						"name": "\"customerId\":{\"$oid\":\"5e0079db99b709156cf0e99e\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"fname\":\"Ajay\"",
+						"type": "String"
+					},
+					{
+						"name": "\"lname\":\"Chhaya\"",
+						"type": "String"
+					},
+					{
+						"name": "\"email\":\"ajay.chhaya@bts.com\"",
+						"type": "String"
+					},
+					{
+						"name": "\"password\":\"$2a$10$Evzq4mpS2ZeaY.GmWXAwquN641HFOKPIrJWxL78rwEoDrq0Kvz0Eq\"16",
+						"type": "String"
+					},
+					{
+						"name": "\"role\":\"Admin\"",
+						"type": "String"
+					},
+					{
+						"name": "\"userProfile\":{\"fname\":\"ajay\"",
+						"type": "String"
+					},
+					{
+						"name": "\"lname\":\"chhaya\"",
+						"type": "String"
+					},
+					{
+						"name": "\"descriptiveAudio\":false}",
+						"type": "String"
+					},
+					{
+						"name": "\"oldPasswords\":[{\"_id\":{\"$oid\":\"5e0090a414e11c00f4abf562\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"password\":\"$2a$10$EqKClm1ihTDmV7WRpAVAruo6BWqJSMaT62irmvSc9AvW6Bw2RoCYu\"",
+						"type": "String"
+					},
+					{
+						"name": "\"timestamp\":{\"$date\":1577095332958}}",
+						"type": "String"
+					},
+					{
+						"name": "{\"_id\":{\"$oid\":\"619b7c30e1ff570011994395\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"password\":\"$2a$10$Evzq4mpS2ZeaY.GmWXAwquN641HFOKPIrJWxL78rwEoDrq0Kvz0Eq\"25",
+						"type": "String"
+					},
+					{
+						"name": "\"timestamp\":{\"$date\":1637579824622}}]",
+						"type": "String"
+					},
+					{
+						"name": "\"isActive\":true",
+						"type": "String"
+					},
+					{
+						"name": "\"createdAt\":{\"$date\":1577095332958}",
+						"type": "String"
+					},
+					{
+						"name": "\"updatedAt\":{\"$date\":1637579824623}",
+						"type": "String"
+					},
+					{
+						"name": "\"createdBy\":{\"$oid\":\"5dc3f80d386de20b6761ea27\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"updatedBy\":{\"$oid\":\"5e0090a414e11c00f4abf561\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"__v\":0",
+						"type": "String"
+					},
+					{
+						"name": "\"currentLoginFailureAttempt\":0",
+						"type": "String"
+					},
+					{
+						"name": "\"lastFailedLoginAt\":null",
+						"type": "String"
+					},
+					{
+						"name": "\"lastSuccessfulLoginAt\":{\"$date\":1672834602969}",
+						"type": "String"
+					},
+					{
+						"name": "\"userBrowserAgent\":[{\"_id\":{\"$oid\":\"63b56e2aa6c96e00189a77de\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"userAgent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML",
+						"type": "String"
+					},
+					{
+						"name": " like Gecko) Chrome/108.0.0.0 Safari/537.36\"",
+						"type": "String"
+					},
+					{
+						"name": "\"ipAddress\":\"10.0.111.102\"",
+						"type": "String"
+					},
+					{
+						"name": "\"timestamp\":{\"$date\":1672834602969}}]",
+						"type": "String"
+					},
+					{
+						"name": "\"recentItems\":{\"journeys\":[{\"title\":\"BTS Sample Journey\"",
+						"type": "String"
+					},
+					{
+						"name": "\"_doc\":\"8c168cbb661642a8445d\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionId\":\"828e799d7a42035ccc75\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionTitle\":\"Demo\"",
+						"type": "String"
+					},
+					{
+						"name": "\"languages\":[{\"isDefault\":false",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"Chinese (China)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"zh-CN\"}",
+						"type": "String"
+					},
+					{
+						"name": "{\"isDefault\":true",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"English\"49",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"en-US\"}50",
+						"type": "String"
+					},
+					{
+						"name": "{\"localName\":\"French\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"fr-FR\"}52",
+						"type": "String"
+					},
+					{
+						"name": "{\"isDefault\":false53",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"Italian (Traditional)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"it-IT\"}",
+						"type": "String"
+					},
+					{
+						"name": "{\"isDefault\":false56",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"Portuguese (Brazil)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"pt-BR\"}",
+						"type": "String"
+					},
+					{
+						"name": "{\"localName\":\"Spain (Traditional)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"es-ES\"}",
+						"type": "String"
+					},
+					{
+						"name": "{\"localName\":\"Spanish (Latin American)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"es-LT\"}]",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionType\":\"Client\"63",
+						"type": "String"
+					},
+					{
+						"name": "\"livesInFolder\":{\"id\":\"828e799d7a42035ccc75\"",
+						"type": "String"
+					},
+					{
+						"name": "\"title\":\"Demo\"",
+						"type": "String"
+					},
+					{
+						"name": "\"qname\":\"o:828e799d7a42035ccc75\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"belongsToCollection\":{\"id\":\"828e799d7a42035ccc75\"",
+						"type": "String"
+					},
+					{
+						"name": "\"title\":\"Demo\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"visitTime\":\"2023-01-04T12:22:08Z\"}",
+						"type": "String"
+					},
+					{
+						"name": "{\"title\":\"Isomer KTB testing\"",
+						"type": "String"
+					},
+					{
+						"name": "\"_doc\":\"3265c7274bbd559aad57\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionId\":\"e2d0945ed0ea861f80eb\"72",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionTitle\":\"BTS\"",
+						"type": "String"
+					},
+					{
+						"name": "\"languages\":[{\"isDefault\":true",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"English\"75",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"en-US\"}76",
+						"type": "String"
+					},
+					{
+						"name": "{\"isDefault\":false77",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"French\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"fr-FR\"}79",
+						"type": "String"
+					},
+					{
+						"name": "{\"isDefault\":false80",
+						"type": "String"
+					},
+					{
+						"name": "\"localName\":\"German (Traditional)\"",
+						"type": "String"
+					},
+					{
+						"name": "\"localeCode\":\"de-DE\"}]",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionType\":\"Client\"83",
+						"type": "String"
+					},
+					{
+						"name": "\"livesInFolder\":{\"id\":\"288203fbb05d8f9b0fd0\"",
+						"type": "String"
+					},
+					{
+						"name": "\"title\":\"Sandbox\"",
+						"type": "String"
+					},
+					{
+						"name": "\"qname\":\"o:288203fbb05d8f9b0fd0\"}",
+						"type": "String"
+					},
+					{
+						"name": "\"belongsToCollection\":{\"id\":\"e2d0945ed0ea861f80eb\"",
+						"type": "String"
+					},
+					{
+						"name": "\"title\":\"BTS\"",
+						"type": "String"
+					},
+					{
+						"name": "\"qname\":\"o:e2d0945ed0ea861f80eb\"}}]",
+						"type": "String"
+					},
+					{
+						"name": "\"cohorts\":[{\"cohortId\":\"62290c979ca25b0018cca281\"",
+						"type": "String"
+					},
+					{
+						"name": "\"journeyId\":\"3265c7274bbd559aad57\"",
+						"type": "String"
+					},
+					{
+						"name": "\"journeyName\":\"Isomer KTB testing\"",
+						"type": "String"
+					},
+					{
+						"name": "\"cohortName\":\"KTB isomer testing\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionTitle\":\"bts\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionId\":\"e2d0945ed0ea861f80eb\"95",
+						"type": "String"
+					},
+					{
+						"name": "\"customerId\":\"5e0079db99b709156cf0e99e\"",
+						"type": "String"
+					},
+					{
+						"name": "\"visitTime\":\"2022-03-25T16:17:56Z\"}]",
+						"type": "String"
+					},
+					{
+						"name": "\"collections\":[{\"collectionTitle\":\"StateFarm\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionId\":\"caf6a567a5b54dd76aa1\"",
+						"type": "String"
+					},
+					{
+						"name": "\"collectionType\":\"Client\"}]}}",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_ec2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "usersessions",
+						"container": "gpddemo"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_isf')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"container": "gpdfinal"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_j24')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"cw_fileName": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().cw_fileName",
+							"type": "Expression"
+						},
+						"container": "gpdfinal"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DestinationDataset_l80')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "abbottuser"
+					},
+					"columnDelimiter": "\u0001",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -1,0 +1,324 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "BTSDataFactoryV1"
+		},
+		"Abbott user_connectionString": {
+			"value": ""
+		},
+		"Abbott_user_connectionString": {
+			"value": ""
+		},
+		"Action_Users_connectionString": {
+			"value": ""
+		},
+		"AmazonS31_secretAccessKey": {
+			"value": ""
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage2_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage3_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage4_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage5_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureTableStorage1_connectionString": {
+			"value": ""
+		},
+		"BTSUsers_connectionString": {
+			"value": ""
+		},
+		"Chevron_data_connectionString": {
+			"value": ""
+		},
+		"CosmosDb1_connectionString": {
+			"value": ""
+		},
+		"CosmosDb2_connectionString": {
+			"value": ""
+		},
+		"CosmosDbMongoDbApi2_connectionString": {
+			"value": ""
+		},
+		"ING_MBS_password": {
+			"value": ""
+		},
+		"JourenystructurebtsuserJ1_connectionString": {
+			"value": ""
+		},
+		"MongoDb kafka collection_connectionString": {
+			"value": ""
+		},
+		"MongoDb2_connectionString": {
+			"value": ""
+		},
+		"MongoDb3_connectionString": {
+			"value": ""
+		},
+		"SqlServer1_connectionString": {
+			"value": ""
+		},
+		"abbott_sql_server_connectionString": {
+			"value": ""
+		},
+		"blobstoragetoapi_connectionString": {
+			"value": ""
+		},
+		"completion_20_kafka_connectionString": {
+			"value": ""
+		},
+		"demo_user_connectionString": {
+			"value": ""
+		},
+		"gpd_connectionString": {
+			"value": ""
+		},
+		"gpddata_connectionString": {
+			"value": ""
+		},
+		"kafkaanalyticsconnection_connectionString": {
+			"value": ""
+		},
+		"microsoft_mongo_user_connectionString": {
+			"value": ""
+		},
+		"microsoftmongodb_connectionString": {
+			"value": ""
+		},
+		"mondelez connection_connectionString": {
+			"value": ""
+		},
+		"mondelezinternational_saurabh_connection_connectionString": {
+			"value": ""
+		},
+		"zebra_mongo_db_connection_connectionString": {
+			"value": ""
+		},
+		"Abbott user_properties_typeProperties_database": {
+			"value": "abbott"
+		},
+		"Abbott_journey_structure_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/2ad0596e0f0e3c44a837/latest/journey_en-US.json"
+		},
+		"Abbott_user_properties_typeProperties_database": {
+			"value": "abbott"
+		},
+		"Abbottjourneystructure_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/2ad0596e0f0e3c44a837/latest/journey_en-US.json"
+		},
+		"Action_Users_properties_typeProperties_database": {
+			"value": "action"
+		},
+		"AmazonS31_properties_typeProperties_accessKeyId": {
+			"value": "AKIA2TCCXGFVNDU6O2NS"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://csg100320005c456b9f.dfs.core.windows.net"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_dataLakeStoreUri": {
+			"value": "https://dataextractor.azuredatalakestore.net/webhdfs/v1"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_tenant": {
+			"value": "7f602e3c-0f60-42ed-a9cd-df9907a0b0c0"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_subscriptionId": {
+			"value": "80fae94b-6d38-41e1-8e5b-11c868b759ed"
+		},
+		"AzureDataLakeStore1_properties_typeProperties_resourceGroupName": {
+			"value": "GDDataExtractor"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "test1"
+		},
+		"BTSUsers_properties_typeProperties_database": {
+			"value": "bts"
+		},
+		"Chevron_data_properties_typeProperties_database": {
+			"value": "sidel"
+		},
+		"CosmosDbMongoDbApi2_properties_typeProperties_database": {
+			"value": "testdemoapi"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/"
+		},
+		"ING_MBS_properties_typeProperties_host": {
+			"value": "C:\\Pulse\\ING\\ING_MBS"
+		},
+		"ING_MBS_properties_typeProperties_userId": {
+			"value": "digital.data@bts.com"
+		},
+		"MDLZTeamMBA_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/9ee904482510303574ee/latest/journey_en-US.json"
+		},
+		"Mondelez SPARK_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/96eed0717fcac78156b3/latest/journey_en-US.json"
+		},
+		"MongoDb kafka collection_properties_typeProperties_database": {
+			"value": "momentaanalytics"
+		},
+		"MongoDb2_properties_typeProperties_database": {
+			"value": "chevroncorporation"
+		},
+		"MongoDb3_properties_typeProperties_database": {
+			"value": "action"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "www.localtest.com"
+		},
+		"RestService2_properties_typeProperties_url": {
+			"value": "https://apitestanalytics.developer.azure-api.net"
+		},
+		"Web1_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m1.php"
+		},
+		"Web2_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m1.php"
+		},
+		"Web3_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
+		},
+		"abbott_participant_list_properties_typeProperties_url": {
+			"value": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA"
+		},
+		"blobstoragetoapi_properties_typeProperties_database": {
+			"value": "testdemoapi"
+		},
+		"completion_20_kafka_properties_typeProperties_database": {
+			"value": "momentaanalytics"
+		},
+		"demo_user_properties_typeProperties_database": {
+			"value": "demo"
+		},
+		"gpd_properties_typeProperties_database": {
+			"value": " momentaanalytics"
+		},
+		"gpddata_properties_typeProperties_database": {
+			"value": "momentaanalytics"
+		},
+		"kafkaanalyticsconnection_properties_typeProperties_database": {
+			"value": "momentaanalytics"
+		},
+		"mbsdatalink_properties_typeProperties_url": {
+			"value": "https://bts.app.box.com/file/862619331823"
+		},
+		"microsoft_mongo_user_properties_typeProperties_database": {
+			"value": "microsoft"
+		},
+		"microsoftmongodb_properties_typeProperties_database": {
+			"value": "microsoft"
+		},
+		"mondelez connection_properties_typeProperties_database": {
+			"value": "mondelezinternational"
+		},
+		"mondelez_Leaders of the Future_properties_typeProperties_url": {
+			"value": "https://content.btsmomenta.com/journeys/bd900a1514cc9a9ad18e/latest/journey_en-US.json"
+		},
+		"mondelezinternational_saurabh_connection_properties_typeProperties_database": {
+			"value": "mondelezinternational"
+		},
+		"reportcontentg1m2_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m2.php"
+		},
+		"reportcontentg1m3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m3.php"
+		},
+		"reportcontentg1m4link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g1m4.php"
+		},
+		"reportcontentg2m1link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m1.php"
+		},
+		"reportcontentg2m2_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m2.php"
+		},
+		"reportcontentg2m3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m3.php"
+		},
+		"reportcontentg2m4link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m4.php"
+		},
+		"reportcontentg3m1link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m1.php"
+		},
+		"reportcontentg3m2link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m2.php"
+		},
+		"reportcontentg3m3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m3.php"
+		},
+		"reportcontentg3m4link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m4.php"
+		},
+		"reportcontentg4m1link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m1.php"
+		},
+		"reportcontentg4m2link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m2.php"
+		},
+		"reportcontentg4m3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m3.php"
+		},
+		"reportcontentg4m4link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m4.php"
+		},
+		"reportcontentg5m1link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m1.php"
+		},
+		"reportcontentg5m2link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m2.php"
+		},
+		"reportcontentg5m3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m3.php"
+		},
+		"reportcontentg5m4link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g5m4.php"
+		},
+		"reportm1scoringlink_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1scoring.php"
+		},
+		"reportm2link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m2.php"
+		},
+		"reportm2scoringlink_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m2scoring.php"
+		},
+		"reportm3link_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m3.php"
+		},
+		"reportm3scoringlink_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m3scoring.php"
+		},
+		"reportm4_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4.php"
+		},
+		"reportm4scoringlink_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4scoring.php"
+		},
+		"reportmqlink_properties_typeProperties_url": {
+			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
+		},
+		"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
+			"value": "@{addhours(trigger().scheduledTime, -24)}"
+		},
+		"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
+			"value": "@trigger().scheduledTime"
+		},
+		"zebra_mongo_db_connection_properties_typeProperties_database": {
+			"value": "zebratechnologies"
+		}
+	}
+}
