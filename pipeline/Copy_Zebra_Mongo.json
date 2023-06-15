@@ -20,11 +20,26 @@
 						"type": "MongoDbV2Source",
 						"batchSize": 100
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
 						"referenceName": "Zebra_mongo_DB_source_connection",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Zebra_sink",
 						"type": "DatasetReference"
 					}
 				]
