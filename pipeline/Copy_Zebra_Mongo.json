@@ -123,7 +123,7 @@
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "Journeystructue_zebras3to_blob",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -145,11 +145,55 @@
 							"type": "JsonReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['title']"
+								},
+								"sink": {
+									"path": "$['title']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journey'][0]['key']"
+								},
+								"sink": {
+									"path": "$['Key']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journey'][0]['value']"
+								},
+								"sink": {
+									"path": "$['value']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "Zebra_journey_strucure_to_blob",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sink_zebratech_journey_structure",
 						"type": "DatasetReference"
 					}
 				]
