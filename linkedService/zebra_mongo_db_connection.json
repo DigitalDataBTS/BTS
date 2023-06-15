@@ -5,9 +5,9 @@
 		"annotations": [],
 		"type": "MongoDbV2",
 		"typeProperties": {
-			"connectionString": "mongodb://dashboardRead:@globalregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
+			"connectionString": "mongodb://dashboardRead:@globalregiondatabase.btsmomenta.com",
 			"database": "zebratechnologies",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4YmRlMTdlYi01OGVkLTRlOGMtOThmMi0zMTliZWE3ZDkzNjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI1NmRiZDFmMS04NGRlLTQ0NWMtODdkMC03ZGM4NjcwODE4MTkiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
