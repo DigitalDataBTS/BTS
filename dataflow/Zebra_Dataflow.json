@@ -26,9 +26,12 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "filter1"
 				}
 			],
-			"script": "source(output(\n\t\tjourney as (key as string, value as string)[],\n\t\ttitle as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> Journeystructurezebra\nsource(output(\n\t\t{_id} as string,\n\t\tcohort_id as string,\n\t\tcompletion_time as timestamp,\n\t\temail as string,\n\t\tguid as long,\n\t\tjourneys_id as string,\n\t\tjourneys_name as string,\n\t\tstatus as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> BlobStoreZebra\nJourneystructurezebra foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> flatten1\nflatten1 derive(custom = regexReplace(key, '[^0-9]','')) ~> derivedColumn1"
+			"script": "source(output(\n\t\tjourney as (key as string, value as string)[],\n\t\ttitle as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> Journeystructurezebra\nsource(output(\n\t\t{_id} as string,\n\t\tcohort_id as string,\n\t\tcompletion_time as timestamp,\n\t\temail as string,\n\t\tguid as long,\n\t\tjourneys_id as string,\n\t\tjourneys_name as string,\n\t\tstatus as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> BlobStoreZebra\nJourneystructurezebra foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> flatten1\nflatten1 derive(custom = regexReplace(key, '[^0-9]','')) ~> derivedColumn1\nderivedColumn1 filter(custom != \"\") ~> filter1"
 		}
 	}
 }
