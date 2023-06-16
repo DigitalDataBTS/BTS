@@ -181,6 +181,14 @@
 								"sink": {
 									"path": "$['value']"
 								}
+							},
+							{
+								"source": {
+									"path": "$['journey']"
+								},
+								"sink": {
+									"path": "$['journey']"
+								}
 							}
 						]
 					}
