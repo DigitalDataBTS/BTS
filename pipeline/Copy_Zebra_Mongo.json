@@ -168,22 +168,6 @@
 							},
 							{
 								"source": {
-									"path": "$['journey'][0]['key']"
-								},
-								"sink": {
-									"path": "$['Key']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['journey'][0]['value']"
-								},
-								"sink": {
-									"path": "$['value']"
-								}
-							},
-							{
-								"source": {
 									"path": "$['journey']"
 								},
 								"sink": {
