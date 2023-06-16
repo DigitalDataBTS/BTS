@@ -311,14 +311,14 @@
 		"reportmqlink_properties_typeProperties_url": {
 			"value": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
 		},
+		"zebra_mongo_db_connection_properties_typeProperties_database": {
+			"value": "zebratechnologies"
+		},
 		"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
 			"value": "@{addhours(trigger().scheduledTime, -24)}"
 		},
 		"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
 			"value": "@trigger().scheduledTime"
-		},
-		"zebra_mongo_db_connection_properties_typeProperties_database": {
-			"value": "zebratechnologies"
 		},
 		"containerUri": {
 			"value": ""

@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "BTSDataFactoryV1"
 		},
+		"Abbott user_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Abbott user'"
+		},
 		"Abbott_user_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Abbott_user'"
@@ -51,13 +55,9 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SqlServer1'"
 		},
-		"abbott_sql_server_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'abbott_sql_server'"
-		},
-		"completion_20_kafka_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'completion_20_kafka'"
+		"Abbott user_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "abbott"
 		},
 		"Abbott_journey_structure_properties_typeProperties_url": {
 			"type": "string",
@@ -118,20 +118,72 @@
 		"Web3_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
-		},
-		"abbott_participant_list_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA"
-		},
-		"completion_20_kafka_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "momentaanalytics"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/sinkjsonjourneystructure1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "btsuserjourneystructure"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/usermongosink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "btsuser"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Abbott user')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "MongoDbV2",
+				"typeProperties": {
+					"connectionString": "[parameters('Abbott user_connectionString')]",
+					"database": "[parameters('Abbott user_properties_typeProperties_database')]"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Abbott_journey_structure')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -435,59 +487,6 @@
 				"typeProperties": {
 					"url": "[parameters('Web3_properties_typeProperties_url')]",
 					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/abbott_participant_list')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('abbott_participant_list_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/abbott_sql_server')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "SqlServer",
-				"typeProperties": {
-					"connectionString": "[parameters('abbott_sql_server_connectionString')]"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/completion_20_kafka')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "MongoDbV2",
-				"typeProperties": {
-					"connectionString": "[parameters('completion_20_kafka_connectionString')]",
-					"database": "[parameters('completion_20_kafka_properties_typeProperties_database')]"
 				},
 				"connectVia": {
 					"referenceName": "dashboardserverconnection",

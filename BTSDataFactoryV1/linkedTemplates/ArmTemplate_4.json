@@ -758,6 +758,301 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_journey_strucure_to_blob')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "987cd9c2c2eec02be609/latest/journey_en-US.json"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string"
+						},
+						"belongsToCollection": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"title": {
+									"type": "string"
+								}
+							}
+						},
+						"livesInFolder": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"title": {
+									"type": "string"
+								}
+							}
+						},
+						"journey": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"isMigrated": {
+							"type": "boolean"
+						},
+						"isMigratedPublish": {
+							"type": "boolean"
+						},
+						"titleUpdated": {
+							"type": "boolean"
+						},
+						"collectionId": {
+							"type": "string"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"colorPalette": {
+							"type": "string"
+						},
+						"appearance": {
+							"type": "object",
+							"properties": {
+								"headerBackground": {
+									"type": "null"
+								},
+								"icon": {
+									"type": "null"
+								},
+								"activityHeaderBackground": {
+									"type": "null"
+								}
+							}
+						},
+						"duration": {
+							"type": "string"
+						},
+						"points": {
+							"type": "string"
+						},
+						"blueprint": {
+							"type": "object",
+							"properties": {
+								"visible": {
+									"type": "array"
+								},
+								"unlocked": {
+									"type": "array"
+								},
+								"locked": {
+									"type": "array"
+								},
+								"hidden": {
+									"type": "array"
+								}
+							}
+						},
+						"config": {
+							"type": "object"
+						},
+						"lastModified": {
+							"type": "string"
+						},
+						"guid": {
+							"type": "string"
+						},
+						"isSaved": {
+							"type": "boolean"
+						},
+						"isPublished": {
+							"type": "boolean"
+						},
+						"publishedBy": {
+							"type": "object",
+							"properties": {
+								"email": {
+									"type": "string"
+								},
+								"fname": {
+									"type": "string"
+								},
+								"lname": {
+									"type": "string"
+								}
+							}
+						},
+						"publishDate": {
+							"type": "string"
+						},
+						"administrative": {
+							"type": "object",
+							"properties": {
+								"billing": {
+									"type": "array"
+								},
+								"facilitator": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"location": {
+									"type": "array"
+								}
+							}
+						},
+						"modifiedOn": {
+							"type": "string"
+						},
+						"reLinkContents": {
+							"type": "array"
+						},
+						"npsSetting": {
+							"type": "object",
+							"properties": {
+								"enabled": {
+									"type": "boolean"
+								},
+								"setting": {
+									"type": "object",
+									"properties": {
+										"customize": {
+											"type": "boolean"
+										},
+										"customizeType": {
+											"type": "string"
+										},
+										"question": {
+											"type": "string"
+										},
+										"followUp": {
+											"type": "boolean"
+										},
+										"mode": {
+											"type": "string"
+										},
+										"skipButtonText": {
+											"type": "string"
+										},
+										"submitButtonText": {
+											"type": "string"
+										},
+										"additionalCommentsText": {
+											"type": "string"
+										},
+										"npsLeftEndText": {
+											"type": "string"
+										},
+										"npsRightEndText": {
+											"type": "string"
+										},
+										"npsPlaceholderText": {
+											"type": "string"
+										},
+										"charactersLeftText": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"_doc": {
+							"type": "string"
+						},
+						"_type": {
+							"type": "string"
+						},
+						"_features": {
+							"type": "object",
+							"properties": {
+								"f:translation": {
+									"type": "object",
+									"properties": {
+										"master-node-id": {
+											"type": "string"
+										},
+										"locale": {
+											"type": "string"
+										}
+									}
+								},
+								"f:audit": {
+									"type": "object"
+								},
+								"f:titled": {
+									"type": "object"
+								},
+								"f:filename": {
+									"type": "object",
+									"properties": {
+										"filename": {
+											"type": "string"
+										}
+									}
+								},
+								"f:geolocation": {
+									"type": "object"
+								},
+								"f:indexable": {
+									"type": "object"
+								},
+								"f:locale": {
+									"type": "object",
+									"properties": {
+										"locale": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_sink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "data_72684d35-c548-4e95-90a5-1548f33d01a5_e55ee77e-5822-4f5f-b46f-63c916cee0a4.json",
+						"container": "zebratech"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/abbott_users_sql')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -778,51 +1073,6 @@
 					"quoteChar": "\""
 				},
 				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/abbottusersink1')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "abbottuser"
-					},
-					"columnDelimiter": "\u0001",
-					"escapeChar": "\\",
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/content')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "contentdb"
-					}
-				},
-				"schema": {}
 			},
 			"dependsOn": []
 		}

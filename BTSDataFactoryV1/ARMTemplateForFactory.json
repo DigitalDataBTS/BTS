@@ -415,6 +415,10 @@
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
 		},
+		"zebra_mongo_db_connection_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "zebratechnologies"
+		},
 		"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
 			"type": "string",
 			"defaultValue": "@{addhours(trigger().scheduledTime, -24)}"
@@ -422,10 +426,6 @@
 		"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
-		},
-		"zebra_mongo_db_connection_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "zebratechnologies"
 		}
 	},
 	"variables": {
@@ -2521,6 +2521,218 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SourceDataset_m4a')]",
 				"[concat(variables('factoryId'), '/datasets/DestinationDataset_m4a')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Copy_Zebra_Mongo')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "\n",
+				"activities": [
+					{
+						"name": "Copy Zebradata from Mongo to blob",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "MongoDbV2Source",
+								"batchSize": 100
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['_id']['$oid']"
+										},
+										"sink": {
+											"path": "$['_id']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['journeyId']"
+										},
+										"sink": {
+											"path": "$['journeys_id']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['journeyName']"
+										},
+										"sink": {
+											"path": "$['journeys_name']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['cohortId']"
+										},
+										"sink": {
+											"path": "$['cohort_id']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['revisions']['1']['states'][0]['id']"
+										},
+										"sink": {
+											"path": "$['guid']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['resources']['revisions']['1']['states'][0]['state']"
+										},
+										"sink": {
+											"path": "$['status']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['revisions']['1']['states'][0]['type']"
+										},
+										"sink": {
+											"path": "$['type']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['email']"
+										},
+										"sink": {
+											"path": "$['email']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journeys'][0]['revisions']['1']['states'][0]['completionTime']"
+										},
+										"sink": {
+											"path": "$['completion_time']"
+										}
+									}
+								],
+								"collectionReference": ""
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Zebra_mongo_DB_source_connection",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Zebra_sink",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Journeystructue_zebras3to_blob",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"path": "$['title']"
+										},
+										"sink": {
+											"path": "$['title']"
+										}
+									},
+									{
+										"source": {
+											"path": "$['journey']"
+										},
+										"sink": {
+											"path": "$['journey']"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Zebra_journey_strucure_to_blob",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "sink_zebratech_journey_structure",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Zebra_mongo_DB_source_connection')]",
+				"[concat(variables('factoryId'), '/datasets/Zebra_sink')]",
+				"[concat(variables('factoryId'), '/datasets/Zebra_journey_strucure_to_blob')]",
+				"[concat(variables('factoryId'), '/datasets/sink_zebratech_journey_structure')]"
 			]
 		},
 		{
@@ -41426,6 +41638,325 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_journey_strucure_to_blob')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "HttpServer1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "987cd9c2c2eec02be609/latest/journey_en-US.json"
+					}
+				},
+				"schema": {
+					"type": "object",
+					"properties": {
+						"title": {
+							"type": "string"
+						},
+						"belongsToCollection": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"title": {
+									"type": "string"
+								}
+							}
+						},
+						"livesInFolder": {
+							"type": "object",
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"title": {
+									"type": "string"
+								}
+							}
+						},
+						"journey": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"key": {
+										"type": "string"
+									},
+									"value": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"isMigrated": {
+							"type": "boolean"
+						},
+						"isMigratedPublish": {
+							"type": "boolean"
+						},
+						"titleUpdated": {
+							"type": "boolean"
+						},
+						"collectionId": {
+							"type": "string"
+						},
+						"index": {
+							"type": "integer"
+						},
+						"colorPalette": {
+							"type": "string"
+						},
+						"appearance": {
+							"type": "object",
+							"properties": {
+								"headerBackground": {
+									"type": "null"
+								},
+								"icon": {
+									"type": "null"
+								},
+								"activityHeaderBackground": {
+									"type": "null"
+								}
+							}
+						},
+						"duration": {
+							"type": "string"
+						},
+						"points": {
+							"type": "string"
+						},
+						"blueprint": {
+							"type": "object",
+							"properties": {
+								"visible": {
+									"type": "array"
+								},
+								"unlocked": {
+									"type": "array"
+								},
+								"locked": {
+									"type": "array"
+								},
+								"hidden": {
+									"type": "array"
+								}
+							}
+						},
+						"config": {
+							"type": "object"
+						},
+						"lastModified": {
+							"type": "string"
+						},
+						"guid": {
+							"type": "string"
+						},
+						"isSaved": {
+							"type": "boolean"
+						},
+						"isPublished": {
+							"type": "boolean"
+						},
+						"publishedBy": {
+							"type": "object",
+							"properties": {
+								"email": {
+									"type": "string"
+								},
+								"fname": {
+									"type": "string"
+								},
+								"lname": {
+									"type": "string"
+								}
+							}
+						},
+						"publishDate": {
+							"type": "string"
+						},
+						"administrative": {
+							"type": "object",
+							"properties": {
+								"billing": {
+									"type": "array"
+								},
+								"facilitator": {
+									"type": "array",
+									"items": {
+										"type": "string"
+									}
+								},
+								"location": {
+									"type": "array"
+								}
+							}
+						},
+						"modifiedOn": {
+							"type": "string"
+						},
+						"reLinkContents": {
+							"type": "array"
+						},
+						"npsSetting": {
+							"type": "object",
+							"properties": {
+								"enabled": {
+									"type": "boolean"
+								},
+								"setting": {
+									"type": "object",
+									"properties": {
+										"customize": {
+											"type": "boolean"
+										},
+										"customizeType": {
+											"type": "string"
+										},
+										"question": {
+											"type": "string"
+										},
+										"followUp": {
+											"type": "boolean"
+										},
+										"mode": {
+											"type": "string"
+										},
+										"skipButtonText": {
+											"type": "string"
+										},
+										"submitButtonText": {
+											"type": "string"
+										},
+										"additionalCommentsText": {
+											"type": "string"
+										},
+										"npsLeftEndText": {
+											"type": "string"
+										},
+										"npsRightEndText": {
+											"type": "string"
+										},
+										"npsPlaceholderText": {
+											"type": "string"
+										},
+										"charactersLeftText": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						},
+						"_doc": {
+							"type": "string"
+						},
+						"_type": {
+							"type": "string"
+						},
+						"_features": {
+							"type": "object",
+							"properties": {
+								"f:translation": {
+									"type": "object",
+									"properties": {
+										"master-node-id": {
+											"type": "string"
+										},
+										"locale": {
+											"type": "string"
+										}
+									}
+								},
+								"f:audit": {
+									"type": "object"
+								},
+								"f:titled": {
+									"type": "object"
+								},
+								"f:filename": {
+									"type": "object",
+									"properties": {
+										"filename": {
+											"type": "string"
+										}
+									}
+								},
+								"f:geolocation": {
+									"type": "object"
+								},
+								"f:indexable": {
+									"type": "object"
+								},
+								"f:locale": {
+									"type": "object",
+									"properties": {
+										"locale": {
+											"type": "string"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/HttpServer1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_mongo_DB_source_connection')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "zebra_mongo_db_connection",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "MongoDbV2Collection",
+				"schema": [],
+				"typeProperties": {
+					"collection": "users"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/zebra_mongo_db_connection')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_sink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "data_72684d35-c548-4e95-90a5-1548f33d01a5_e55ee77e-5822-4f5f-b46f-63c916cee0a4.json",
+						"container": "zebratech"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/abbott_sql_server')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -43210,6 +43741,31 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/sink_zebratech_journey_structure')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "journey_en-US.json",
+						"folderPath": "987cd9c2c2eec02be609/latest",
+						"container": "zebratech-journeystructure"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/sinkjsonjourneystructure')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -44684,6 +45240,26 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/zebra_mongo_db_connection')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "MongoDbV2",
+				"typeProperties": {
+					"connectionString": "[parameters('zebra_mongo_db_connection_connectionString')]",
+					"database": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/dashboardserverconnection')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Trigger_skg')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -44962,6 +45538,64 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Zebra_Dataflow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "sink_zebratech_journey_structure",
+								"type": "DatasetReference"
+							},
+							"name": "Journeystructurezebra"
+						},
+						{
+							"dataset": {
+								"referenceName": "Zebra_sink",
+								"type": "DatasetReference"
+							},
+							"name": "BlobStoreZebra"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "S3connection",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "flatten1"
+						},
+						{
+							"name": "derivedColumn1"
+						},
+						{
+							"name": "filter1"
+						},
+						{
+							"name": "join1"
+						},
+						{
+							"name": "filter2"
+						}
+					],
+					"script": "source(output(\n\t\tjourney as (key as string, value as string)[],\n\t\ttitle as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> Journeystructurezebra\nsource(output(\n\t\t{_id} as string,\n\t\tcohort_id as string,\n\t\tcompletion_time as timestamp,\n\t\temail as string,\n\t\tguid as string,\n\t\tjourneys_id as string,\n\t\tjourneys_name as string,\n\t\tstatus as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> BlobStoreZebra\nJourneystructurezebra foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> flatten1\nflatten1 derive(custom = regexReplace(key, '[^0-9]','')) ~> derivedColumn1\nderivedColumn1 filter(custom != \"\") ~> filter1\nBlobStoreZebra, filter1 join(guid == custom,\n\tjoinType:'left',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> join1\njoin1 filter(value!=\"\" && length(value) <50) ~> filter2\nfilter2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/sink_zebratech_journey_structure')]",
+				"[concat(variables('factoryId'), '/datasets/Zebra_sink')]",
+				"[concat(variables('factoryId'), '/datasets/S3connection')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/dataflow12')]",
@@ -45281,128 +45915,30 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Copy_Zebra_Mongo')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "\n",
-				"activities": [
-					{
-						"name": "Copy Zebradata from Mongo to blob",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "MongoDbV2Source",
-								"batchSize": 100
-							},
-							"sink": {
-								"type": "JsonSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "JsonWriteSettings"
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "Zebra_mongo_DB_source_connection",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Zebra_sink",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/Zebra_mongo_DB_source_connection')]",
-				"[concat(variables('factoryId'), '/datasets/Zebra_sink')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/zebra_mongo_db_connection')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "MongoDbV2",
-				"typeProperties": {
-					"connectionString": "[parameters('zebra_mongo_db_connection_connectionString')]",
-					"database": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/integrationRuntimes/dashboardserverconnection')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Zebra_mongo_DB_source_connection')]",
+			"name": "[concat(parameters('factoryName'), '/S3connection')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "zebra_mongo_db_connection",
+					"referenceName": "AmazonS31",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "MongoDbV2Collection",
-				"schema": [],
-				"typeProperties": {
-					"collection": "users"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/zebra_mongo_db_connection')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Zebra_sink')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage1",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
+				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobStorageLocation",
-						"container": "zebratech"
-					}
+						"type": "AmazonS3Location",
+						"bucketName": "analyticsdataengineeringtest"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
 				},
-				"schema": {}
+				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/AmazonS31')]"
 			]
 		}
 	]

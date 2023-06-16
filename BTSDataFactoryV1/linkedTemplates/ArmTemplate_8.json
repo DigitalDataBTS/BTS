@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "BTSDataFactoryV1"
 		},
+		"abbott_sql_server_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'abbott_sql_server'"
+		},
+		"completion_20_kafka_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'completion_20_kafka'"
+		},
 		"demo_user_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'demo_user'"
@@ -30,6 +38,14 @@
 		"mondelezinternational_saurabh_connection_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'mondelezinternational_saurabh_connection'"
+		},
+		"abbott_participant_list_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA"
+		},
+		"completion_20_kafka_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "momentaanalytics"
 		},
 		"demo_user_properties_typeProperties_database": {
 			"type": "string",
@@ -98,24 +114,65 @@
 		"reportcontentg3m2link_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m2.php"
-		},
-		"reportcontentg3m3link_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m3.php"
-		},
-		"reportcontentg3m4link_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m4.php"
-		},
-		"reportcontentg4m1link_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g4m1.php"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/abbott_participant_list')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('abbott_participant_list_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/abbott_sql_server')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('abbott_sql_server_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/completion_20_kafka')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "MongoDbV2",
+				"typeProperties": {
+					"connectionString": "[parameters('completion_20_kafka_connectionString')]",
+					"database": "[parameters('completion_20_kafka_properties_typeProperties_database')]"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/demo_user')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -415,60 +472,6 @@
 				"type": "Web",
 				"typeProperties": {
 					"url": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportcontentg3m3link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportcontentg3m3link_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportcontentg3m4link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportcontentg3m4link_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportcontentg4m1link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportcontentg4m1link_properties_typeProperties_url')]",
 					"authenticationType": "Anonymous"
 				},
 				"connectVia": {
