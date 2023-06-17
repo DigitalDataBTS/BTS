@@ -45491,6 +45491,13 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "Momenta_Content_Dashboard",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
 					}
 				],
 				"type": "ScheduleTrigger",
@@ -45516,7 +45523,8 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Kafka_data')]",
-				"[concat(variables('factoryId'), '/pipelines/ContentDatabase')]"
+				"[concat(variables('factoryId'), '/pipelines/ContentDatabase')]",
+				"[concat(variables('factoryId'), '/pipelines/Momenta_Content_Dashboard')]"
 			]
 		},
 		{
