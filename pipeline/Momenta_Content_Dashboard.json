@@ -1,5 +1,5 @@
 {
-	"name": "kafka_Users_Contentusagedashboard",
+	"name": "Momenta_Content_Dashboard",
 	"properties": {
 		"activities": [
 			{
@@ -55,6 +55,24 @@
 							},
 							{
 								"source": {
+									"path": "$['topic']"
+								},
+								"sink": {
+									"name": "topic",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['timestamp']"
+								},
+								"sink": {
+									"name": "timestamp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"path": "$['value']['sessionId']"
 								},
 								"sink": {
@@ -82,6 +100,33 @@
 							},
 							{
 								"source": {
+									"path": "$['value']['user']['browserInfo']"
+								},
+								"sink": {
+									"name": "browserInfo",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['deviceType']"
+								},
+								"sink": {
+									"name": "deviceType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['user']['location']"
+								},
+								"sink": {
+									"name": "location",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
 									"path": "$['value']['user']['customer']"
 								},
 								"sink": {
@@ -91,10 +136,46 @@
 							},
 							{
 								"source": {
-									"path": "$['value']['clientid']"
+									"path": "$['value']['user']['clientIp']"
 								},
 								"sink": {
-									"name": "clientid",
+									"name": "clientIp",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['applicationType']"
+								},
+								"sink": {
+									"name": "applicationType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['routeVisited']"
+								},
+								"sink": {
+									"name": "routeVisited",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptDuration']"
+								},
+								"sink": {
+									"name": "attemptDuration",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptCount']"
+								},
+								"sink": {
+									"name": "attemptCount",
 									"type": "String"
 								}
 							},
@@ -104,6 +185,24 @@
 								},
 								"sink": {
 									"name": "cohortId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['attemptType']"
+								},
+								"sink": {
+									"name": "attemptType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['success']"
+								},
+								"sink": {
+									"name": "success",
 									"type": "String"
 								}
 							},
@@ -194,6 +293,51 @@
 								},
 								"sink": {
 									"name": "journeyName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['value']['activityGuId']"
+								},
+								"sink": {
+									"name": "activityGuId",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['offset']"
+								},
+								"sink": {
+									"name": "offset",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['partition']"
+								},
+								"sink": {
+									"name": "partition",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['highWaterOffset']"
+								},
+								"sink": {
+									"name": "highWaterOffset",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"path": "$['key']"
+								},
+								"sink": {
+									"name": "key",
 									"type": "String"
 								}
 							}
