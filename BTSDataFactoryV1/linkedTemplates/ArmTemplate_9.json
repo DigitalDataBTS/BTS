@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'zebra_mongo_db_connection'"
 		},
+		"reportcontentg3m2link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m2.php"
+		},
 		"reportcontentg3m3link_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m3.php"
@@ -92,6 +96,24 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg3m2link')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/reportcontentg3m3link')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -432,31 +454,6 @@
 					"referenceName": "dashboardserverconnection",
 					"type": "IntegrationRuntimeReference"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/S3connection')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AmazonS31",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AmazonS3Location",
-						"bucketName": "analyticsdataengineeringtest"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
 			},
 			"dependsOn": []
 		}

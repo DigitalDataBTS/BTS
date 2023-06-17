@@ -39,6 +39,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'mondelezinternational_saurabh_connection'"
 		},
+		"Web3_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
+		},
 		"abbott_participant_list_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://btsgroup.sharepoint.com/:x:/s/AbbottProductionParticipantdata/Ef0a4XtsG3lEhKzBo4_HDNwBELXkPSRkQM8TN41vCn2eng?e=9StLOA"
@@ -110,16 +114,30 @@
 		"reportcontentg3m1link_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m1.php"
-		},
-		"reportcontentg3m2link_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m2.php"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Web3')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('Web3_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/abbott_participant_list')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -454,24 +472,6 @@
 				"type": "Web",
 				"typeProperties": {
 					"url": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportcontentg3m2link')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]",
 					"authenticationType": "Anonymous"
 				},
 				"connectVia": {

@@ -756,9 +756,6 @@
 					},
 					"Web2_properties_typeProperties_url": {
 						"value": "[parameters('Web2_properties_typeProperties_url')]"
-					},
-					"Web3_properties_typeProperties_url": {
-						"value": "[parameters('Web3_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -803,6 +800,9 @@
 					},
 					"mondelezinternational_saurabh_connection_connectionString": {
 						"value": "[parameters('mondelezinternational_saurabh_connection_connectionString')]"
+					},
+					"Web3_properties_typeProperties_url": {
+						"value": "[parameters('Web3_properties_typeProperties_url')]"
 					},
 					"abbott_participant_list_properties_typeProperties_url": {
 						"value": "[parameters('abbott_participant_list_properties_typeProperties_url')]"
@@ -857,9 +857,6 @@
 					},
 					"reportcontentg3m1link_properties_typeProperties_url": {
 						"value": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]"
-					},
-					"reportcontentg3m2link_properties_typeProperties_url": {
-						"value": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -883,6 +880,9 @@
 					},
 					"zebra_mongo_db_connection_connectionString": {
 						"value": "[parameters('zebra_mongo_db_connection_connectionString')]"
+					},
+					"reportcontentg3m2link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]"
 					},
 					"reportcontentg3m3link_properties_typeProperties_url": {
 						"value": "[parameters('reportcontentg3m3link_properties_typeProperties_url')]"
