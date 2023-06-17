@@ -16,6 +16,12 @@
 					"referenceName": "ContentDatabase",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "Momenta_Content_Dashboard",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
