@@ -1,0 +1,13 @@
+{
+	"name": "AzureDatabricks2",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricks",
+		"typeProperties": {
+			"domain": "https://adb-6454999139518707.7.azuredatabricks.net",
+			"authentication": "MSI",
+			"workspaceResourceId": "BTSSparkclusterV1",
+			"existingClusterId": "Digital Data's Cluster"
+		}
+	}
+}
