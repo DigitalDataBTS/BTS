@@ -6,7 +6,7 @@
 		"typeProperties": {
 			"domain": "https://adb-6454999139518707.7.azuredatabricks.net",
 			"authentication": "MSI",
-			"workspaceResourceId": "BTSSparkclusterV1",
+			"workspaceResourceId": "/subscriptions/1af7c6c6-77d3-473f-9328-5cde7925dc22/resourceGroups/BTSBOT/providers/Microsoft.Databricks/workspaces/BTSSparkclusterV1",
 			"existingClusterId": "Digital Data's Cluster"
 		}
 	}
