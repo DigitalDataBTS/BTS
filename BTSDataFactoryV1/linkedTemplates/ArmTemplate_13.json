@@ -13,6 +13,78 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg3m4link')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "reportcontentg3m4link",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "WebTable",
+				"schema": [],
+				"typeProperties": {
+					"index": 0
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg4m1link')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "reportcontentg4m1link",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "WebTable",
+				"schema": [],
+				"typeProperties": {
+					"index": 0
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg4m2link')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "reportcontentg4m2link",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "WebTable",
+				"schema": [],
+				"typeProperties": {
+					"index": 0
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg4m3link')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "reportcontentg4m3link",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "WebTable",
+				"schema": [],
+				"typeProperties": {
+					"index": 0
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/reportcontentg4m4link')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -376,311 +448,6 @@
 					"transformations": [],
 					"script": "source(output(\n\t\tRole as string,\n\t\t{First Name} as string,\n\t\t{Last Name} as string,\n\t\tEmail as string,\n\t\t{Overview. Overview - REMOVED} as string,\n\t\t{Overview. Overview} as string,\n\t\t{Overview. Schedule} as string,\n\t\t{Introduction. Module One guide} as string,\n\t\t{FLL Tryout. Leader roles or core capabilities} as string,\n\t\t{FLL Tryout. Biggest strengths} as string,\n\t\t{FLL Tryout. Most surprising - REMOVED} as string,\n\t\t{Pod 1. Salesforce Values card sort PDF} as string,\n\t\t{Pod 1. Your Leadership Brand. Value One} as string,\n\t\t{Pod 1. Your Leadership Brand. Value Two} as string,\n\t\t{Pod 1. Your Leadership Brand. Value Three} as string,\n\t\t{Pod 1. Your Leadership Brand. Importance} as string,\n\t\t{Pod 1. Your Leadership Brand. My behaviors} as string,\n\t\t{Pod 1. Your Leadership Brand. My brand} as string,\n\t\t{Pod 1. Your Leadership Brand. My best} as string,\n\t\t{Pod 1. Your Leadership Brand. Not my best} as string,\n\t\t{Pod 1. Your Leadership Brand. Statement} as string,\n\t\t{Pod 1. Catch Up. Email} as string,\n\t\t{Pod 1. Catch Up. Takeaways} as string,\n\t\t{Pod 1. Catch Up. Learning areas} as string,\n\t\t{Pod 1. Video Summary} as string,\n\t\t{Virtual Workshop 1. Catch Up. Email} as string,\n\t\t{Virtual Workshop 1. Catch Up. Takeaways} as string,\n\t\t{Virtual Workshop 1. Catch Up. Learning areas} as string,\n\t\t{Stretch Assignment 1. Instructional PDF} as string,\n\t\t{Stretch Assignment 1. L1. Pitfalls - CHANGED} as string,\n\t\t{Stretch Assignment 1. L1. Pitfalls} as string,\n\t\t{Stretch Assignment 1. L1. Actions} as string,\n\t\t{Stretch Assignment 1. L1. Accountable} as string,\n\t\t{Stretch Assignment 1. L1. Impact knowing pitfalls} as string,\n\t\t{Stretch Assignment 1. L1. Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 1. L1. Email worked with - REMOVED} as string,\n\t\t{Stretch Assignment 1. L2. Pitfalls (G1) / Insight (G2...)} as string,\n\t\t{Stretch Assignment 1. L2. Recover (G1) / Advice (G2...)} as string,\n\t\t{Stretch Assignment 1. L2. Learn - REMOVED} as string,\n\t\t{Stretch Assignment 1. L2. Email worked with} as string,\n\t\t{Stretch Assignment 1. L3. Learn} as string,\n\t\t{Stretch Assignment 1. L3. Feedback - REMOVED} as string,\n\t\t{Stretch Assignment 1. L3. Teaching improve} as string,\n\t\t{Stretch Assignment 1. L3. Email worked with} as string,\n\t\t{Pod 2. Committed listening. What did you notice} as string,\n\t\t{Pod 2. Committed listening. Whats in the way} as string,\n\t\t{Pod 2. MBIR. Leadership shift} as string,\n\t\t{Pod 2. MBIR. Leadership shift. Change} as string,\n\t\t{Pod 2. MBIR. Mindset. From} as string,\n\t\t{Pod 2. MBIR. Mindset. To} as string,\n\t\t{Pod 2. MBIR. Mindset. Change} as string,\n\t\t{Pod 2. MBIR. Behavior. From} as string,\n\t\t{Pod 2. MBIR. Behavior. To} as string,\n\t\t{Pod 2. MBIR. Behavior. Change} as string,\n\t\t{Pod 2. MBIR. Impact. From} as string,\n\t\t{Pod 2. MBIR. Impact. To} as string,\n\t\t{Pod 2. MBIR. Impact. Change} as string,\n\t\t{Pod 2. MBIR. Result} as string,\n\t\t{Pod 2. MBIR. Result. Change} as string,\n\t\t{Pod 2. MBIR. Other Comments} as string,\n\t\t{Pod 2. Catch Up. Email} as string,\n\t\t{Pod 2. Catch Up. Takeaways} as string,\n\t\t{Pod 2. Catch Up. Learning areas} as string,\n\t\t{Pod 2. Video Summary} as string,\n\t\t{Stretch Assignment 2. Instructional PDF} as string,\n\t\t{Stretch Assignment 2. L1. MBIR change (G1) / Insights (G2...)} as string,\n\t\t{Stretch Assignment 2. L1. Insights (G1) / Learn (G2...)} as string,\n\t\t{Stretch Assignment 2. L1. Help - REMOVED} as string,\n\t\t{Stretch Assignment 2. L1. Email worked with} as string,\n\t\t{Stretch Assignment 2. L2. MBIR change} as string,\n\t\t{Stretch Assignment 2. L2. Shifts (G1) / Do differently (G2...)} as string,\n\t\t{Stretch Assignment 2. L2. Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 2. L2. Email worked with} as string,\n\t\t{Stretch Assignment 2. L3. Difficult (G1) / Connecting to IDP (G2...)} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Mindset shift (G1) / Do differently (G2...)} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Assumptions - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. V2MOM Do differently - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. Actions Assumptions - REMOVED} as string,\n\t\t{Stretch Assignment 2. L3. Email worked with} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dataflow16')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_ws8",
-								"type": "DatasetReference"
-							},
-							"name": "source1"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_ws8",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [],
-					"scriptLines": [
-						"source(output(",
-						"          {_col0_} as string,",
-						"          {_col1_} as string,",
-						"          {_col2_} as string,",
-						"          {_col3_} as string,",
-						"          {_col4_} as string,",
-						"          {_col5_} as string,",
-						"          {_col6_} as string,",
-						"          {_col7_} as string,",
-						"          {_col8_} as string,",
-						"          {_col9_} as string,",
-						"          {_col10_} as string,",
-						"          {_col11_} as string,",
-						"          {_col12_} as string,",
-						"          {_col13_} as string,",
-						"          {_col14_} as string,",
-						"          {_col15_} as string,",
-						"          {_col16_} as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> source1",
-						"source1 sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     input(",
-						"          {$oid} as string,",
-						"          sessionId as string,",
-						"          id as string,",
-						"          name as string,",
-						"          customer as string,",
-						"          clientid as string,",
-						"          cohortId as string,",
-						"          state as string,",
-						"          score as string,",
-						"          activityId as string,",
-						"          activityName as string,",
-						"          moduleId as string,",
-						"          moduleName as string,",
-						"          stageId as string,",
-						"          stageName as string,",
-						"          journeyId as string,",
-						"          journeyName as string",
-						"     ),",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/mondelez_dataflow')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_7nn",
-								"type": "DatasetReference"
-							},
-							"name": "journeystructure"
-						},
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_5xq",
-								"type": "DatasetReference"
-							},
-							"name": "mondelezmongodbusers"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "dataflow_mdlz",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [
-						{
-							"name": "Flatten1"
-						},
-						{
-							"name": "Flatten2"
-						},
-						{
-							"name": "Flatten3"
-						},
-						{
-							"name": "Join1"
-						},
-						{
-							"name": "DerivedColumn1"
-						},
-						{
-							"name": "Filter1"
-						},
-						{
-							"name": "Filter2"
-						},
-						{
-							"name": "alterRow1"
-						},
-						{
-							"name": "aggregate1"
-						},
-						{
-							"name": "select1"
-						},
-						{
-							"name": "Constantvalue"
-						},
-						{
-							"name": "AddRownumber"
-						},
-						{
-							"name": "TempFilterTest"
-						}
-					],
-					"script": "source(output(\n\t\ttitle as string,\n\t\tjourney as (key as string, value as string)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> journeystructure\nsource(output(\n\t\t{_id} as ({$oid} as string),\n\t\tjourneys as (journeyName as string, cohortId as string, revisions as ({1} as (states as (id as string, state as string, type as string, completionTime as string)[])))[],\n\t\temail as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> mondelezmongodbusers\njourneystructure foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nmondelezmongodbusers foldDown(unroll(journeys, journeys),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname = journeys.journeyName,\n\t\tcohortid = journeys.cohortId,\n\t\tstates = journeys.revisions.{1}.states\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten2\nFlatten2 foldDown(unroll(states, states),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\tcohortid,\n\t\t{states.id} = states.id,\n\t\t{state.status} = states.state,\n\t\t{state.type} = states.type,\n\t\tcompletionTime = states.completionTime\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten3\nFlatten3, Filter1 join({states.id} == Custom,\n\tjoinType:'left',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> Join1\nFlatten1 derive(Custom = regexReplace(key, '[^0-9]','')) ~> DerivedColumn1\nDerivedColumn1 filter(Custom != \"\") ~> Filter1\nJoin1 filter(value!=\"\" && length(value) <50) ~> Filter2\nselect1 alterRow(upsertIf(true())) ~> alterRow1\nalterRow1 aggregate(groupBy(journeyname,\n\t\t{_id},\n\t\tcohortid,\n\t\t{states.id},\n\t\t{state.status},\n\t\t{state.type},\n\t\tvalue,\n\t\tCustom,\n\t\tcompletionTime),\n\tcount = count('1')) ~> aggregate1\nFilter2 select(mapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\tcohortid,\n\t\t{states.id},\n\t\t{state.status},\n\t\t{state.type},\n\t\tvalue,\n\t\tCustom,\n\t\tcompletionTime\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> select1\naggregate1 derive(Constant_value = 1) ~> Constantvalue\nConstantvalue window(asc(Constant_value, true),\n\tRowNumber = rowNumber()) ~> AddRownumber\nAddRownumber filter(RowNumber<500) ~> TempFilterTest\nTempFilterTest sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{_id} = RowNumber,\n\t\tjourneyname,\n\t\tcohortid,\n\t\tid = {states.id},\n\t\tstatus = {state.status},\n\t\ttype = {state.type},\n\t\tvalue,\n\t\tcompletionTime\n\t)) ~> sink1"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/mondelez_upsert_testing')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_7nn",
-								"type": "DatasetReference"
-							},
-							"name": "journeystructure"
-						},
-						{
-							"dataset": {
-								"referenceName": "DestinationDataset_5xq",
-								"type": "DatasetReference"
-							},
-							"name": "mondelezmongodbusers"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "RestResource2",
-								"type": "DatasetReference"
-							},
-							"name": "sink2"
-						}
-					],
-					"transformations": [
-						{
-							"name": "Flatten1"
-						},
-						{
-							"name": "Flatten2"
-						},
-						{
-							"name": "Flatten3"
-						},
-						{
-							"name": "Join1"
-						},
-						{
-							"name": "DerivedColumn1"
-						},
-						{
-							"name": "Filter1"
-						},
-						{
-							"name": "Filter2"
-						},
-						{
-							"name": "AlterRow1"
-						},
-						{
-							"name": "Filter3"
-						}
-					],
-					"script": "source(output(\n\t\ttitle as string,\n\t\tjourney as (key as string, value as string)[]\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> journeystructure\nsource(output(\n\t\t{_id} as ({$oid} as string),\n\t\tjourneys as (journeyName as string, cohortId as string, revisions as ({1} as (states as (id as string, state as string, type as string, completionTime as string)[])))[],\n\t\temail as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> mondelezmongodbusers\njourneystructure foldDown(unroll(journey, journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nmondelezmongodbusers foldDown(unroll(journeys, journeys),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname = journeys.journeyName,\n\t\temail,\n\t\tcohortid = journeys.cohortId,\n\t\tstates = journeys.revisions.{1}.states,\n\t\trevisions = journeys.revisions\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten2\nFilter3 foldDown(unroll(states, states),\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\temail,\n\t\tcohortid,\n\t\t{states.id} = states.id,\n\t\t{state.status} = states.state,\n\t\t{state.type} = states.type\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten3\nFlatten3, Filter1 join({states.id} == Custom,\n\tjoinType:'left',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> Join1\nFlatten1 derive(Custom = regexReplace(key, '[^0-9]','')) ~> DerivedColumn1\nDerivedColumn1 filter(Custom != \"\") ~> Filter1\nJoin1 filter(value!=\"\" && length(value) <50) ~> Filter2\nFilter2 alterRow(upsertIf(true())) ~> AlterRow1\nFlatten2 filter(email == \"gunjan.dadhich@bts.com\") ~> Filter3\nAlterRow1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:true,\n\tinsertable:true,\n\tupdateable:true,\n\tupsertable:true,\n\trowRelativeUrl: 'journeyname',\n\tinsertHttpMethod: 'POST',\n\tdeleteHttpMethod: 'DELETE',\n\tupsertHttpMethod: 'PUT',\n\tupdateHttpMethod: 'PATCH',\n\ttimeout: 30,\n\trequestInterval: 0,\n\trequestFormat: ['type' -> 'json', 'outputDateFormat' -> 'MM/dd/yyyy', 'outputTimestampFormat' -> 'MM/dd/yyyy HH:mm:ss'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{_id},\n\t\tjourneyname,\n\t\temail,\n\t\tcohortid,\n\t\tid = {states.id},\n\t\tstatus = {state.status},\n\t\ttype = {state.type},\n\t\ttitle,\n\t\tkey,\n\t\tvalue,\n\t\tCustom\n\t)) ~> sink2"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Abbottuser')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Abbotuser",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [
-							{
-								"name": "Source",
-								"value": "users"
-							},
-							{
-								"name": "Destination",
-								"value": "abbottuser//"
-							}
-						],
-						"typeProperties": {
-							"source": {
-								"type": "MongoDbV2Source",
-								"batchSize": 100
-							},
-							"sink": {
-								"type": "JsonSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "JsonWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"enableSkipIncompatibleRow": true,
-							"validateDataConsistency": false,
-							"logSettings": {
-								"enableCopyActivityLog": true,
-								"copyActivityLogSettings": {
-									"logLevel": "Warning",
-									"enableReliableLogging": false
-								},
-								"logLocationSettings": {
-									"linkedServiceName": {
-										"referenceName": "AzureBlobStorage1",
-										"type": "LinkedServiceReference"
-									},
-									"path": "abbottuser"
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SourceDataset_l80",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "Abbottusersink",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {},
-					"cancelAfter": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2022-05-24T08:33:44Z"
 			},
 			"dependsOn": []
 		}

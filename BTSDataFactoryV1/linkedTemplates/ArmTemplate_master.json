@@ -55,6 +55,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'BTSUsers'"
 		},
+		"BTSuser_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'BTSuser'"
+		},
 		"Chevron_data_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Chevron_data'"
@@ -143,6 +147,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'zebra_mongo_db_connection'"
 		},
+		"AzureDatabricks3_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks3'"
+		},
 		"Abbott user_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "abbott"
@@ -192,6 +200,10 @@
 			"defaultValue": "test1"
 		},
 		"BTSUsers_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "bts"
+		},
+		"BTSuser_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "bts"
 		},
@@ -297,7 +309,7 @@
 		},
 		"mondelez connection_properties_typeProperties_database": {
 			"type": "string",
-			"defaultValue": "mondelezinternational"
+			"defaultValue": "bts"
 		},
 		"mondelez_Leaders of the Future_properties_typeProperties_url": {
 			"type": "string",
@@ -427,6 +439,10 @@
 			"type": "string",
 			"defaultValue": "@trigger().scheduledTime"
 		},
+		"AzureDatabricks2_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "Digital Data's Cluster"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -555,6 +571,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"AzureDatabricks3_accessToken": {
+						"value": "[parameters('AzureDatabricks3_accessToken')]"
+					},
+					"AzureDatabricks2_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('AzureDatabricks2_properties_typeProperties_existingClusterId')]"
 					}
 				}
 			},
@@ -688,6 +710,9 @@
 					"BTSUsers_connectionString": {
 						"value": "[parameters('BTSUsers_connectionString')]"
 					},
+					"BTSuser_connectionString": {
+						"value": "[parameters('BTSuser_connectionString')]"
+					},
 					"Chevron_data_connectionString": {
 						"value": "[parameters('Chevron_data_connectionString')]"
 					},
@@ -709,9 +734,6 @@
 					"MongoDb2_connectionString": {
 						"value": "[parameters('MongoDb2_connectionString')]"
 					},
-					"SqlServer1_connectionString": {
-						"value": "[parameters('SqlServer1_connectionString')]"
-					},
 					"Abbott user_properties_typeProperties_database": {
 						"value": "[parameters('Abbott user_properties_typeProperties_database')]"
 					},
@@ -729,6 +751,9 @@
 					},
 					"BTSUsers_properties_typeProperties_database": {
 						"value": "[parameters('BTSUsers_properties_typeProperties_database')]"
+					},
+					"BTSuser_properties_typeProperties_database": {
+						"value": "[parameters('BTSuser_properties_typeProperties_database')]"
 					},
 					"Chevron_data_properties_typeProperties_database": {
 						"value": "[parameters('Chevron_data_properties_typeProperties_database')]"
@@ -750,12 +775,6 @@
 					},
 					"MongoDb2_properties_typeProperties_database": {
 						"value": "[parameters('MongoDb2_properties_typeProperties_database')]"
-					},
-					"Web1_properties_typeProperties_url": {
-						"value": "[parameters('Web1_properties_typeProperties_url')]"
-					},
-					"Web2_properties_typeProperties_url": {
-						"value": "[parameters('Web2_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -776,6 +795,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"SqlServer1_connectionString": {
+						"value": "[parameters('SqlServer1_connectionString')]"
 					},
 					"abbott_sql_server_connectionString": {
 						"value": "[parameters('abbott_sql_server_connectionString')]"
@@ -800,6 +822,12 @@
 					},
 					"mondelezinternational_saurabh_connection_connectionString": {
 						"value": "[parameters('mondelezinternational_saurabh_connection_connectionString')]"
+					},
+					"Web1_properties_typeProperties_url": {
+						"value": "[parameters('Web1_properties_typeProperties_url')]"
+					},
+					"Web2_properties_typeProperties_url": {
+						"value": "[parameters('Web2_properties_typeProperties_url')]"
 					},
 					"Web3_properties_typeProperties_url": {
 						"value": "[parameters('Web3_properties_typeProperties_url')]"
@@ -848,15 +876,6 @@
 					},
 					"reportcontentg2m2_properties_typeProperties_url": {
 						"value": "[parameters('reportcontentg2m2_properties_typeProperties_url')]"
-					},
-					"reportcontentg2m3link_properties_typeProperties_url": {
-						"value": "[parameters('reportcontentg2m3link_properties_typeProperties_url')]"
-					},
-					"reportcontentg2m4link_properties_typeProperties_url": {
-						"value": "[parameters('reportcontentg2m4link_properties_typeProperties_url')]"
-					},
-					"reportcontentg3m1link_properties_typeProperties_url": {
-						"value": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]"
 					}
 				}
 			},
@@ -878,8 +897,14 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"zebra_mongo_db_connection_connectionString": {
-						"value": "[parameters('zebra_mongo_db_connection_connectionString')]"
+					"reportcontentg2m3link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m3link_properties_typeProperties_url')]"
+					},
+					"reportcontentg2m4link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg2m4link_properties_typeProperties_url')]"
+					},
+					"reportcontentg3m1link_properties_typeProperties_url": {
+						"value": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]"
 					},
 					"reportcontentg3m2link_properties_typeProperties_url": {
 						"value": "[parameters('reportcontentg3m2link_properties_typeProperties_url')]"
@@ -931,15 +956,6 @@
 					},
 					"reportm4_properties_typeProperties_url": {
 						"value": "[parameters('reportm4_properties_typeProperties_url')]"
-					},
-					"reportm4scoringlink_properties_typeProperties_url": {
-						"value": "[parameters('reportm4scoringlink_properties_typeProperties_url')]"
-					},
-					"reportmqlink_properties_typeProperties_url": {
-						"value": "[parameters('reportmqlink_properties_typeProperties_url')]"
-					},
-					"zebra_mongo_db_connection_properties_typeProperties_database": {
-						"value": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
 					}
 				}
 			},
@@ -960,6 +976,18 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"zebra_mongo_db_connection_connectionString": {
+						"value": "[parameters('zebra_mongo_db_connection_connectionString')]"
+					},
+					"reportm4scoringlink_properties_typeProperties_url": {
+						"value": "[parameters('reportm4scoringlink_properties_typeProperties_url')]"
+					},
+					"reportmqlink_properties_typeProperties_url": {
+						"value": "[parameters('reportmqlink_properties_typeProperties_url')]"
+					},
+					"zebra_mongo_db_connection_properties_typeProperties_database": {
+						"value": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
 					}
 				}
 			},
@@ -1040,12 +1068,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
-						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowStart')]"
-					},
-					"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
-						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowEnd')]"
 					}
 				}
 			},
@@ -1066,6 +1088,12 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"Trigger_skg_properties_microsoft billing project_parameters_windowStart": {
+						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowStart')]"
+					},
+					"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
+						"value": "[parameters('Trigger_skg_properties_microsoft billing project_parameters_windowEnd')]"
 					}
 				}
 			},

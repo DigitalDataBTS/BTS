@@ -7,9 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "BTSDataFactoryV1"
 		},
-		"zebra_mongo_db_connection_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'zebra_mongo_db_connection'"
+		"reportcontentg2m3link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m3.php"
+		},
+		"reportcontentg2m4link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g2m4.php"
+		},
+		"reportcontentg3m1link_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_content_g3m1.php"
 		},
 		"reportcontentg3m2link_properties_typeProperties_url": {
 			"type": "string",
@@ -78,24 +86,66 @@
 		"reportm4_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4.php"
-		},
-		"reportm4scoringlink_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m4scoring.php"
-		},
-		"reportmqlink_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://ibider.bts.com/content_salesforceaccelerate/services/reports/report_m1.php"
-		},
-		"zebra_mongo_db_connection_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "zebratechnologies"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg2m3link')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('reportcontentg2m3link_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg2m4link')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('reportcontentg2m4link_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/reportcontentg3m1link')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Web",
+				"typeProperties": {
+					"url": "[parameters('reportcontentg3m1link_properties_typeProperties_url')]",
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "dashboardserverconnection",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/reportcontentg3m2link')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -394,61 +444,6 @@
 				"typeProperties": {
 					"url": "[parameters('reportm4_properties_typeProperties_url')]",
 					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportm4scoringlink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportm4scoringlink_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/reportmqlink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "report m1 ",
-				"annotations": [],
-				"type": "Web",
-				"typeProperties": {
-					"url": "[parameters('reportmqlink_properties_typeProperties_url')]",
-					"authenticationType": "Anonymous"
-				},
-				"connectVia": {
-					"referenceName": "dashboardserverconnection",
-					"type": "IntegrationRuntimeReference"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/zebra_mongo_db_connection')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "MongoDbV2",
-				"typeProperties": {
-					"connectionString": "[parameters('zebra_mongo_db_connection_connectionString')]",
-					"database": "[parameters('zebra_mongo_db_connection_properties_typeProperties_database')]"
 				},
 				"connectVia": {
 					"referenceName": "dashboardserverconnection",

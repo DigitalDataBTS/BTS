@@ -41,6 +41,9 @@
 		"BTSUsers_connectionString": {
 			"value": ""
 		},
+		"BTSuser_connectionString": {
+			"value": ""
+		},
 		"Chevron_data_connectionString": {
 			"value": ""
 		},
@@ -107,6 +110,9 @@
 		"zebra_mongo_db_connection_connectionString": {
 			"value": ""
 		},
+		"AzureDatabricks3_accessToken": {
+			"value": ""
+		},
 		"Abbott user_properties_typeProperties_database": {
 			"value": "abbott"
 		},
@@ -144,6 +150,9 @@
 			"value": "test1"
 		},
 		"BTSUsers_properties_typeProperties_database": {
+			"value": "bts"
+		},
+		"BTSuser_properties_typeProperties_database": {
 			"value": "bts"
 		},
 		"Chevron_data_properties_typeProperties_database": {
@@ -222,7 +231,7 @@
 			"value": "microsoft"
 		},
 		"mondelez connection_properties_typeProperties_database": {
-			"value": "mondelezinternational"
+			"value": "bts"
 		},
 		"mondelez_Leaders of the Future_properties_typeProperties_url": {
 			"value": "https://content.btsmomenta.com/journeys/bd900a1514cc9a9ad18e/latest/journey_en-US.json"
@@ -319,6 +328,9 @@
 		},
 		"Trigger_skg_properties_microsoft billing project_parameters_windowEnd": {
 			"value": "@trigger().scheduledTime"
+		},
+		"AzureDatabricks2_properties_typeProperties_existingClusterId": {
+			"value": "Digital Data's Cluster"
 		},
 		"containerUri": {
 			"value": ""
