@@ -3,8 +3,8 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Python1",
-				"type": "DatabricksSparkPython",
+				"name": "Notebook1",
+				"type": "DatabricksNotebook",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -14,8 +14,11 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/digital.data@bts.com/Saurabh_test_adf_datbricks_connect"
+				},
 				"linkedServiceName": {
-					"referenceName": "AzureDatabricks1",
+					"referenceName": "AzureDatabricks3",
 					"type": "LinkedServiceReference"
 				}
 			}
