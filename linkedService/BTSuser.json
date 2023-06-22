@@ -1,5 +1,5 @@
 {
-	"name": "mondelez connection",
+	"name": "BTSuser",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
@@ -7,7 +7,7 @@
 		"typeProperties": {
 			"connectionString": "mongodb://dashboardRead:@globalregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
 			"database": "bts",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzZmM4MDQ1My1lMDIxLTRmNTYtODExOC0zOWE4ZWRlNDI3OGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIzZTE0N2Q5NS1hNTJlLTQ0NTUtODgyMC05NmY1NDllMzI2MWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
