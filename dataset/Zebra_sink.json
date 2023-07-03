@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "takedamongodb"
+				"fileName": "data_72684d35-c548-4e95-90a5-1548f33d01a5_e55ee77e-5822-4f5f-b46f-63c916cee0a4.json",
+				"container": "zebratech"
 			}
 		},
 		"schema": {}
