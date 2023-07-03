@@ -1,0 +1,18 @@
+{
+	"name": "Takeda_Journey_Structure_to_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "252ca0556f845b586979/latest/journey_en-US.json"
+			}
+		},
+		"schema": {}
+	}
+}
