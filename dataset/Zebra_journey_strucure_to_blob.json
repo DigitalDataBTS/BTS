@@ -2,7 +2,7 @@
 	"name": "Zebra_journey_strucure_to_blob",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HttpServer1",
+			"referenceName": "HttpServer2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
