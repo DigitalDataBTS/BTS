@@ -1,0 +1,18 @@
+{
+	"name": "Sink_Afry_Journey_Structure",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "afryjourneystructure"
+			}
+		},
+		"schema": {}
+	}
+}
