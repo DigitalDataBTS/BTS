@@ -9,7 +9,7 @@
 		"type": "SqlServerTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "dbo1",
+			"schema": "dbo",
 			"table": "takeda1"
 		}
 	}
