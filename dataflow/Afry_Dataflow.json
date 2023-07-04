@@ -1,0 +1,51 @@
+{
+	"name": "Afry_Dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Sink_Takeda_Journey_Structure",
+						"type": "DatasetReference"
+					},
+					"name": "JourneystructureTakeda"
+				},
+				{
+					"dataset": {
+						"referenceName": "Takeda_sink",
+						"type": "DatasetReference"
+					},
+					"name": "BlobStorageTakeda"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText7",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "flatten1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "TakedaJourneyStructure"
+				},
+				{
+					"name": "join1"
+				},
+				{
+					"name": "filter2"
+				}
+			],
+			"script": "source(output(\n\t\tjourney as (key as string, value as string)[],\n\t\ttitle as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> JourneystructureTakeda\nsource(output(\n\t\t{_id} as string,\n\t\tcohort_id as string,\n\t\tcompletion_time as timestamp,\n\t\temail as string,\n\t\tguid as string,\n\t\tjourneys_id as string,\n\t\tjourneys_name as string,\n\t\tstatus as string,\n\t\ttype as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine') ~> BlobStorageTakeda\nJourneystructureTakeda foldDown(unroll(journey),\n\tmapColumn(\n\t\ttitle,\n\t\tkey = journey.key,\n\t\tvalue = journey.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> flatten1\nflatten1 derive(custom = regexReplace(key, '[^0-9]','')) ~> derivedColumn1\nderivedColumn1 filter(custom != \"\") ~> TakedaJourneyStructure\nBlobStorageTakeda, TakedaJourneyStructure join(guid == custom,\n\tjoinType:'left',\n\tmatchType:'exact',\n\tignoreSpaces: false,\n\tbroadcast: 'auto')~> join1\njoin1 filter(value!=\"\" && length(value) <50) ~> filter2\nfilter2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

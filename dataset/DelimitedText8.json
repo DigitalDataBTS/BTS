@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText7",
+	"name": "DelimitedText8",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",
@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "part-00000-a0f59d98-0ca0-4c42-931d-9a48bfb0f94b-c000.csv",
 				"container": "takedafinal"
 			},
 			"columnDelimiter": ",",
