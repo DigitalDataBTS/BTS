@@ -1,0 +1,69 @@
+{
+	"name": "SqlServerTable15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cmsmomentadev",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cohort_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "completion_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "email",
+				"type": "nvarchar"
+			},
+			{
+				"name": "guid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "journeys_id",
+				"type": "nvarchar"
+			},
+			{
+				"name": "journeys_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "title",
+				"type": "nvarchar"
+			},
+			{
+				"name": "key",
+				"type": "nvarchar"
+			},
+			{
+				"name": "value",
+				"type": "nvarchar"
+			},
+			{
+				"name": "custom",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Table3"
+		}
+	}
+}
