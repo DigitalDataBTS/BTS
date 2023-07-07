@@ -83,7 +83,9 @@
 			"FolderName": {
 				"type": "Array",
 				"defaultValue": [
-					"[\"Input\",Input1\",Input2\"]"
+					"input",
+					"Input1",
+					"Input2"
 				]
 			}
 		},
