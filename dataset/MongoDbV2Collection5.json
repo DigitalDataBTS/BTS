@@ -2,7 +2,7 @@
 	"name": "MongoDbV2Collection5",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "MongoDb4",
+			"referenceName": "Takeda_mongo_DB_Source_connection",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
