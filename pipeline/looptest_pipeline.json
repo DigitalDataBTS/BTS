@@ -92,7 +92,7 @@
 			}
 		],
 		"parameters": {
-			"OutputFolders": {
+			"Outputfolders": {
 				"type": "array",
 				"defaultValue": "[output1,output2,output3]"
 			}
