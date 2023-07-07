@@ -9,10 +9,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@pipeline().parameters.OutputFolders",
+						"value": "@variables('FolderName')",
 						"type": "Expression"
 					},
-					"isSequential": true,
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "Copy data1",
@@ -25,16 +25,7 @@
 								"secureOutput": false,
 								"secureInput": false
 							},
-							"userProperties": [
-								{
-									"name": "Source",
-									"value": "looptest/input/looptestdata.txt"
-								},
-								{
-									"name": "Destination",
-									"value": "looptest/@{item()}/"
-								}
-							],
+							"userProperties": [],
 							"typeProperties": {
 								"source": {
 									"type": "DelimitedTextSource",
@@ -70,20 +61,17 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "inputloopdataset",
-									"type": "DatasetReference"
+									"referenceName": "DelimitedText10",
+									"type": "DatasetReference",
+									"parameters": {
+										"foldername": "@item()"
+									}
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "looptest_dataset",
-									"type": "DatasetReference",
-									"parameters": {
-										"FolderName": {
-											"value": "@item()",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "DelimitedText11",
+									"type": "DatasetReference"
 								}
 							]
 						}
@@ -91,10 +79,12 @@
 				}
 			}
 		],
-		"parameters": {
-			"Outputfolders": {
-				"type": "array",
-				"defaultValue": "[output1,output2,output3]"
+		"variables": {
+			"FolderName": {
+				"type": "Array",
+				"defaultValue": [
+					"[\"Input\",Input1\",Input2\"]"
+				]
 			}
 		},
 		"annotations": []
