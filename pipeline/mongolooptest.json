@@ -30,12 +30,32 @@
 									"type": "MongoDbV2Source",
 									"batchSize": 100
 								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
 								{
 									"referenceName": "MongoDbV2Collection5",
 									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "looptest_dataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"FolderName": "@list()"
+									}
 								}
 							]
 						}
