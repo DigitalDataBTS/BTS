@@ -2,7 +2,7 @@
 	"name": "MongoDbV2Collection5",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Takeda_mongo_DB_Source_connection",
+			"referenceName": "forloopmongoparameters",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
