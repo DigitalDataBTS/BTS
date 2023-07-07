@@ -5,6 +5,12 @@
 			"referenceName": "forloopmongoparameters",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"clientname": {
+				"type": "string",
+				"defaultValue": "@item()"
+			}
+		},
 		"annotations": [],
 		"type": "MongoDbV2Collection",
 		"schema": [],
