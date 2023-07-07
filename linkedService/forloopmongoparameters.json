@@ -1,0 +1,11 @@
+{
+	"name": "forloopmongoparameters",
+	"properties": {
+		"type": "MongoDbV2",
+		"connectVia": {
+			"referenceName": "dashboardserverconnection",
+			"type": "IntegrationRuntimeReference"
+		},
+		"annotations": []
+	}
+}
