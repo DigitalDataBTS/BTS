@@ -5,12 +5,21 @@
 			"referenceName": "HttpServer1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"journeyid": {
+				"type": "String",
+				"defaultValue": "@item()"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "252ca0556f845b586979/latest/journey_en-US.json"
+				"relativeUrl": {
+					"value": "@dataset().journeyid",
+					"type": "Expression"
+				}
 			}
 		},
 		"schema": {}

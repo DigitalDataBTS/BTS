@@ -44,13 +44,65 @@
 							"inputs": [
 								{
 									"referenceName": "MongoDbV2Collection5",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"clientname": "@item()"
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "Json4",
 									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "journey_Structure",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('journeyid')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "JsonSource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
+									},
+									"formatSettings": {
+										"type": "JsonReadSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "Json5",
+									"type": "DatasetReference",
+									"parameters": {
+										"journeyid": "@item()"
+									}
 								}
 							]
 						}
@@ -65,6 +117,14 @@
 					"splunk",
 					"sony",
 					"chevroncvx"
+				]
+			},
+			"journeyid": {
+				"type": "Array",
+				"defaultValue": [
+					"252ca0556f845b586979/latest/journey_en-US.json",
+					"97c31952e18be2b13d56/latest/journey_en-US.json",
+					"19c9a8f61b3b44c692d2/latest/journey_en-US.json"
 				]
 			}
 		},
