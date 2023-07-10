@@ -187,7 +187,14 @@
 				"inputs": [
 					{
 						"referenceName": "Takeda_Journey_Structure_to_blob",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"journeyid": [
+								"252ca0556f845b586979",
+								"97c31952e18be2b13d56",
+								"19c9a8f61b3b44c692d2"
+							]
+						}
 					}
 				],
 				"outputs": [
