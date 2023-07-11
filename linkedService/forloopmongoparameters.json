@@ -6,8 +6,8 @@
 		"type": "MongoDbV2",
 		"typeProperties": {
 			"connectionString": "mongodb://dashboardRead:@awscaliforniaregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
-			"database": "clientname",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4ZmI5MTQ2Yy1kZmIzLTQ1NGItYTk5NS05N2QyMTNlYjNkZTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"database": "@variables('clientname')",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI3ZTU3Y2IyMS1hYjYxLTQ3NzMtYjQ2Ni0xYzBkYmE4ZTcyYTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
