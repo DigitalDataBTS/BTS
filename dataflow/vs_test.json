@@ -5,14 +5,27 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "MongoDB"
+					"dataset": {
+						"referenceName": "Sink_Takeda_Journey_Structure",
+						"type": "DatasetReference"
+					},
+					"name": "Blob"
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "unwind"
+				}
+			],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> MongoDB"
+				"     validateSchema: true,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'documentPerLine') ~> Blob",
+				"Blob foldDown(unroll(),",
+				"     skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> unwind"
 			]
 		}
 	}
