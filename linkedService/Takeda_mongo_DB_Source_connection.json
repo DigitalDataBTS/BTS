@@ -7,7 +7,7 @@
 		"typeProperties": {
 			"connectionString": "mongodb://dashboardRead:@awscaliforniaregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
 			"database": "takeda",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJkNGNiNTkyOC0wZWJjLTQ5YTEtOWM4Ni0wOTY2ODRjZWNiYjEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI0NmFmZGIxOS1mYzMwLTQyMmUtOTQxMy04YThlYmI1ODYwMDIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
