@@ -35,26 +35,26 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['journeys']"
+									"path": "$['_id']['$oid']"
 								},
 								"sink": {
-									"path": "journeys"
-								}
-							},
-							{
-								"source": {
-									"path": "$['email']"
-								},
-								"sink": {
-									"path": "email"
-								}
-							},
-							{
-								"source": {
 									"path": "$['_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_id']['email']"
 								},
 								"sink": {
-									"path": "_id"
+									"path": "$['email']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['_id']['Column_1']"
+								},
+								"sink": {
+									"path": "$['journeys']"
 								}
 							}
 						],
