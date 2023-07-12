@@ -229,7 +229,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "Blob to SQL Server",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -288,32 +288,6 @@
 				]
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"activities": [
-						{
-							"name": "Copy data2",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"enableStaging": false
-							}
-						}
-					]
-				}
-			},
-			{
 				"name": "Copy Takeda data from Mongo to blob_copy1",
 				"type": "Copy",
 				"dependsOn": [],
@@ -339,17 +313,95 @@
 							"type": "JsonWriteSettings"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['_id']['$oid']"
+								},
+								"sink": {
+									"path": "$['_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyId']"
+								},
+								"sink": {
+									"path": "$['journeys_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['journeyName']"
+								},
+								"sink": {
+									"path": "$['journeys_name']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['cohortId']"
+								},
+								"sink": {
+									"path": "$['cohort_id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['id']"
+								},
+								"sink": {
+									"path": "$['guid']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['resources']['revisions']['1']['states'][0]['state']"
+								},
+								"sink": {
+									"path": "$['status']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['type']"
+								},
+								"sink": {
+									"path": "$['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['email']"
+								},
+								"sink": {
+									"path": "$['email']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['completionTime']"
+								},
+								"sink": {
+									"path": "$['completion_time']"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "MongoDbV2Collection6",
+						"referenceName": "TakedaMongoDBSourceConnection",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "TakedaResponses",
+						"referenceName": "Takeda_sink",
 						"type": "DatasetReference"
 					}
 				]
