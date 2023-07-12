@@ -6,8 +6,6 @@
 			{
 				"name": "Copy Takeda data from Mongo to blob",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -127,8 +125,6 @@
 			{
 				"name": "Journeystructue_takeda_to_blob",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy Takeda data from Mongo to blob",
@@ -204,8 +200,6 @@
 			{
 				"name": "Data flow1",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Journeystructue_takeda_to_blob",
