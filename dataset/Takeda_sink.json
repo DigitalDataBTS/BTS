@@ -10,8 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "data_833d321c-a68f-41ea-bfe4-1bd17393db48_87a91eb3-91d1-48b7-87fb-c90afbb076fd.json",
-				"container": "takedamongodb"
+				"container": "takedaresponses"
 			}
 		},
 		"schema": {}
