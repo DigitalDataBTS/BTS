@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "part-00000-424a6609-e9be-440d-a859-5917b0031ad6-c000.csv",
 				"container": "takedafinal"
 			},
 			"columnDelimiter": ",",
