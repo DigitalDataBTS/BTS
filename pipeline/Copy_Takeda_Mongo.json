@@ -129,7 +129,7 @@
 					{
 						"activity": "Copy Takeda data from Mongo to blob",
 						"dependencyConditions": [
-							"Succeeded"
+							"Skipped"
 						]
 					}
 				],
@@ -204,7 +204,7 @@
 					{
 						"activity": "Journeystructue_takeda_to_blob",
 						"dependencyConditions": [
-							"Succeeded"
+							"Skipped"
 						]
 					}
 				],
@@ -235,7 +235,7 @@
 					{
 						"activity": "Data flow1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Skipped"
 						]
 					}
 				],
