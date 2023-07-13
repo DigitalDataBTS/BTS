@@ -75,7 +75,7 @@
 							},
 							{
 								"source": {
-									"path": "$['resources']['revisions']['1']['states'][0]['state']"
+									"path": "$['journeys'][0]['revisions']['1']['states'][0]['state']"
 								},
 								"sink": {
 									"path": "$['status']"
