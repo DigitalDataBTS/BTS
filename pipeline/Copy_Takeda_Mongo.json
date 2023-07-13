@@ -104,14 +104,6 @@
 								"sink": {
 									"path": "$['completion_time']"
 								}
-							},
-							{
-								"source": {
-									"path": "$['journeys'][0]['revisions']['1']['responses'][0]"
-								},
-								"sink": {
-									"path": "$['responses']"
-								}
 							}
 						],
 						"collectionReference": ""
