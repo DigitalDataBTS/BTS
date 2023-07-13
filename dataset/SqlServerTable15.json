@@ -63,7 +63,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Completion"
+			"table": "Users"
 		}
 	}
 }
