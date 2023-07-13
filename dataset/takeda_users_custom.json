@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "data_1e7e79bc-5f31-4fd9-94bc-e88654377e0f_e5234def-a7a2-41c8-b4d0-6c78bf3ee458.json",
 				"container": "takedauserscustom"
 			}
 		},
