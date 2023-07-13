@@ -237,6 +237,8 @@
 			{
 				"name": "Blob to SQL Server",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Data flow1",
