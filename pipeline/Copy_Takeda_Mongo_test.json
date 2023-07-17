@@ -346,7 +346,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "TakedaMongoDBSourceConnection",
+						"referenceName": "GlobalRegionCustomerSource",
 						"type": "DatasetReference"
 					}
 				]
