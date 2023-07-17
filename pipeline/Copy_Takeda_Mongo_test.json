@@ -286,6 +286,70 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Get Customer Names and Region",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MongoDbV2Source",
+						"batchSize": 100
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['name']"
+								},
+								"sink": {
+									"path": "name"
+								}
+							},
+							{
+								"source": {
+									"path": "$['authRedirectUrl']"
+								},
+								"sink": {
+									"path": "authRedirectUrl"
+								}
+							},
+							{
+								"source": {
+									"path": "$['awsRegion']"
+								},
+								"sink": {
+									"path": "awsRegion"
+								}
+							},
+							{
+								"source": {
+									"path": "$['apiContextCode']"
+								},
+								"sink": {
+									"path": "apiContextCode"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "TakedaMongoDBSourceConnection",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": [],
