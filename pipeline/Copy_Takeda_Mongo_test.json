@@ -304,6 +304,15 @@
 						"type": "MongoDbV2Source",
 						"batchSize": 100
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
@@ -347,6 +356,12 @@
 				"inputs": [
 					{
 						"referenceName": "GlobalRegionCustomerSource",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MomentaCustomers",
 						"type": "DatasetReference"
 					}
 				]

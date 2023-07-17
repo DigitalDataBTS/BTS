@@ -1,0 +1,17 @@
+{
+	"name": "MomentaCustomers",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MomentaCustomersJSON",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			}
+		},
+		"schema": {}
+	}
+}
