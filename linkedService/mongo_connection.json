@@ -2,12 +2,14 @@
 	"name": "mongo_connection",
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
-		"annotations": [],
+		"annotations": [
+			"@item()"
+		],
 		"type": "MongoDbV2",
 		"typeProperties": {
-			"connectionString": "mongodb://dashboardRead:@germanyregiondatabase.btsmomenta.com/sky?authSource=admin",
-			"database": "@item",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhM2VlMjM5YS01ZmFiLTQ5NGQtOTcxOC1mODNmN2NkNDUwNTAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "mongodb://dashboardRead:@globalregiondatabase.btsmomenta.com/?authSource=admin;appname=MongoDB Compass;readPreference=primary",
+			"database": "@pipeline().parameters.clinet_name",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4OWIyYTA2NC1kMzhmLTQ4YjItODU2NS1hOGU4MTgwYmZjODIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
