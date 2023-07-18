@@ -7,7 +7,7 @@
 		"typeProperties": {
 			"connectionString": "mongodb://dashboardRead:@germanyregiondatabase.btsmomenta.com/sky?authSource=admin",
 			"database": "@item",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI4MmFkNjRkYi0zZTk3LTRjNjQtOTBhZC00YjQyNjQzZmZmMDYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhM2VlMjM5YS01ZmFiLTQ5NGQtOTcxOC1mODNmN2NkNDUwNTAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "dashboardserverconnection",
