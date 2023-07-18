@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "data_fa896b61-9324-4ed2-a0ec-fd64887f7162_8e6f2a94-5b86-4a51-8def-dfc370f4c6ee.txt",
 				"container": "allmomentaclientname"
 			},
 			"columnDelimiter": ",",
