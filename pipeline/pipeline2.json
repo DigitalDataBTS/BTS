@@ -172,7 +172,7 @@
 		"parameters": {
 			"clinet_name": {
 				"type": "array",
-				"defaultValue": "[takeda,"
+				"defaultValue": "[abb,action]"
 			}
 		},
 		"annotations": []
