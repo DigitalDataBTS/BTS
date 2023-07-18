@@ -39,8 +39,6 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -72,24 +70,6 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['_id']['$oid']"
-								},
-								"sink": {
-									"name": "_id_$oid",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
-									"path": "$['awsRegion']"
-								},
-								"sink": {
-									"name": "awsRegion",
-									"type": "String"
-								}
-							},
-							{
-								"source": {
 									"path": "$['apiContextCode']"
 								},
 								"sink": {
@@ -116,6 +96,8 @@
 			{
 				"name": "get data for all the client",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
