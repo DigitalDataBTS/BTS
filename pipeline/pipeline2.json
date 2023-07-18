@@ -6,6 +6,8 @@
 				"name": "get_client_name",
 				"description": "Lookup activity to retrieve the list of clients stored in the external mongo Db region",
 				"type": "Lookup",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -172,7 +174,10 @@
 		"parameters": {
 			"clinet_name": {
 				"type": "array",
-				"defaultValue": "[abb,action]"
+				"defaultValue": [
+					"abb",
+					"action"
+				]
 			}
 		},
 		"annotations": []
