@@ -113,7 +113,7 @@
 			}
 		],
 		"parameters": {
-			"Client_name": {
+			"client_name": {
 				"type": "string"
 			}
 		},
