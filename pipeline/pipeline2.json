@@ -112,11 +112,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"client_name": {
-				"type": "string"
-			}
-		},
 		"annotations": []
 	}
 }
