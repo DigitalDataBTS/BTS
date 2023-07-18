@@ -1,0 +1,15 @@
+{
+	"name": "MongoDbV2Collection7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GlobalRegionCustomers",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MongoDbV2Collection",
+		"schema": [],
+		"typeProperties": {
+			"collection": "customers"
+		}
+	}
+}
